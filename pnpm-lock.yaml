@@ -108,11 +108,13 @@ importers:
       autoprefixer: ^10.4.13
       eslint: ^8.34.0
       eslint-config-acme: 0.0.0
+      jotai: ^2.0.3
       next: ^13.2.3
       next-auth: ^4.20.1
       postcss: ^8.4.21
       react: 18.2.0
       react-dom: 18.2.0
+      react-mapkit: ^0.6.6
       superjson: 1.9.1
       tailwindcss: ^3.2.7
       tsx: ^3.12.3
@@ -128,10 +130,12 @@ importers:
       '@trpc/next': 10.14.0_pen7abxfhplw6oyjl4mz6sok3y
       '@trpc/react-query': 10.14.0_ewqbv5apgvis5mngp6qivio3iy
       '@trpc/server': 10.14.0
+      jotai: 2.0.3_react@18.2.0
       next: 13.2.3_biqbaboplfbrettd7655fr4n2y
       next-auth: 4.20.1_nvzgbose6yf6w7ijjprgspqefi
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      react-mapkit: 0.6.6_biqbaboplfbrettd7655fr4n2y
       superjson: 1.9.1
       zod: 3.20.6
     devDependencies:
@@ -3032,7 +3036,7 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
-      '@tanstack/react-query': 4.24.10_bblof3d6od7kdqr2urb3dykbey
+      '@tanstack/react-query': 4.24.10_biqbaboplfbrettd7655fr4n2y
       '@trpc/client': 10.14.0_@trpc+server@10.14.0
       '@trpc/server': 10.14.0
       react: 18.2.0
@@ -6686,6 +6690,18 @@ packages:
     resolution: {integrity: sha512-MSJQC5vXco5Br38mzaQKiq9mwt7lwj2eXpgpRyQYNHYt2lq1PjkWa7DLXX0WVcQLE9HhMh3jPiufS7fhJf+CLQ==}
     dev: false
 
+  /jotai/2.0.3_react@18.2.0:
+    resolution: {integrity: sha512-MMjhSPAL3RoeZD9WbObufRT2quThEAEknHHridf2ma8Ml7ZVQmUiHk0ssdbR3F0h3kcwhYqSGJ59OjhPge7RRg==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /js-sdsl/4.2.0:
     resolution: {integrity: sha512-dyBIzQBDkCqCu+0upx25Y2jGdbTGxE9fshMsCdK0ViOongpV+n5tXRcZY9v7CaVQ79AGS9KA1KHtojxiM7aXSQ==}
 
@@ -6883,6 +6899,10 @@ packages:
 
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
+    dev: false
+
+  /little-loader/0.2.0:
+    resolution: {integrity: sha512-MYNYfBqP/f5C7XO6MR2cylmAzAKgBkDD1UGZ4KjxFviV3mKbjOEnxVj1nhnN3i2zcwbkPeUDsjAMjLnlL9kRLA==}
     dev: false
 
   /locate-path/3.0.0:
@@ -8653,6 +8673,17 @@ packages:
 
   /react-is/18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
+    dev: false
+
+  /react-mapkit/0.6.6_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-rxE8Q8NHHyzFOdV1XO0V7vws15/V0twSX4GDsIIt8wnOaNvFLkianLJE2LuoMQSUStml1dkkpXQyUaYXMBqFNA==}
+    peerDependencies:
+      react: '>= 16.8.x'
+      react-dom: '>= 16.8.x'
+    dependencies:
+      little-loader: 0.2.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react-native-codegen/0.71.5_@babel+preset-env@7.20.2:
