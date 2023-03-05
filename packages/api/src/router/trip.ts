@@ -1,0 +1,30 @@
+import { z } from "zod";
+
+import { publicProcedure, createTRPCRouter } from "../trpc";
+import type { TripResponse } from "../models/response";
+import { mapResponseToTrip } from "../models";
+import { hafasClient } from "../utils/vbb-hafas";
+
+export const tripRouter = createTRPCRouter({
+  byTripId: publicProcedure
+    .input(
+      z.object({
+        tripId: z.string(),
+        polyline: z.boolean().default(false),
+        stopovers: z.boolean().default(true),
+      })
+    )
+    .query(async ({ input }) => {
+      const { tripId, stopovers, polyline } = input;
+
+
+      // eslint-disable-next-line
+      const { trip }: { trip: TripResponse } = await hafasClient.trip(tripId, {
+        remarks: false,
+        polyline,
+        stopovers,
+      });
+
+      return mapResponseToTrip(trip);
+    }),
+});

@@ -15,7 +15,9 @@
     "@acme/db": "*",
     "@trpc/client": "^10.14.0",
     "@trpc/server": "^10.14.0",
+    "@upstash/redis": "^1.20.1",
     "superjson": "1.9.1",
+    "vbb-hafas": "^8.0.1",
     "zod": "^3.20.6"
   },
   "devDependencies": {
