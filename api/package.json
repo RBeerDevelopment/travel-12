@@ -1,0 +1,23 @@
+{
+  "name": "t12-api",
+  "scripts": {
+    "db-update": "drizzle-kit generate && drizzle-kit push",
+    "start": "vercel dev",
+    "deploy": "vercel"
+  },
+  "type": "module",
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "axios": "^1.7.7",
+    "cors": "^2.8.5",
+    "drizzle-orm": "^0.36.1",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.28",
+    "typescript": "^5.5.3",
+    "vercel": "^39.1.2"
+  }
+}
