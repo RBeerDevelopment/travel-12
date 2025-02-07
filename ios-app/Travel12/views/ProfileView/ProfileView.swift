@@ -14,14 +14,29 @@ struct ProfileView: View {
     
     var body: some View {
         VStack {
-            Text("Are you sure you want to log out?").font(.headline)
-                .padding(.bottom, 20)
+            Text("Profile").font(.headline)
+            Spacer()
+            if let profileImageURL = clerk.user?.imageUrl {
+                AsyncImage(url: URL(string: profileImageURL))
+                    .frame(width: 80, height: 80)
+                    .padding()
+                    .clipShape(Circle())
+            }
+            if let name = clerk.user?.fullName {
+                Text(name)
+            }
+            if let emailAddress = clerk.user?.emailAddresses.first {
+                Text(emailAddress.emailAddress)
+            }
+            Spacer()
+            Text("Want to log out?").font(.headline)
+                .padding(.bottom, 12)
             Button("Sign Out") {
               Task { try? await clerk.signOut() }
             }
             .font(.headline)
             .foregroundColor(.red)
-            .padding()
+            .padding(.bottom)
         }
         .padding()
     }

@@ -10,11 +10,11 @@ class StationSearchItem: Codable, Identifiable, Hashable, ObservableObject {
     let id: String
     let name: String
     let products: [String]
-    let location: StationLocation
+    let location: Location
     @Published var distanceToUser: Double?
     @Published var angle: Double?
     
-    init(id: String, name: String, products: [String], location: StationLocation) {
+    init(id: String, name: String, products: [String], location: Location) {
         self.id = id
         self.name = name
         self.products = products
@@ -38,7 +38,7 @@ class StationSearchItem: Codable, Identifiable, Hashable, ObservableObject {
         id = try container.decode(String.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         products = try container.decode([String].self, forKey: .products)
-        location = try container.decode(StationLocation.self, forKey: .location)
+        location = try container.decode(Location.self, forKey: .location)
         // `distanceToUser` and `angle` are not decoded because they're set dynamically
     }
     
@@ -50,12 +50,6 @@ class StationSearchItem: Codable, Identifiable, Hashable, ObservableObject {
         try container.encode(location, forKey: .location)
         // `distanceToUser` and `angle` are not encoded because they're set dynamically
     }
-}
-
-struct StationLocation: Codable {
-    let id: String
-    let latitude: Double
-    let longitude: Double
 }
 
 enum StationProductType: String, CaseIterable, Identifiable {
@@ -70,6 +64,6 @@ enum StationProductType: String, CaseIterable, Identifiable {
 
 
 let demoStations = [
-    StationSearchItem(id: "1023838", name: "U Scharnweberstraße", products: ["tram"], location: StationLocation(id: "123", latitude: 52.475465, longitude: 13.365575)),
-    StationSearchItem(id: "222", name: "Frankfurter Allee", products: ["subway"], location: StationLocation(id: "123", latitude: 52.475465, longitude: 13.365575))
+    StationSearchItem(id: "1023838", name: "U Scharnweberstraße", products: ["tram"], location: Location(id: "123", latitude: 52.475465, longitude: 13.365575)),
+    StationSearchItem(id: "222", name: "Frankfurter Allee", products: ["subway"], location: Location(id: "123", latitude: 52.475465, longitude: 13.365575))
 ]

@@ -91,11 +91,11 @@ func queryStationInDB(query: String) -> [StationSearchItem] {
         
         let rows = try connection.query(statment, queryParam)
         for row in rows {
-            stations.append(StationSearchItem(id: try row.getString(0), name: try row.getString(1), products: try row.getString(4).components(separatedBy: ","), location: StationLocation(id: try row.getString(0), latitude: try row.getDouble(2), longitude: try row.getDouble(3))))
+            stations.append(StationSearchItem(id: try row.getString(0), name: try row.getString(1), products: try row.getString(4).components(separatedBy: ","), location: Location(id: try row.getString(0), latitude: try row.getDouble(2), longitude: try row.getDouble(3))))
         }
     } catch {
-        print("Error info: \(error)")
-        print("Error fetching stations")
+        print("Error fetching stations: \(error)")
+
     }
     
     return stations

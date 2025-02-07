@@ -20,7 +20,7 @@ struct Travel12App: App {
         WindowGroup {
             ZStack {
                 if clerk.loadingState == .notLoaded {
-                    ProgressView()
+                    LoadingIndicator()
                 } else if clerk.user == nil {
                     SignInOrSignUpView()
                 } else {

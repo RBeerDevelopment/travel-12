@@ -31,8 +31,9 @@ struct HomeView: View {
                 } else {
                     VStack {
                         Text("Your favorite trips will show here, once you selected them.")
-                            .font(.caption)
-                            .padding()
+                            .font(.headline)
+                            .frame(alignment: .center)
+                            .padding(40)
                     }
                 }
             }

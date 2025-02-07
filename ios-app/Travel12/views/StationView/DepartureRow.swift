@@ -7,37 +7,38 @@
 
 import SwiftUI
 
-struct DepartureTimeRow: View {
-    
-    let departureTime: Date
-    let diffText: String
-    let delay: Int
-    
-    @State var now: Date
-    
-    init(departureTime: Date, delay: Int) {
-        self.now = Date()
-        self.departureTime = departureTime
-        self.delay = delay
-        let secondsUntilDeparture = Date().secondsUntil(departureTime)
-        self.diffText = secondsUntilDeparture < 30 && secondsUntilDeparture > -30 ? "now" : secondsUntilDeparture < -60 ? " \(secondsUntilDeparture / 60)min ago" : "in \(secondsUntilDeparture / 60)min"
-    }
+struct DepartureRow: View {
+    let departure: Departure
+    let stationId: String
     
     var body: some View {
-        HStack {
-            Text(diffText).fontWeight(.semibold)
-                .foregroundStyle(delay > 0 ? .red : .primary).frame(minWidth: 80, alignment: .leading)
-            Text(departureTime, style: .time)
-        }.padding(.horizontal)
-        .onReceive(GlobalTenSecondTimer.shared.timerPublisher) { _ in
-                /// TODO  think about checking if anything changed first
-                now = Date()
+        NavigationLink(destination: TripView(tripId: departure.tripId, stationId: stationId, lineColor: departure.line.color?.bg ?? "#000")) {
+            HStack {
+                LineIndicator(line: departure.line)
+                    .frame(width: 40, height: 40)
                 
+                VStack(alignment: .leading) {
+                    Text(departure.direction)
+                        .font(.headline)
+                }
+                
+                Spacer()
+                
+                VStack(alignment: .trailing) {
+                    Text(departure.formattedWhen)
+                        .font(.headline)
+                    if let delay = departure.delay {
+                        if delay > 0 {
+                            Text("+\(delay / 60) min")
+                                .font(.caption)
+                                .foregroundColor(.red)
+                        }
+                        
+                    }
+                }
             }
+            .padding(.vertical, 4)
+        }
     }
-        
 }
 
-#Preview {
-    DepartureTimeRow(departureTime: Date(), delay: 5)
-}

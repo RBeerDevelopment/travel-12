@@ -19,7 +19,7 @@ struct SearchItemView: View {
     }
     
     var body: some View {
-        NavigationLink(destination: StationView(stationId: station.id, stationName: station.name)) {
+        NavigationLink(destination: DeparturesView(stationId: station.id.components(separatedBy: ":")[2], stationName: station.name)) {
             HStack {
                 VStack(alignment: .leading) {
                     Text(station.name).font(.headline)

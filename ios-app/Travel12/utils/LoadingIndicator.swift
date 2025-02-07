@@ -9,10 +9,13 @@ import SwiftUI
 
 struct LoadingIndicator: View {
     
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     var body: some View {
         Image(systemName: "tram.fill")
             .symbolEffect(.breathe, options: .speed(1).repeat(100), isActive: true)
-            .font(.largeTitle)
+            .font(.system(size: 56))
+            .foregroundStyle(colorScheme == .light ? .red : Color.init(hex: "#fc4c4c"))
             .padding()
     }
 }
