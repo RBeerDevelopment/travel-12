@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "6",
-      "when": 1731358900516,
-      "tag": "0000_nappy_toro",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1731363705677,
-      "tag": "0001_wet_namor",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "6",
-      "when": 1731837399863,
-      "tag": "0002_fancy_shiva",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "6",
-      "when": 1731837415463,
-      "tag": "0003_small_sally_floyd",
+      "when": 1738966646763,
+      "tag": "0000_heavy_sumo",
       "breakpoints": true
     }
   ]

@@ -18,6 +18,7 @@
 		327DE4CC2CE166A500CF0D04 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327DE4CB2CE166A100CF0D04 /* KeychainHelper.swift */; };
 		327DE4CE2CE16DE400CF0D04 /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327DE4CD2CE16DE200CF0D04 /* Hash.swift */; };
 		328258752CE0FBE6000D6D48 /* stations.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 328258742CE0FBE6000D6D48 /* stations.sqlite */; };
+		32A393252D5757E300A0093F /* DepartureItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A393242D5757E300A0093F /* DepartureItem.swift */; };
 		32A96E6D2D3D6F2200F3C081 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A96E6C2D3D6F1D00F3C081 /* ApiClient.swift */; };
 		32A96E6F2D3D70E800F3C081 /* LineIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A96E6E2D3D70E300F3C081 /* LineIndicator.swift */; };
 		32A96E712D3D710600F3C081 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A96E702D3D710000F3C081 /* ErrorView.swift */; };
@@ -33,6 +34,9 @@
 		32B36D0A2D565AB700102BE8 /* StopoverItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B36D092D565AB700102BE8 /* StopoverItem.swift */; };
 		32B36D0C2D566F3600102BE8 /* Polyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B36D0B2D566F3500102BE8 /* Polyline.swift */; };
 		32B36D0E2D566F9D00102BE8 /* TripMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B36D0D2D566F9D00102BE8 /* TripMap.swift */; };
+		32B36D142D573DC000102BE8 /* FavoriteTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B36D132D573DBD00102BE8 /* FavoriteTrip.swift */; };
+		32B36D162D573F3F00102BE8 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B36D152D573F3800102BE8 /* FavoritesManager.swift */; };
+		32B36D182D573FC100102BE8 /* View+FavoriteAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B36D172D573FB900102BE8 /* View+FavoriteAction.swift */; };
 		32B372EF2CE34AB500CE684E /* AngleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B372EE2CE34AB000CE684E /* AngleHelper.swift */; };
 		32BADE9F2C3134BB00E53BA6 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BADE9E2C3134B700E53BA6 /* Extension.swift */; };
 		32BADEAB2C3A7A1B00E53BA6 /* DepartureRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BADEAA2C3A7A1B00E53BA6 /* DepartureRow.swift */; };
@@ -49,7 +53,7 @@
 		32DBDCF52C2E7A8A00212F6B /* SearchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF42C2E7A8A00212F6B /* SearchItemView.swift */; };
 		32DBDCF72C2E7B9500212F6B /* ProductIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF62C2E7B9500212F6B /* ProductIcon.swift */; };
 		32DBDCF92C2E8A0100212F6B /* StationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF82C2E89FB00212F6B /* StationSearchView.swift */; };
-		32DBDCFD2C2E906F00212F6B /* DepartureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCFC2C2E906F00212F6B /* DepartureView.swift */; };
+		32DBDCFD2C2E906F00212F6B /* DeparturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCFC2C2E906F00212F6B /* DeparturesView.swift */; };
 		32DBDD012C2E96AD00212F6B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD002C2E96AA00212F6B /* LocationManager.swift */; };
 		32DBDD032C30546C00212F6B /* DepartureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD022C30546700212F6B /* DepartureModel.swift */; };
 		32DBDD052C3055E600212F6B /* StationDepartureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD042C3055DB00212F6B /* StationDepartureViewModel.swift */; };
@@ -66,6 +70,7 @@
 		327DE4CB2CE166A100CF0D04 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		327DE4CD2CE16DE200CF0D04 /* Hash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
 		328258742CE0FBE6000D6D48 /* stations.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = stations.sqlite; sourceTree = "<group>"; };
+		32A393242D5757E300A0093F /* DepartureItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureItem.swift; sourceTree = "<group>"; };
 		32A96E6C2D3D6F1D00F3C081 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		32A96E6E2D3D70E300F3C081 /* LineIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineIndicator.swift; sourceTree = "<group>"; };
 		32A96E702D3D710000F3C081 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
@@ -81,6 +86,9 @@
 		32B36D092D565AB700102BE8 /* StopoverItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopoverItem.swift; sourceTree = "<group>"; };
 		32B36D0B2D566F3500102BE8 /* Polyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polyline.swift; sourceTree = "<group>"; };
 		32B36D0D2D566F9D00102BE8 /* TripMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMap.swift; sourceTree = "<group>"; };
+		32B36D132D573DBD00102BE8 /* FavoriteTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTrip.swift; sourceTree = "<group>"; };
+		32B36D152D573F3800102BE8 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
+		32B36D172D573FB900102BE8 /* View+FavoriteAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+FavoriteAction.swift"; sourceTree = "<group>"; };
 		32B372EE2CE34AB000CE684E /* AngleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleHelper.swift; sourceTree = "<group>"; };
 		32BADE9E2C3134B700E53BA6 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		32BADEAA2C3A7A1B00E53BA6 /* DepartureRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureRow.swift; sourceTree = "<group>"; };
@@ -99,7 +107,7 @@
 		32DBDCF42C2E7A8A00212F6B /* SearchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemView.swift; sourceTree = "<group>"; };
 		32DBDCF62C2E7B9500212F6B /* ProductIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIcon.swift; sourceTree = "<group>"; };
 		32DBDCF82C2E89FB00212F6B /* StationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchView.swift; sourceTree = "<group>"; };
-		32DBDCFC2C2E906F00212F6B /* DepartureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureView.swift; sourceTree = "<group>"; };
+		32DBDCFC2C2E906F00212F6B /* DeparturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesView.swift; sourceTree = "<group>"; };
 		32DBDD002C2E96AA00212F6B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		32DBDD022C30546700212F6B /* DepartureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureModel.swift; sourceTree = "<group>"; };
 		32DBDD042C3055DB00212F6B /* StationDepartureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDepartureViewModel.swift; sourceTree = "<group>"; };
@@ -161,6 +169,23 @@
 			path = TripView;
 			sourceTree = "<group>";
 		};
+		32B36D0F2D573CAD00102BE8 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				32A96E6E2D3D70E300F3C081 /* LineIndicator.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		32B36D122D573DB600102BE8 /* favorites */ = {
+			isa = PBXGroup;
+			children = (
+				32B36D152D573F3800102BE8 /* FavoritesManager.swift */,
+				32B36D132D573DBD00102BE8 /* FavoriteTrip.swift */,
+			);
+			path = favorites;
+			sourceTree = "<group>";
+		};
 		32C960452CF37004006BAC4E /* ProfileView */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,12 +197,13 @@
 		32C960462CF37013006BAC4E /* views */ = {
 			isa = PBXGroup;
 			children = (
+				32B36D0F2D573CAD00102BE8 /* common */,
 				32B36CFE2D55566D00102BE8 /* TripView */,
 				326CF26B2D386D7D001CBCA8 /* SignInUpView */,
 				32C960472CF37044006BAC4E /* HomeView */,
 				32C960452CF37004006BAC4E /* ProfileView */,
 				32DBDCFA2C2E905100212F6B /* SearchView */,
-				32DBDCFB2C2E906100212F6B /* StationView */,
+				32DBDCFB2C2E906100212F6B /* DeparturesView */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -258,6 +284,7 @@
 		32DBDCE92C2DE81400212F6B /* api */ = {
 			isa = PBXGroup;
 			children = (
+				32B36D122D573DB600102BE8 /* favorites */,
 				32B36CF62D5552BB00102BE8 /* shared */,
 				32A96E6C2D3D6F1D00F3C081 /* ApiClient.swift */,
 				32B36CF32D5550F500102BE8 /* trip */,
@@ -287,15 +314,16 @@
 			path = SearchView;
 			sourceTree = "<group>";
 		};
-		32DBDCFB2C2E906100212F6B /* StationView */ = {
+		32DBDCFB2C2E906100212F6B /* DeparturesView */ = {
 			isa = PBXGroup;
 			children = (
+				32B36D172D573FB900102BE8 /* View+FavoriteAction.swift */,
 				32A96E702D3D710000F3C081 /* ErrorView.swift */,
-				32A96E6E2D3D70E300F3C081 /* LineIndicator.swift */,
 				32BADEAA2C3A7A1B00E53BA6 /* DepartureRow.swift */,
-				32DBDCFC2C2E906F00212F6B /* DepartureView.swift */,
+				32A393242D5757E300A0093F /* DepartureItem.swift */,
+				32DBDCFC2C2E906F00212F6B /* DeparturesView.swift */,
 			);
-			path = StationView;
+			path = DeparturesView;
 			sourceTree = "<group>";
 		};
 		32DBDCFE2C2E94DB00212F6B /* departures */ = {
@@ -405,7 +433,7 @@
 				32DBDCEB2C2DE81C00212F6B /* Constants.swift in Sources */,
 				32C9603D2CF10240006BAC4E /* CleanSpecialCharacters.swift in Sources */,
 				32B36D082D5556F100102BE8 /* StopoverTimeRow.swift in Sources */,
-				32DBDCFD2C2E906F00212F6B /* DepartureView.swift in Sources */,
+				32DBDCFD2C2E906F00212F6B /* DeparturesView.swift in Sources */,
 				32B36D042D5556B900102BE8 /* TripTimeView.swift in Sources */,
 				32DBDD012C2E96AD00212F6B /* LocationManager.swift in Sources */,
 				32DBDCDB2C2DE74900212F6B /* HomeView.swift in Sources */,
@@ -420,17 +448,21 @@
 				32B36D022D55569C00102BE8 /* TripHeaderView.swift in Sources */,
 				327DE4C42CE14D2400CF0D04 /* LoadingIndicator.swift in Sources */,
 				32DBDD032C30546C00212F6B /* DepartureModel.swift in Sources */,
+				32B36D182D573FC100102BE8 /* View+FavoriteAction.swift in Sources */,
 				32A96E6F2D3D70E800F3C081 /* LineIndicator.swift in Sources */,
 				327DE4CC2CE166A500CF0D04 /* KeychainHelper.swift in Sources */,
 				32DBDCF52C2E7A8A00212F6B /* SearchItemView.swift in Sources */,
 				326B0E542CD92C7500794F43 /* DBHandler.swift in Sources */,
 				327DE4CE2CE16DE400CF0D04 /* Hash.swift in Sources */,
+				32A393252D5757E300A0093F /* DepartureItem.swift in Sources */,
+				32B36D162D573F3F00102BE8 /* FavoritesManager.swift in Sources */,
 				32A96E6D2D3D6F2200F3C081 /* ApiClient.swift in Sources */,
 				327DE4C02CE1416D00CF0D04 /* ProfileView.swift in Sources */,
 				32BADEAB2C3A7A1B00E53BA6 /* DepartureRow.swift in Sources */,
 				32DBDCD92C2DE74900212F6B /* Travel12App.swift in Sources */,
 				32DBDCF92C2E8A0100212F6B /* StationSearchView.swift in Sources */,
 				32B36D002D55567500102BE8 /* TripView.swift in Sources */,
+				32B36D142D573DC000102BE8 /* FavoriteTrip.swift in Sources */,
 				32DBDCF72C2E7B9500212F6B /* ProductIcon.swift in Sources */,
 				32B36D062D5556D100102BE8 /* StopoverListView.swift in Sources */,
 				32B372EF2CE34AB500CE684E /* AngleHelper.swift in Sources */,

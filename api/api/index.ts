@@ -1,91 +1,170 @@
+import { Hono } from "hono";
+import { handle } from "hono/vercel";
+import { cors } from "hono/cors";
 import { db } from "../db/connection.js";
-import { users } from "../db/schema.js";
 import { eq } from "drizzle-orm";
+import { favoriteTrips } from "../db/schema.js";
+import {
+  ApiResponse,
+  CreateFavoriteTripBody,
+  FavoriteTrip,
+  UpdateFavoriteTripBody,
+} from "../types/favorite-trips.js";
 
-import { createTenantDatabase } from "../utils/create-tenant-db.js";
-import cors from "cors";
-import express, { Request, Response } from "express";
-import { fetchTenantDbCredentials } from "../utils/fetch-tenant-db-credentials.js";
+const app = new Hono().basePath("/api");
 
-export const app = express();
+// Enable CORS
+app.use("*", cors());
 
-app.use(cors());
-app.use(express.json());
-
-app.get("/api/users", (req: Request, res: Response) => {
-  const userId = req.query.id;
-
-  if (!userId) {
-    res.status(400).json({ error: "User ID is required" });
-    return;
-  }
-
-  db.select()
-    .from(users)
-    // .where(eq(users.id, userId))
-    .then((userRows) => {
-      if (!userRows) {
-        res.status(404).json({ error: "User not found" });
-        return;
-      }
-
-      return res.status(200).json(userRows[0]);
+// Get all favorite trips
+app.get("/favorite-trips", async (c) => {
+  try {
+    const trips = await db.select().from(favoriteTrips);
+    return c.json<ApiResponse<FavoriteTrip[]>>({
+      data: trips,
     });
+  } catch (error) {
+    return c.json<ApiResponse<never>>(
+      {
+        error: "Failed to fetch favorite trips",
+      },
+      500
+    );
+  }
 });
 
-app.get("/api/users/:id", async (req: Request, res: Response) => {
-  const userId = req.params.id;
+// Get all favorite trips for a user
+app.get("/favorite-trips/user/:userId", async (c) => {
+  const userId = c.req.param("userId");
+  try {
+    const trips = await db
+      .select()
+      .from(favoriteTrips)
+      .where(eq(favoriteTrips.userId, userId));
 
-  if (!userId) {
-    res.status(400).json({ error: "User ID is required" });
-    return;
-  }
-
-  const userRows = await db
-    .select({ id: users.id })
-    .from(users)
-    .where(eq(users.id, userId));
-
-  if (userRows.length === 0) {
-    res.status(404).json({ error: "User not found" });
-    return;
-  }
-
-  const credentials = await fetchTenantDbCredentials(userId);
-  res.status(201).json(credentials);
-});
-
-app.post("/api/users", async (req: Request, res: Response) => {
-  const { email, userId } = req.body;
-
-  console.log("BODY: ");
-  console.log(req.body);
-
-  if (!userId || !email) {
-    res.status(400).json({ error: "ID and email are required" });
-    return;
-  }
-
-  await db
-    .insert(users)
-    .values({ id: userId, email })
-    .catch((err) => {
-      console.error(err);
-      res.status(409).json({ error: "User already exists" });
-      return;
+    return c.json<ApiResponse<FavoriteTrip[]>>({
+      data: trips,
     });
-
-  const credentials = await createTenantDatabase(userId);
-
-  await db
-    .update(users)
-    .set({ dbName: credentials.dbUrl })
-    .where(eq(users.id, userId));
-  res.status(201).json(credentials);
+  } catch (error) {
+    return c.json<ApiResponse<never>>(
+      {
+        error: "Failed to fetch favorite trips",
+      },
+      500
+    );
+  }
 });
 
-app.listen(3000).on("listening", () => {
-  console.info("server is listening on port http://localhost:3000");
+// Get favorite trip by ID
+app.get("/favorite-trips/:id", async (c) => {
+  const id = c.req.param("id");
+  try {
+    const trip = await db
+      .select()
+      .from(favoriteTrips)
+      .where(eq(favoriteTrips.id, id));
+
+    if (trip.length === 0) {
+      return c.json<ApiResponse<never>>(
+        {
+          error: "Favorite trip not found",
+        },
+        404
+      );
+    }
+
+    return c.json<ApiResponse<FavoriteTrip>>({
+      data: trip[0],
+    });
+  } catch (error) {
+    return c.json<ApiResponse<never>>(
+      {
+        error: "Failed to fetch favorite trip",
+      },
+      500
+    );
+  }
 });
 
-export default app;
+// Create new favorite trip
+app.post("/favorite-trips", async (c) => {
+  try {
+    const body = await c.req.json<CreateFavoriteTripBody>();
+    const newTrip: FavoriteTrip = {
+      id: crypto.randomUUID(),
+      userId: body.userId,
+      stationId: body.stationId,
+      lineId: body.lineId,
+      destinationId: body.destinationId,
+    };
+
+    await db.insert(favoriteTrips).values(newTrip);
+    return c.json<ApiResponse<FavoriteTrip>>(
+      {
+        data: newTrip,
+        message: "Favorite trip created successfully",
+      },
+      201
+    );
+  } catch (error) {
+    return c.json<ApiResponse<never>>(
+      {
+        error: "Failed to create favorite trip",
+      },
+      500
+    );
+  }
+});
+
+// Update favorite trip
+app.put("/favorite-trips/:id", async (c) => {
+  const id = c.req.param("id");
+  try {
+    const body = await c.req.json<UpdateFavoriteTripBody>();
+    const updateData: UpdateFavoriteTripBody = {
+      ...(body.userId && { userId: body.userId }),
+      ...(body.stationId && { stationId: body.stationId }),
+      ...(body.lineId && { lineId: body.lineId }),
+      ...(body.destinationId && { destinationId: body.destinationId }),
+    };
+
+    await db
+      .update(favoriteTrips)
+      .set(updateData)
+      .where(eq(favoriteTrips.id, id));
+
+    return c.json<ApiResponse<never>>({
+      message: "Favorite trip updated successfully",
+    });
+  } catch (error) {
+    return c.json<ApiResponse<never>>(
+      {
+        error: "Failed to update favorite trip",
+      },
+      500
+    );
+  }
+});
+
+// Delete favorite trip
+app.delete("/favorite-trips/:id", async (c) => {
+  const id = c.req.param("id");
+  try {
+    await db.delete(favoriteTrips).where(eq(favoriteTrips.id, id));
+    return c.json<ApiResponse<never>>({
+      message: "Favorite trip deleted successfully",
+    });
+  } catch (error) {
+    return c.json<ApiResponse<never>>(
+      {
+        error: "Failed to delete favorite trip",
+      },
+      500
+    );
+  }
+});
+
+export const GET = handle(app);
+export const POST = handle(app);
+export const PUT = handle(app);
+export const DELETE = handle(app);

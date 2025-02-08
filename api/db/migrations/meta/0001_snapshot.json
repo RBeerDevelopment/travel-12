@@ -1,8 +1,8 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "98ddb878-cae6-404d-9041-800ff90886c5",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "47c3db3c-5bb1-4eaf-bf5e-22178b1e70b7",
+  "prevId": "8cbf071f-a8c7-4297-b14b-cc25e409fa6a",
   "tables": {
     "favorite_trips": {
       "name": "favorite_trips",
@@ -41,6 +41,30 @@
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "(CURRENT_TIMESTAMP)"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "(CURRENT_TIMESTAMP)"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "NULL"
         }
       },
       "indexes": {},

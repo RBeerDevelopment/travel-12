@@ -1,1 +1,0 @@
-ALTER TABLE `users` RENAME COLUMN "dbName" TO "db-ame";

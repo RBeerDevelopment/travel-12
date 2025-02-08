@@ -19,3 +19,12 @@ struct LoadingIndicator: View {
             .padding()
     }
 }
+
+struct LargeLoadingIndicator: View {
+    
+    var body: some View {
+        LoadingIndicator()
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .padding()
+    }
+}
