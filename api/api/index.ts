@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import { handle } from "hono/vercel";
 import { cors } from "hono/cors";
 import { db } from "../db/connection.js";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { favoriteTrips } from "../db/schema.js";
 import {
   ApiResponse,
@@ -55,50 +55,21 @@ app.get("/favorite-trips/user/:userId", async (c) => {
   }
 });
 
-// Get favorite trip by ID
-app.get("/favorite-trips/:id", async (c) => {
-  const id = c.req.param("id");
-  try {
-    const trip = await db
-      .select()
-      .from(favoriteTrips)
-      .where(eq(favoriteTrips.id, id));
-
-    if (trip.length === 0) {
-      return c.json<ApiResponse<never>>(
-        {
-          error: "Favorite trip not found",
-        },
-        404
-      );
-    }
-
-    return c.json<ApiResponse<FavoriteTrip>>({
-      data: trip[0],
-    });
-  } catch (error) {
-    return c.json<ApiResponse<never>>(
-      {
-        error: "Failed to fetch favorite trip",
-      },
-      500
-    );
-  }
-});
-
 // Create new favorite trip
 app.post("/favorite-trips", async (c) => {
   try {
     const body = await c.req.json<CreateFavoriteTripBody>();
     const newTrip: FavoriteTrip = {
-      id: crypto.randomUUID(),
       userId: body.userId,
       stationId: body.stationId,
       lineId: body.lineId,
       destinationId: body.destinationId,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      deletedAt: null,
     };
 
-    await db.insert(favoriteTrips).values(newTrip);
+    await db.insert(favoriteTrips).values(newTrip).onConflictDoNothing();
     return c.json<ApiResponse<FavoriteTrip>>(
       {
         data: newTrip,
@@ -116,41 +87,20 @@ app.post("/favorite-trips", async (c) => {
   }
 });
 
-// Update favorite trip
-app.put("/favorite-trips/:id", async (c) => {
-  const id = c.req.param("id");
-  try {
-    const body = await c.req.json<UpdateFavoriteTripBody>();
-    const updateData: UpdateFavoriteTripBody = {
-      ...(body.userId && { userId: body.userId }),
-      ...(body.stationId && { stationId: body.stationId }),
-      ...(body.lineId && { lineId: body.lineId }),
-      ...(body.destinationId && { destinationId: body.destinationId }),
-    };
-
-    await db
-      .update(favoriteTrips)
-      .set(updateData)
-      .where(eq(favoriteTrips.id, id));
-
-    return c.json<ApiResponse<never>>({
-      message: "Favorite trip updated successfully",
-    });
-  } catch (error) {
-    return c.json<ApiResponse<never>>(
-      {
-        error: "Failed to update favorite trip",
-      },
-      500
-    );
-  }
-});
-
 // Delete favorite trip
-app.delete("/favorite-trips/:id", async (c) => {
-  const id = c.req.param("id");
+app.delete("/favorite-trips", async (c) => {
+  const body = await c.req.json<CreateFavoriteTripBody>();
   try {
-    await db.delete(favoriteTrips).where(eq(favoriteTrips.id, id));
+    await db
+      .delete(favoriteTrips)
+      .where(
+        and(
+          eq(favoriteTrips.userId, body.userId),
+          eq(favoriteTrips.stationId, body.stationId),
+          eq(favoriteTrips.lineId, body.lineId),
+          eq(favoriteTrips.destinationId, body.destinationId)
+        )
+      );
     return c.json<ApiResponse<never>>({
       message: "Favorite trip deleted successfully",
     });

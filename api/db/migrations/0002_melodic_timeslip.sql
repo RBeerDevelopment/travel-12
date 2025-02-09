@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `favorite_trips_user_id_station_id_line_id_destination_id_unique` ON `favorite_trips` (`user_id`,`station_id`,`line_id`,`destination_id`);

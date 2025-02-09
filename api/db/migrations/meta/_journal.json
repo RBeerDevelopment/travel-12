@@ -15,6 +15,20 @@
       "when": 1738999625659,
       "tag": "0001_aspiring_selene",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1739089994118,
+      "tag": "0002_melodic_timeslip",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1739092178059,
+      "tag": "0003_nosy_fabian_cortez",
+      "breakpoints": true
     }
   ]
 }
