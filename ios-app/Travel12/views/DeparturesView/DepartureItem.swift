@@ -12,6 +12,7 @@ struct DepartureItem: View {
     @Query var favoriteTrips: [FavoriteTrip]
     let departure: Departure
     let stationId: String
+    let stationName: String
     
     var body: some View {
         let lineId = departure.line.name
@@ -20,6 +21,6 @@ struct DepartureItem: View {
         }) != nil
         
         DepartureRow(departure: departure, stationId: stationId)
-            .favoriteActionSheet(lineId: lineId, stationId: stationId, destinationId: destinationId, isFavorite: isFavorite)
+            .favoriteActionSheet(lineId: lineId, stationId: stationId, destinationId: destinationId, stationName: stationName, isFavorite: isFavorite)
     }
 }

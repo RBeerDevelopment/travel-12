@@ -29,6 +29,20 @@
       "when": 1739092178059,
       "tag": "0003_nosy_fabian_cortez",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1739726418454,
+      "tag": "0004_clear_doctor_faustus",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1739726686361,
+      "tag": "0005_last_wasp",
+      "breakpoints": true
     }
   ]
 }

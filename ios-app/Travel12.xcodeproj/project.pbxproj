@@ -19,6 +19,10 @@
 		327DE4CE2CE16DE400CF0D04 /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327DE4CD2CE16DE200CF0D04 /* Hash.swift */; };
 		328258752CE0FBE6000D6D48 /* stations.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 328258742CE0FBE6000D6D48 /* stations.sqlite */; };
 		32A393252D5757E300A0093F /* DepartureItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A393242D5757E300A0093F /* DepartureItem.swift */; };
+		32A393272D5E4F2600A0093F /* FavoriteDeparturesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A393262D5E4F2600A0093F /* FavoriteDeparturesSection.swift */; };
+		32A393292D5E4F7800A0093F /* FavoriteDepartureCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A393282D5E4F7800A0093F /* FavoriteDepartureCard.swift */; };
+		32A3932B2D5E54D400A0093F /* FavoriteTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A3932A2D5E54C900A0093F /* FavoriteTripViewModel.swift */; };
+		32A3932D2D62577B00A0093F /* NanoIdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A3932C2D62577600A0093F /* NanoIdGenerator.swift */; };
 		32A96E6D2D3D6F2200F3C081 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A96E6C2D3D6F1D00F3C081 /* ApiClient.swift */; };
 		32A96E6F2D3D70E800F3C081 /* LineIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A96E6E2D3D70E300F3C081 /* LineIndicator.swift */; };
 		32A96E712D3D710600F3C081 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A96E702D3D710000F3C081 /* ErrorView.swift */; };
@@ -71,6 +75,10 @@
 		327DE4CD2CE16DE200CF0D04 /* Hash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
 		328258742CE0FBE6000D6D48 /* stations.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = stations.sqlite; sourceTree = "<group>"; };
 		32A393242D5757E300A0093F /* DepartureItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureItem.swift; sourceTree = "<group>"; };
+		32A393262D5E4F2600A0093F /* FavoriteDeparturesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDeparturesSection.swift; sourceTree = "<group>"; };
+		32A393282D5E4F7800A0093F /* FavoriteDepartureCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDepartureCard.swift; sourceTree = "<group>"; };
+		32A3932A2D5E54C900A0093F /* FavoriteTripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTripViewModel.swift; sourceTree = "<group>"; };
+		32A3932C2D62577600A0093F /* NanoIdGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NanoIdGenerator.swift; sourceTree = "<group>"; };
 		32A96E6C2D3D6F1D00F3C081 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		32A96E6E2D3D70E300F3C081 /* LineIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineIndicator.swift; sourceTree = "<group>"; };
 		32A96E702D3D710000F3C081 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
@@ -180,6 +188,7 @@
 		32B36D122D573DB600102BE8 /* favorites */ = {
 			isa = PBXGroup;
 			children = (
+				32A3932A2D5E54C900A0093F /* FavoriteTripViewModel.swift */,
 				32B36D152D573F3800102BE8 /* FavoritesManager.swift */,
 				32B36D132D573DBD00102BE8 /* FavoriteTrip.swift */,
 			);
@@ -212,6 +221,8 @@
 			isa = PBXGroup;
 			children = (
 				32DBDCDA2C2DE74900212F6B /* HomeView.swift */,
+				32A393262D5E4F2600A0093F /* FavoriteDeparturesSection.swift */,
+				32A393282D5E4F7800A0093F /* FavoriteDepartureCard.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -235,6 +246,7 @@
 		32C9604D2CF379FF006BAC4E /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				32A3932C2D62577600A0093F /* NanoIdGenerator.swift */,
 				32C9604E2CF37A1B006BAC4E /* CombineApiHelper.swift */,
 			);
 			path = utils;
@@ -284,9 +296,9 @@
 		32DBDCE92C2DE81400212F6B /* api */ = {
 			isa = PBXGroup;
 			children = (
+				32A96E6C2D3D6F1D00F3C081 /* ApiClient.swift */,
 				32B36D122D573DB600102BE8 /* favorites */,
 				32B36CF62D5552BB00102BE8 /* shared */,
-				32A96E6C2D3D6F1D00F3C081 /* ApiClient.swift */,
 				32B36CF32D5550F500102BE8 /* trip */,
 				32DBDCFE2C2E94DB00212F6B /* departures */,
 				32DBDCF12C2DEA2B00212F6B /* station-search */,
@@ -379,7 +391,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					32DBDCD42C2DE74900212F6B = {
 						CreatedOnToolsVersion = 16.0;
@@ -438,11 +450,13 @@
 				32DBDD012C2E96AD00212F6B /* LocationManager.swift in Sources */,
 				32DBDCDB2C2DE74900212F6B /* HomeView.swift in Sources */,
 				32A96E712D3D710600F3C081 /* ErrorView.swift in Sources */,
+				32A3932D2D62577B00A0093F /* NanoIdGenerator.swift in Sources */,
 				326CF26D2D386D8B001CBCA8 /* SignInView.swift in Sources */,
 				326CF2712D386DB8001CBCA8 /* SignInOrSignUpView.swift in Sources */,
 				32BADE9F2C3134BB00E53BA6 /* Extension.swift in Sources */,
 				32B36D0E2D566F9D00102BE8 /* TripMap.swift in Sources */,
 				32C9604F2CF37A27006BAC4E /* CombineApiHelper.swift in Sources */,
+				32A3932B2D5E54D400A0093F /* FavoriteTripViewModel.swift in Sources */,
 				32AFB4022D3AA35300E337F4 /* SignInWithAppleView.swift in Sources */,
 				32DBDCEE2C2DE92300212F6B /* StationSearchItem.swift in Sources */,
 				32B36D022D55569C00102BE8 /* TripHeaderView.swift in Sources */,
@@ -466,10 +480,12 @@
 				32DBDCF72C2E7B9500212F6B /* ProductIcon.swift in Sources */,
 				32B36D062D5556D100102BE8 /* StopoverListView.swift in Sources */,
 				32B372EF2CE34AB500CE684E /* AngleHelper.swift in Sources */,
+				32A393272D5E4F2600A0093F /* FavoriteDeparturesSection.swift in Sources */,
 				326CF26F2D386D91001CBCA8 /* SignUpView.swift in Sources */,
 				32C9604A2CF37579006BAC4E /* GlobalTimer.swift in Sources */,
 				32B36D0C2D566F3600102BE8 /* Polyline.swift in Sources */,
 				32B36CFC2D5554BA00102BE8 /* TripViewModel.swift in Sources */,
+				32A393292D5E4F7800A0093F /* FavoriteDepartureCard.swift in Sources */,
 				32DBDCF02C2DEA1800212F6B /* StationSearchViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +527,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -573,6 +590,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -602,6 +620,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Travel12/Preview Content\"";
 				DEVELOPMENT_TEAM = 9YL76PS92G;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -646,6 +665,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Travel12/Preview Content\"";
 				DEVELOPMENT_TEAM = 9YL76PS92G;
 				ENABLE_HARDENED_RUNTIME = YES;

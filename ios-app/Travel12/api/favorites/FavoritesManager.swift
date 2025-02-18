@@ -12,6 +12,7 @@ import SwiftData
 class FavoritesManager {
     static let shared = FavoritesManager()
     private var modelContext: ModelContext
+    let apiClient = ApiClient.shared
     
     private init() {
         let container = try! ModelContainer(for: FavoriteTrip.self)
@@ -21,9 +22,7 @@ class FavoritesManager {
     func isFavorite(lineId: String, stationId: String, destinationId: String) -> Bool {
         let descriptor = FetchDescriptor<FavoriteTrip>(
             predicate: #Predicate<FavoriteTrip> { favorite in
-                true
-//                favorite.lineId == lineId && favorite.stationId == stationId
-//                    && favorite.destinationId == destinationId
+                favorite.lineId == lineId && favorite.stationId == stationId && favorite.destinationId == destinationId
             }
         )
         print(try? modelContext.fetch(descriptor))
@@ -33,17 +32,16 @@ class FavoritesManager {
         return favoriteDescriptorCount > 0
     }
     
-    func toggleFavorite(lineId: String, stationId: String, destinationId: String) {
-        print("toggleFavorite", lineId, stationId, destinationId)
+    func toggleFavorite(lineId: String, stationId: String, destinationId: String, stationName: String) {
         if isFavorite(lineId: lineId, stationId: stationId, destinationId: destinationId) {
             removeFavorite(lineId: lineId, stationId: stationId, destinationId: destinationId)
         } else {
-            addFavorite(lineId: lineId, stationId: stationId, destinationId: destinationId)
+            addFavorite(lineId: lineId, stationId: stationId, stationName: stationName, destinationId: destinationId)
         }
     }
     
-    private func addFavorite(lineId: String, stationId: String, destinationId: String) {
-        let favorite = FavoriteTrip(lineId: lineId, stationId: stationId, destinationId: destinationId)
+    private func addFavorite(lineId: String, stationId: String, stationName: String, destinationId: String) {
+        let favorite = FavoriteTrip(lineId: lineId, stationId: stationId, destinationId: destinationId, stationName: stationName)
         modelContext.insert(favorite)
         try? modelContext.save()
         
@@ -55,8 +53,7 @@ class FavoritesManager {
     private func removeFavorite(lineId: String, stationId: String, destinationId: String) {
         let descriptor = FetchDescriptor<FavoriteTrip>(
             predicate: #Predicate<FavoriteTrip> { favorite in
-                favorite.lineId == lineId && favorite.stationId == stationId
-                && favorite.destinationId == destinationId
+                favorite.lineId == lineId && favorite.stationId == stationId && favorite.destinationId == destinationId
             }
         )
         
@@ -65,19 +62,16 @@ class FavoritesManager {
         modelContext.delete(favorite)
         try? modelContext.save()
         
-        // Placeholder for API call
         Task {
-            try? await deleteFromServer(favorite)
+            try? await deleteFromServer(favorite.id)
         }
     }
     
-    // MARK: - Server communication (to be implemented)
-    
     private func uploadToServer(_ favorite: FavoriteTrip) async throws {
-        // TODO: Implement your API call here
+        try await apiClient.uploadFavoriteTrip(trip: favorite)
     }
     
-    private func deleteFromServer(_ favorite: FavoriteTrip) async throws {
-        // TODO: Implement your API call here
+    private func deleteFromServer(_ id: String) async throws {
+        try await apiClient.deleteFavoriteTrip(id)
     }
 }

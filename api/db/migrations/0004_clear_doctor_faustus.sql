@@ -1,0 +1,1 @@
+ALTER TABLE `favorite_trips` ADD `station_name` text NOT NULL;

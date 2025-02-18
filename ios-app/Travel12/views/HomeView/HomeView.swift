@@ -29,14 +29,10 @@ struct HomeView: View {
                 if isSearchActive {
                     StationSearchView(stations: stationViewModel.stations, isQueryEmpty: stationViewModel.searchQuery.isEmpty)
                 } else {
-                    VStack {
-                        Text("Your favorite trips will show here, once you selected them.")
-                            .font(.headline)
-                            .frame(alignment: .center)
-                            .padding(40)
-                    }
+                    FavoriteDeparturesView()
                 }
             }
+            
             .navigationTitle("Travel 12")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -50,18 +46,22 @@ struct HomeView: View {
                 }
             }
             .padding()
+            .background(!isSearchActive ? Color(.systemGroupedBackground).ignoresSafeArea() : Color.clear.ignoresSafeArea())
 
-        }.searchable(text: $stationViewModel.searchQuery, isPresented: $isSearchActive, prompt: "Station Search")
-            .onAppear {
-                locationManager.startUpdatingLocation()
-            }
-            .onDisappear {
-                locationManager.stopUpdatingLocation()
-            }
-            .sheet(isPresented: $showProfileSheet) {
-                ProfileView()
-            }
+        }
+        
+        .searchable(text: $stationViewModel.searchQuery, isPresented: $isSearchActive, prompt: "Station Search")
+        .onAppear {
+            locationManager.startUpdatingLocation()
+        }
+        .onDisappear {
+            locationManager.stopUpdatingLocation()
+        }
+        .sheet(isPresented: $showProfileSheet) {
+            ProfileView()
+        }
     }
+        
 }
 
 #Preview {

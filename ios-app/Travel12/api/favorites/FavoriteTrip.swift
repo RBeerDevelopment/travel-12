@@ -9,21 +9,21 @@ import Foundation
 import SwiftData
 
 @Model
-class FavoriteTrip {
+class FavoriteTrip: Identifiable {
+    var id: String
     var lineId: String
     var destinationId: String
+    var stationName: String
     var stationId: String
     var createdAt: Date
     var syncStatus: SyncStatus
     
-    var key: String {
-        "\(stationId)_\(lineId)_\(destinationId)"
-    }
-    
-    init(lineId: String, stationId: String, destinationId: String, createdAt: Date = Date(), syncStatus: SyncStatus = .pending) {
+    init(lineId: String, stationId: String, destinationId: String, stationName: String, createdAt: Date = Date(), syncStatus: SyncStatus = .pending) {
+        self.id = generateNanoId()
         self.lineId = lineId
         self.destinationId = destinationId
         self.stationId = stationId
+        self.stationName = stationName
         self.createdAt = createdAt
         self.syncStatus = syncStatus
     }

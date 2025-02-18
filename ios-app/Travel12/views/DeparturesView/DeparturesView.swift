@@ -20,7 +20,7 @@ struct DeparturesView: View {
                     LargeLoadingIndicator()
                 } else {
                     ForEach(viewModel.departures) { departure in
-                        DepartureItem(departure: departure, stationId: stationId)
+                        DepartureItem(departure: departure, stationId: stationId, stationName: stationName)
                     }
                 }
             }

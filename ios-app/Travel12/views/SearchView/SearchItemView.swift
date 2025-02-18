@@ -33,9 +33,6 @@ struct SearchItemView: View {
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                // this is a really annoying workaround
-                // that seems to be necesssary to make everything clickable
-                .background(.white.opacity(0.001))
                 if let formattedDistance = formattedDistance {
                     HStack {
                         Image(systemName: "location.fill")
@@ -48,9 +45,7 @@ struct SearchItemView: View {
                     }
                     
                 }
-                HStack {
-                    Spacer()
-                }
+                Spacer(minLength: 20)
                 Image(systemName: "chevron.right")
                     .font(.callout)
                     .foregroundColor(.primary)

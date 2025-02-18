@@ -59,9 +59,12 @@ app.get("/favorite-trips/user/:userId", async (c) => {
 app.post("/favorite-trips", async (c) => {
   try {
     const body = await c.req.json<CreateFavoriteTripBody>();
+
     const newTrip: FavoriteTrip = {
+      id: body.id,
       userId: body.userId,
       stationId: body.stationId,
+      stationName: body.stationName,
       lineId: body.lineId,
       destinationId: body.destinationId,
       createdAt: new Date(),
@@ -88,19 +91,10 @@ app.post("/favorite-trips", async (c) => {
 });
 
 // Delete favorite trip
-app.delete("/favorite-trips", async (c) => {
-  const body = await c.req.json<CreateFavoriteTripBody>();
+app.delete("/favorite-trips/:id", async (c) => {
+  const id = c.req.param("id");
   try {
-    await db
-      .delete(favoriteTrips)
-      .where(
-        and(
-          eq(favoriteTrips.userId, body.userId),
-          eq(favoriteTrips.stationId, body.stationId),
-          eq(favoriteTrips.lineId, body.lineId),
-          eq(favoriteTrips.destinationId, body.destinationId)
-        )
-      );
+    await db.delete(favoriteTrips).where(eq(favoriteTrips.id, id));
     return c.json<ApiResponse<never>>({
       message: "Favorite trip deleted successfully",
     });

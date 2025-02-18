@@ -14,12 +14,13 @@ extension View {
         lineId: String,
         stationId: String,
         destinationId: String,
+        stationName: String,
         isFavorite: Bool
     ) -> some View {
         self.swipeActions(edge: .trailing, allowsFullSwipe: true) {
             Button {
                 Task {
-                    FavoritesManager.shared.toggleFavorite(lineId: lineId, stationId: stationId, destinationId: destinationId)
+                    FavoritesManager.shared.toggleFavorite(lineId: lineId, stationId: stationId, destinationId: destinationId, stationName: stationName)
                 }
             } label: {
                 Label(
@@ -27,7 +28,7 @@ extension View {
                     systemImage: isFavorite ? "star.slash" : "star"
                 )
             }
-            .tint(.yellow)
+            .tint(isFavorite ? .gray : .yellow)
         }
     }
 }
