@@ -16,7 +16,7 @@ struct StopoverItem: View {
                 NavigationLink(destination: DeparturesView(stationId: stopover.stop.id, stationName: stopover.stop.name)) {
                     Text(stopover.stop.name.replacingOccurrences(of: " (Berlin)", with: ""))
                         .font(.headline)
-                        .frame(alignment: .leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .accentColor(.primary)
                 

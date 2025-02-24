@@ -19,7 +19,9 @@ struct DeparturesView: View {
                 if viewModel.isLoading && viewModel.departures.isEmpty {
                     LargeLoadingIndicator()
                 } else {
-                    ForEach(viewModel.departures) { departure in
+                    ForEach(viewModel.departures.sorted {
+                        $0.plannedWhen < $1.plannedWhen
+                    }) { departure in
                         DepartureItem(departure: departure, stationId: stationId, stationName: stationName)
                     }
                 }

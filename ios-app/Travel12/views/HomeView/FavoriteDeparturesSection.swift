@@ -23,12 +23,20 @@ struct FavoriteDeparturesView: View {
                         print(favorites)
                     }
             } else {
+                
+                let departures = viewModel.departures
+                
                 ForEach(favorites) { favorite in
-                    FavoriteDepartureCard(
-                        departures: viewModel.departures[favorite.id] ?? [],
-                        stationName: favorite.stationName,
-                        stationId: favorite.stationId
-                    )
+                    if departures[favorite.id]?.count ?? 0 > 0 {
+                        FavoriteDepartureCard(
+                            departures: departures[favorite.id] ?? [],
+                            stationName: favorite.stationName,
+                            stationId: favorite.stationId
+                        )
+                    } else {
+                        FavoriteDepartureErrorCard(favorite: favorite, isRequestError: departures[favorite.id] == nil)
+                    }
+                    
                 }
                 Spacer()
             }
@@ -36,17 +44,21 @@ struct FavoriteDeparturesView: View {
         .background(Color(.systemGroupedBackground))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .task {
-            await fetchAllDepartures()
+            fetchAllDepartures()
         }
         .refreshable {
-            await fetchAllDepartures()
+            fetchAllDepartures()
+        }
+        .onDisappear {
+            viewModel.cancelFetch()
         }
     }
     
-    private func fetchAllDepartures() async {
+    private func fetchAllDepartures() {
         let requestData = favorites.map { FavoriteDepartureRequestData(stationId: $0.stationId, destination: $0.destinationId, id: $0.id) }
         
-        await viewModel.fetchFavoriteDepartures(requestData: requestData)
+        
+        viewModel.fetchFavoriteDepartures(requestData: requestData)
         
     }
 }

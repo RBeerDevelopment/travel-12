@@ -28,10 +28,12 @@ struct FavoriteDepartureCard: View {
                                 .lineLimit(1)
                         }
                         .accentColor(.primary)
-                        Text("To: \(firstDeparture.direction)")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                            .lineLimit(1)
+                        if(firstDeparture.line.name != "S41" && firstDeparture.line.name != "S42") {
+                            Text("To: \(firstDeparture.direction)")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .lineLimit(1)
+                        }
                     }
                     
                 }
@@ -41,7 +43,7 @@ struct FavoriteDepartureCard: View {
                 ForEach(departures.prefix(4), id: \.id) { departure in
                     HStack {
                         Text(departure.formattedWhen)
-                            .font(.subheadline)
+                            .font(.headline)
                             .foregroundColor(.primary)
                         
                         if let delay = departure.delay, delay > 0 {

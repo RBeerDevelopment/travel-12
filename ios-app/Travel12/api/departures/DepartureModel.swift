@@ -19,7 +19,7 @@ func removeSUPrefix(in input: String?) -> String? {
 }
 
 struct DeparturesResponse: Decodable {
-    let departures: [Departure]
+    var departures: [Departure]
     let realtimeDataUpdatedAt: Int
 }
 
@@ -41,6 +41,13 @@ struct Departure: Decodable, Identifiable {
         
         formatter.dateFormat = "HH:mm"
         return formatter.string(from: date)
+    }
+    
+    var whenDate: Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let date = formatter.date(from: when ?? plannedWhen)
+        return date ?? Date(timeIntervalSince1970: 0)
     }
 }
 

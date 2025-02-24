@@ -23,26 +23,6 @@ struct TripView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             } else if let trip = viewModel.trip {
                 VStack(spacing: 16) {
-                    // Line information
-                    HStack {
-                        LineIndicator(name: trip.line.name, backgroundColor: lineColor)
-                            .frame(width: 40, height: 40)
-                        
-                        VStack(alignment: .leading) {
-                            Text(trip.line.name)
-                                .font(.headline)
-                            Text(trip.direction)
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        Spacer()
-                    }
-                    .padding()
-                    .background(Color(colorScheme == .light ? .systemBackground : .secondarySystemBackground))
-                    .cornerRadius(10)
-                    .shadow(radius: 1)
-                    
                     // Header with origin and destination
                     TripHeaderView(trip: trip)
 
@@ -61,10 +41,11 @@ struct TripView: View {
                             }
                         }) {
                             HStack {
+                                Spacer()
                                 Text(expandedStopovers ? "Less Stops" : "More Stops")
                                     .font(.headline)
-                                Spacer()
                                 Image(systemName: expandedStopovers ? "chevron.up" : "chevron.down")
+                                Spacer()
                             }
                         }
                     }
@@ -83,8 +64,18 @@ struct TripView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
-        .navigationTitle(viewModel.trip?.line.name ?? "")
+        .navigationTitle("\(viewModel.trip?.line.name ?? "")")
         .background(Color(.systemGroupedBackground))
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    print("test")
+                }) {
+                    Image(systemName: "star")
+                        .font(.title2)
+                }
+            }
+        }
         .refreshable {
             await viewModel.fetchTrip(tripId: tripId)
         }

@@ -61,6 +61,7 @@
 		32DBDD012C2E96AD00212F6B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD002C2E96AA00212F6B /* LocationManager.swift */; };
 		32DBDD032C30546C00212F6B /* DepartureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD022C30546700212F6B /* DepartureModel.swift */; };
 		32DBDD052C3055E600212F6B /* StationDepartureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD042C3055DB00212F6B /* StationDepartureViewModel.swift */; };
+		32EB5D772D6A87A40054C6B9 /* FavoriteDepartureErrorCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB5D762D6A87A40054C6B9 /* FavoriteDepartureErrorCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +120,7 @@
 		32DBDD002C2E96AA00212F6B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		32DBDD022C30546700212F6B /* DepartureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureModel.swift; sourceTree = "<group>"; };
 		32DBDD042C3055DB00212F6B /* StationDepartureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDepartureViewModel.swift; sourceTree = "<group>"; };
+		32EB5D762D6A87A40054C6B9 /* FavoriteDepartureErrorCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDepartureErrorCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 				32DBDCDA2C2DE74900212F6B /* HomeView.swift */,
 				32A393262D5E4F2600A0093F /* FavoriteDeparturesSection.swift */,
 				32A393282D5E4F7800A0093F /* FavoriteDepartureCard.swift */,
+				32EB5D762D6A87A40054C6B9 /* FavoriteDepartureErrorCard.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				32DBDCEB2C2DE81C00212F6B /* Constants.swift in Sources */,
 				32C9603D2CF10240006BAC4E /* CleanSpecialCharacters.swift in Sources */,
 				32B36D082D5556F100102BE8 /* StopoverTimeRow.swift in Sources */,
+				32EB5D772D6A87A40054C6B9 /* FavoriteDepartureErrorCard.swift in Sources */,
 				32DBDCFD2C2E906F00212F6B /* DeparturesView.swift in Sources */,
 				32B36D042D5556B900102BE8 /* TripTimeView.swift in Sources */,
 				32DBDD012C2E96AD00212F6B /* LocationManager.swift in Sources */,
