@@ -53,6 +53,9 @@
 		32DBDD012C2E96AD00212F6B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD002C2E96AA00212F6B /* LocationManager.swift */; };
 		32DBDD032C30546C00212F6B /* DepartureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD022C30546700212F6B /* DepartureModel.swift */; };
 		32DBDD052C3055E600212F6B /* StationDepartureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD042C3055DB00212F6B /* StationDepartureViewModel.swift */; };
+		32EB5D792D6F0C8F0054C6B9 /* DepartureFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB5D782D6F0C8C0054C6B9 /* DepartureFilters.swift */; };
+		32EB5D7B2D6F0CAC0054C6B9 /* FilterChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB5D7A2D6F0CA90054C6B9 /* FilterChip.swift */; };
+		32EB5D7E2D6F0D4B0054C6B9 /* DepartureArrayFns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB5D7D2D6F0D440054C6B9 /* DepartureArrayFns.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +106,9 @@
 		32DBDD002C2E96AA00212F6B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		32DBDD022C30546700212F6B /* DepartureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureModel.swift; sourceTree = "<group>"; };
 		32DBDD042C3055DB00212F6B /* StationDepartureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDepartureViewModel.swift; sourceTree = "<group>"; };
+		32EB5D782D6F0C8C0054C6B9 /* DepartureFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureFilters.swift; sourceTree = "<group>"; };
+		32EB5D7A2D6F0CA90054C6B9 /* FilterChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterChip.swift; sourceTree = "<group>"; };
+		32EB5D7D2D6F0D440054C6B9 /* DepartureArrayFns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureArrayFns.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +296,8 @@
 		32DBDCFB2C2E906100212F6B /* StationView */ = {
 			isa = PBXGroup;
 			children = (
+				32EB5D7A2D6F0CA90054C6B9 /* FilterChip.swift */,
+				32EB5D782D6F0C8C0054C6B9 /* DepartureFilters.swift */,
 				32A96E702D3D710000F3C081 /* ErrorView.swift */,
 				32A96E6E2D3D70E300F3C081 /* LineIndicator.swift */,
 				32BADEAA2C3A7A1B00E53BA6 /* DepartureRow.swift */,
@@ -312,6 +320,7 @@
 			children = (
 				32B372EE2CE34AB000CE684E /* AngleHelper.swift */,
 				32C9603C2CF10233006BAC4E /* CleanSpecialCharacters.swift */,
+				32EB5D7D2D6F0D440054C6B9 /* DepartureArrayFns.swift */,
 				32BADE9E2C3134B700E53BA6 /* Extension.swift */,
 				32C960492CF37576006BAC4E /* GlobalTimer.swift */,
 				327DE4CD2CE16DE200CF0D04 /* Hash.swift */,
@@ -408,6 +417,7 @@
 				32DBDCFD2C2E906F00212F6B /* DepartureView.swift in Sources */,
 				32B36D042D5556B900102BE8 /* TripTimeView.swift in Sources */,
 				32DBDD012C2E96AD00212F6B /* LocationManager.swift in Sources */,
+				32EB5D7B2D6F0CAC0054C6B9 /* FilterChip.swift in Sources */,
 				32DBDCDB2C2DE74900212F6B /* HomeView.swift in Sources */,
 				32A96E712D3D710600F3C081 /* ErrorView.swift in Sources */,
 				326CF26D2D386D8B001CBCA8 /* SignInView.swift in Sources */,
@@ -421,7 +431,9 @@
 				327DE4C42CE14D2400CF0D04 /* LoadingIndicator.swift in Sources */,
 				32DBDD032C30546C00212F6B /* DepartureModel.swift in Sources */,
 				32A96E6F2D3D70E800F3C081 /* LineIndicator.swift in Sources */,
+				32EB5D7E2D6F0D4B0054C6B9 /* DepartureArrayFns.swift in Sources */,
 				327DE4CC2CE166A500CF0D04 /* KeychainHelper.swift in Sources */,
+				32EB5D792D6F0C8F0054C6B9 /* DepartureFilters.swift in Sources */,
 				32DBDCF52C2E7A8A00212F6B /* SearchItemView.swift in Sources */,
 				326B0E542CD92C7500794F43 /* DBHandler.swift in Sources */,
 				327DE4CE2CE16DE400CF0D04 /* Hash.swift in Sources */,

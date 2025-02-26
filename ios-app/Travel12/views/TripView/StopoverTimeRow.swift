@@ -46,7 +46,7 @@ struct StopoverTimeRow: View {
                 Text("Plt. \(platform.replacingOccurrences(of: "Pos. ", with: ""))")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-                    .frame(maxWidth: 56)
+                    .frame(maxWidth: 48)
             }
         }
         .frame(maxWidth: .infinity)
