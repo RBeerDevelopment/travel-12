@@ -27,4 +27,29 @@ class DeparturesViewModel: ObservableObject {
         
         isLoading = false
     }
+    
+    // Add this function to filter departures
+    func filteredDepartures(modes: Set<String>, lines: Set<String>) -> [Departure] {
+        // If nothing is selected, show nothing
+        if modes.isEmpty && lines.isEmpty {
+            return []
+        }
+        
+        // If all filters are selected or none are active, return all departures
+        if (modes.count == extractTransportModes(departures: departures).count &&
+            lines.count == extractLines(departures: departures).count) ||
+           (modes.isEmpty && lines.isEmpty) {
+            return departures
+        }
+        
+        return departures.filter { departure in
+            // If no modes are selected, don't filter by mode
+            let modeMatch = modes.isEmpty || modes.contains(departure.line.product)
+            
+            // If no lines are selected, don't filter by line
+            let lineMatch = lines.isEmpty || lines.contains(departure.line.name)
+            
+            return modeMatch && lineMatch
+        }
+    }
 }
