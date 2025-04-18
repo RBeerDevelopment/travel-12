@@ -17,7 +17,7 @@ func extractTransportModes(departures: [Departure]) -> [String] {
 
 func extractLines(departures: [Departure], selectedModes: Set<String>? = nil) -> [String] {
     
-    let departuresToConsider = selectedModes == nil ? departures : departures.filter { selectedModes!.contains($0.line.product) }
+    let departuresToConsider = (selectedModes == nil || (selectedModes?.isEmpty ?? false)) ? departures : departures.filter { selectedModes!.contains($0.line.product) }
     let lines = Set(departuresToConsider.compactMap { departure in
         departure.line.name // or whatever property contains the line name
     })

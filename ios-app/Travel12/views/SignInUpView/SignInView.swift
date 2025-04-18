@@ -43,13 +43,11 @@ struct SignInView: View {
                     LoadingIndicator()
                 }
             }
-            Spacer()
+            .onSubmit {
+                handleSubmit()
+            }
             Button(action: {
-                Task {
-                    isLoading = true
-                    await submit(email: email, password: password)
-                    isLoading = false
-                }
+                handleSubmit()
             }) {
                 HStack {
                     Text("Sign In").padding(.trailing, 6)
@@ -58,12 +56,22 @@ struct SignInView: View {
                 .padding(.horizontal)
             }
             .disabled(email.isEmpty || password.isEmpty || isLoading)
+            Spacer()
         }
     }
 }
 
 extension SignInView {
-    func submit(email: String, password: String) async {
+    
+    func handleSubmit() {
+        Task {
+            isLoading = true
+            await signIn(email: email, password: password)
+            isLoading = false
+        }
+    }
+    
+    func signIn(email: String, password: String) async {
         do {
             try await SignIn.create(
                 strategy: .identifier(email, password: password)

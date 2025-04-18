@@ -62,6 +62,9 @@
 		32DBDD032C30546C00212F6B /* DepartureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD022C30546700212F6B /* DepartureModel.swift */; };
 		32DBDD052C3055E600212F6B /* StationDepartureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD042C3055DB00212F6B /* StationDepartureViewModel.swift */; };
 		32EB5D772D6A87A40054C6B9 /* FavoriteDepartureErrorCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB5D762D6A87A40054C6B9 /* FavoriteDepartureErrorCard.swift */; };
+		32FB5D512D8FF805005AA867 /* FilterChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB5D502D8FF805005AA867 /* FilterChip.swift */; };
+		32FB5D522D8FF805005AA867 /* DepartureFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB5D4F2D8FF805005AA867 /* DepartureFilters.swift */; };
+		32FB5D542D8FF852005AA867 /* DepartureArrayFns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB5D532D8FF852005AA867 /* DepartureArrayFns.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +124,9 @@
 		32DBDD022C30546700212F6B /* DepartureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureModel.swift; sourceTree = "<group>"; };
 		32DBDD042C3055DB00212F6B /* StationDepartureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDepartureViewModel.swift; sourceTree = "<group>"; };
 		32EB5D762D6A87A40054C6B9 /* FavoriteDepartureErrorCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDepartureErrorCard.swift; sourceTree = "<group>"; };
+		32FB5D4F2D8FF805005AA867 /* DepartureFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureFilters.swift; sourceTree = "<group>"; };
+		32FB5D502D8FF805005AA867 /* FilterChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterChip.swift; sourceTree = "<group>"; };
+		32FB5D532D8FF852005AA867 /* DepartureArrayFns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DepartureArrayFns.swift; path = Travel12/utils/DepartureArrayFns.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +338,8 @@
 		32DBDCFB2C2E906100212F6B /* DeparturesView */ = {
 			isa = PBXGroup;
 			children = (
+				32FB5D4F2D8FF805005AA867 /* DepartureFilters.swift */,
+				32FB5D502D8FF805005AA867 /* FilterChip.swift */,
 				32B36D172D573FB900102BE8 /* View+FavoriteAction.swift */,
 				32A96E702D3D710000F3C081 /* ErrorView.swift */,
 				32BADEAA2C3A7A1B00E53BA6 /* DepartureRow.swift */,
@@ -362,6 +370,7 @@
 				327DE4C32CE14D1E00CF0D04 /* LoadingIndicator.swift */,
 				32DBDD002C2E96AA00212F6B /* LocationManager.swift */,
 				32DBDCF62C2E7B9500212F6B /* ProductIcon.swift */,
+				32FB5D532D8FF852005AA867 /* DepartureArrayFns.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -480,9 +489,12 @@
 				32DBDCD92C2DE74900212F6B /* Travel12App.swift in Sources */,
 				32DBDCF92C2E8A0100212F6B /* StationSearchView.swift in Sources */,
 				32B36D002D55567500102BE8 /* TripView.swift in Sources */,
+				32FB5D512D8FF805005AA867 /* FilterChip.swift in Sources */,
+				32FB5D522D8FF805005AA867 /* DepartureFilters.swift in Sources */,
 				32B36D142D573DC000102BE8 /* FavoriteTrip.swift in Sources */,
 				32DBDCF72C2E7B9500212F6B /* ProductIcon.swift in Sources */,
 				32B36D062D5556D100102BE8 /* StopoverListView.swift in Sources */,
+				32FB5D542D8FF852005AA867 /* DepartureArrayFns.swift in Sources */,
 				32B372EF2CE34AB500CE684E /* AngleHelper.swift in Sources */,
 				32A393272D5E4F2600A0093F /* FavoriteDeparturesSection.swift in Sources */,
 				326CF26F2D386D91001CBCA8 /* SignUpView.swift in Sources */,

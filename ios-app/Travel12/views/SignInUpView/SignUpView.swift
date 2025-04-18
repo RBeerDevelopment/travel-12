@@ -41,13 +41,11 @@ struct SignUpView: View {
                     LoadingIndicator()
                 }
             }
-            Spacer()
+            .onSubmit {
+                handleSubmit()
+            }
             Button(action: {
-                Task {
-                    isLoading = true
-                    await signUp(email: email, password: password)
-                    isLoading = false
-                }
+                handleSubmit()
             }) {
                 HStack {
                     Text("Continue").padding(.trailing, 6)
@@ -56,6 +54,8 @@ struct SignUpView: View {
                 .padding(.horizontal)
             }
             .disabled(email.isEmpty || password.isEmpty)
+            
+            Spacer()
         }
     }
     
@@ -104,6 +104,15 @@ struct SignUpView: View {
 }
 
 extension SignUpView {
+    
+    func handleSubmit() {
+        Task {
+            isLoading = true
+            await signUp(email: email, password: password)
+            isLoading = false
+        }
+    }
+    
     func signUp(email: String, password: String) async {
         do {
             let signUp = try await SignUp.create(
@@ -114,8 +123,21 @@ extension SignUpView {
             errorMessage = nil
             isVerifying = true
         } catch {
-            errorMessage = error.localizedDescription
-            dump(error)
+            let clerkError = error as! ClerkAPIError
+            
+            if(clerkError.code == "form_identifier_exists" && ((clerkError.message?.contains("That email address is taken")) != nil)) {
+                do {
+                    try await SignIn.create(
+                        strategy: .identifier(email, password: password)
+                    )
+                } catch {
+                    dump(error)
+                    errorMessage = "Email exists, but could not login. Try again"
+                }
+            } else {
+                errorMessage = error.localizedDescription
+                dump(error)
+            }
         }
     }
     

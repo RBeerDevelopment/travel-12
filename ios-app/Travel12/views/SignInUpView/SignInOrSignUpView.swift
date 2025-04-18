@@ -19,8 +19,8 @@ struct SignInOrSignUpView: View {
                     SignInView()
                 }
 
-                SignInWithAppleView()
-                    .padding()
+//                SignInWithAppleView()
+//                    .padding()
 
                 Button {
                     isSignUp.toggle()
