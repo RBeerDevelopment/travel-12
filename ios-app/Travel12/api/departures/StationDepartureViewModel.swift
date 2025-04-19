@@ -8,24 +8,55 @@
 import Combine
 import SwiftUI
 
+
+let DEFAULT_FETCH_DURATION = 60
+
+// when earlier or later departures are requested,
+// we do that in 20 min intervals
+let ADDITIONAL_FETCH_INTERVAL = 20
+
 @MainActor
 class DeparturesViewModel: ObservableObject {
     @Published var departures: [Departure] = []
     @Published var isLoading = false
     @Published var error: Error?
     
-    func fetchDepartures(stationId: String) async {
+    var earliestDepartureTimestamp: Date? {
+        return departures.first?.whenDate
+    }
+    
+    var currentDuration: Int = DEFAULT_FETCH_DURATION
+    
+    func fetchDepartures(stationId: String, startTime: Date = Date(), duration: Int = DEFAULT_FETCH_DURATION) async {
         isLoading = true
         error = nil
         
         do {
-            let response = try await ApiClient.shared.fetchDepartures(stationId: stationId)
+            let response = try await ApiClient.shared.fetchDepartures(stationId: stationId, startTime: startTime, duration: duration)
             departures = response?.departures ?? []
         } catch {
             self.error = error
         }
         
+        currentDuration = duration
+        
         isLoading = false
+    }
+    
+    func fetchEarlierDepartures(stationId: String) async {
+        let startTime: Date = earliestDepartureTimestamp ?? Date()
+        
+        let newStartTime = Calendar.current.date(byAdding: .minute, value: -ADDITIONAL_FETCH_INTERVAL, to: startTime)!
+        let newDuration = currentDuration + ADDITIONAL_FETCH_INTERVAL
+        
+        await fetchDepartures(stationId: stationId, startTime: newStartTime, duration: newDuration)
+    }
+    
+    func fetchLaterDepartures(stationId: String) async {
+        let newDuration = currentDuration + ADDITIONAL_FETCH_INTERVAL
+        let startTime = earliestDepartureTimestamp ?? Date()
+        
+        await fetchDepartures(stationId: stationId, startTime: startTime, duration: newDuration)
     }
     
     // Add this function to filter departures

@@ -55,12 +55,24 @@ struct DeparturesView: View {
                 if viewModel.isLoading && viewModel.departures.isEmpty {
                     LargeLoadingIndicator()
                 } else {
+                    Button("Show Ealier") {
+                        Task {
+                            await viewModel.fetchEarlierDepartures(stationId: stationId)
+                        }
+                    }
+                    .disabled(viewModel.isLoading)
                     ForEach(viewModel.filteredDepartures(
                         modes: selectedModes,
                         lines: selectedLines
                     )) { departure in
                         DepartureRow(departure: departure, stationId: stationId)
                     }
+                    Button("Show Later") {
+                        Task {
+                            await viewModel.fetchLaterDepartures(stationId: stationId)
+                        }
+                    }
+                    .disabled(viewModel.isLoading)
                 }
             }
             .contentMargins(.top, 4)

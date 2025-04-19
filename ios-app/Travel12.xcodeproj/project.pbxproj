@@ -18,6 +18,7 @@
 		327DE4CC2CE166A500CF0D04 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327DE4CB2CE166A100CF0D04 /* KeychainHelper.swift */; };
 		327DE4CE2CE16DE400CF0D04 /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327DE4CD2CE16DE200CF0D04 /* Hash.swift */; };
 		328258752CE0FBE6000D6D48 /* stations.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 328258742CE0FBE6000D6D48 /* stations.sqlite */; };
+		329831742DB3BD3F00436E15 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329831732DB3BD3A00436E15 /* Date+Extensions.swift */; };
 		32A393252D5757E300A0093F /* DepartureItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A393242D5757E300A0093F /* DepartureItem.swift */; };
 		32A393272D5E4F2600A0093F /* FavoriteDeparturesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A393262D5E4F2600A0093F /* FavoriteDeparturesSection.swift */; };
 		32A393292D5E4F7800A0093F /* FavoriteDepartureCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A393282D5E4F7800A0093F /* FavoriteDepartureCard.swift */; };
@@ -78,6 +79,7 @@
 		327DE4CB2CE166A100CF0D04 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		327DE4CD2CE16DE200CF0D04 /* Hash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
 		328258742CE0FBE6000D6D48 /* stations.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = stations.sqlite; sourceTree = "<group>"; };
+		329831732DB3BD3A00436E15 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		32A393242D5757E300A0093F /* DepartureItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureItem.swift; sourceTree = "<group>"; };
 		32A393262D5E4F2600A0093F /* FavoriteDeparturesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDeparturesSection.swift; sourceTree = "<group>"; };
 		32A393282D5E4F7800A0093F /* FavoriteDepartureCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDepartureCard.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 		32DBDCFF2C2E96A500212F6B /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				329831732DB3BD3A00436E15 /* Date+Extensions.swift */,
 				32B372EE2CE34AB000CE684E /* AngleHelper.swift */,
 				32C9603C2CF10233006BAC4E /* CleanSpecialCharacters.swift */,
 				32BADE9E2C3134B700E53BA6 /* Extension.swift */,
@@ -461,6 +464,7 @@
 				32DBDCFD2C2E906F00212F6B /* DeparturesView.swift in Sources */,
 				32B36D042D5556B900102BE8 /* TripTimeView.swift in Sources */,
 				32DBDD012C2E96AD00212F6B /* LocationManager.swift in Sources */,
+				329831742DB3BD3F00436E15 /* Date+Extensions.swift in Sources */,
 				32DBDCDB2C2DE74900212F6B /* HomeView.swift in Sources */,
 				32A96E712D3D710600F3C081 /* ErrorView.swift in Sources */,
 				32A3932D2D62577B00A0093F /* NanoIdGenerator.swift in Sources */,

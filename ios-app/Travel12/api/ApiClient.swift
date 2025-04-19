@@ -14,9 +14,10 @@ actor ApiClient {
     private let session = URLSession.shared
     private var cache: [String: (data: Any, timestamp: Date)] = [:]
     
-    func fetchDepartures(stationId: String) async throws -> DeparturesResponse? {
-        let endpoint = "https://v6.vbb.transport.rest/stops/\(stationId)/departures?duration=60&results=60&remarks=false&express=false"
+    func fetchDepartures(stationId: String, startTime: Date, duration: Int) async throws -> DeparturesResponse? {
+        var endpoint = "https://v6.vbb.transport.rest/stops/\(stationId)/departures?when=\(startTime.secondsSince1970)&duration=\(duration)&remarks=false&express=false"
         
+        print("ENDPOINT", endpoint)
         if let cached = cache[endpoint],
            Date().timeIntervalSince(cached.timestamp) < 30, // Cache for 30 seconds
            let data = cached.data as? DeparturesResponse {
