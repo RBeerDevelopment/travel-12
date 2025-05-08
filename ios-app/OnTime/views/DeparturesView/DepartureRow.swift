@@ -24,17 +24,16 @@ struct DepartureRow: View {
                 
                 Spacer()
                 
-                VStack(alignment: .trailing) {
+                VStack {
                     Text(departure.formattedWhen)
                         .font(.headline)
-                    if let delay = departure.delay {
-                        if delay > 0 {
-                            Text("+\(delay / 60) min")
-                                .font(.caption)
-                                .foregroundColor(.red)
-                        }
-                        
+                        .foregroundStyle(departure.status == .delayed ? .red : .primary)
+                    if(departure.status != .onTime) {
+                        Text(departure.formattedPlannedWhen)
+                            .font(.caption)
+                            .strikethrough()
                     }
+                    
                 }
             }
             .padding(.vertical, 4)
@@ -42,3 +41,6 @@ struct DepartureRow: View {
     }
 }
 
+#Preview {
+    DepartureRow(departure: Departure(tripId: "u5", when: "2025-05-05T12:34:00Z", plannedWhen: "2025-05-05T12:32:00Z", delay: -2, platform: "1", direction: "Hauptbahnhof", line: TransportLine(name: "U5", product: "subway", color: nil)), stationId: "qo0ghw0g")
+}

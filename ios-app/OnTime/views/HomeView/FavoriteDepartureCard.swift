@@ -15,7 +15,7 @@ struct FavoriteDepartureCard: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 16) {
             if let firstDeparture = departures.first {
                 HStack(spacing: 8) {
                     LineIndicator(line: firstDeparture.line)
@@ -44,12 +44,11 @@ struct FavoriteDepartureCard: View {
                     HStack {
                         Text(departure.formattedWhen)
                             .font(.headline)
-                            .foregroundColor(.primary)
-                        
-                        if let delay = departure.delay, delay > 0 {
-                            Text("+\(delay / 60) min")
-                                .font(.caption)
-                                .foregroundColor(.red)
+                            .foregroundStyle(departure.status == .delayed ? .red : .primary)
+                        if(departure.status != .onTime) {
+                            Text(departure.formattedPlannedWhen)
+                                .font(.subheadline)
+                                .strikethrough()
                         }
                         
                         Spacer()
@@ -64,9 +63,7 @@ struct FavoriteDepartureCard: View {
             }
             .padding(.leading, 4)
         }
-        .padding()
-        .background(Color(colorScheme == .light ? .systemBackground : .secondarySystemBackground))
-        .clipShape(.rect(cornerRadius: 8))
+
         
     }
 }

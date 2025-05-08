@@ -32,11 +32,13 @@ class FavoritesManager {
         return favoriteDescriptorCount > 0
     }
     
-    func toggleFavorite(lineId: String, stationId: String, destinationId: String, stationName: String) {
-        if isFavorite(lineId: lineId, stationId: stationId, destinationId: destinationId) {
-            removeFavorite(lineId: lineId, stationId: stationId, destinationId: destinationId)
-        } else {
-            addFavorite(lineId: lineId, stationId: stationId, stationName: stationName, destinationId: destinationId)
+    func toggleFavorite(lineId: String?, stationId: String?, destinationId: String?, stationName: String?) {
+        if let lineId = lineId, let stationId = stationId, let destinationId = destinationId, let stationName = stationName {
+            if isFavorite(lineId: lineId, stationId: stationId, destinationId: destinationId) {
+                removeFavorite(lineId: lineId, stationId: stationId, destinationId: destinationId)
+            } else {
+                addFavorite(lineId: lineId, stationId: stationId, stationName: stationName, destinationId: destinationId)
+            }
         }
     }
     

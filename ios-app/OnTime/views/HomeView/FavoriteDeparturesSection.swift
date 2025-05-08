@@ -10,20 +10,14 @@ import SwiftData
 
 struct FavoriteDeparturesView: View {
     @Query private var favorites: [FavoriteTrip]
-    
     @StateObject private var viewModel = FavoriteTripViewModel()
     
-    
     var body: some View {
-        ScrollView {
+        List {
             if viewModel.isLoading && viewModel.departures.isEmpty {
                 LoadingIndicator()
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .onAppear {
-                        print(favorites)
-                    }
             } else {
-                
                 let departures = viewModel.departures
                 
                 ForEach(favorites) { favorite in
@@ -33,12 +27,13 @@ struct FavoriteDeparturesView: View {
                             stationName: favorite.stationName,
                             stationId: favorite.stationId
                         )
+                        .favoriteActionSheet(lineId: favorite.lineId, stationId: favorite.stationId, destinationId: favorite.destinationId, stationName: favorite.stationName, isFavorite: true)
                     } else {
                         FavoriteDepartureErrorCard(favorite: favorite, isRequestError: departures[favorite.id] == nil)
+                            .favoriteActionSheet(lineId: favorite.lineId, stationId: favorite.stationId, destinationId: favorite.destinationId, stationName: favorite.stationName, isFavorite: true)
                     }
                     
                 }
-                Spacer()
             }
         }
         .background(Color(.systemGroupedBackground))
@@ -57,9 +52,7 @@ struct FavoriteDeparturesView: View {
     private func fetchAllDepartures() {
         let requestData = favorites.map { FavoriteDepartureRequestData(stationId: $0.stationId, destination: $0.destinationId, id: $0.id) }
         
-        
         viewModel.fetchFavoriteDepartures(requestData: requestData)
-        
     }
 }
 

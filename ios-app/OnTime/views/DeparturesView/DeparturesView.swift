@@ -53,7 +53,7 @@ struct DeparturesView: View {
             }
             List {
                 if viewModel.isLoading && viewModel.departures.isEmpty {
-                    LargeLoadingIndicator()
+                    LoadingIndicator()
                 } else {
                     Button("Show Ealier") {
                         Task {
@@ -75,7 +75,7 @@ struct DeparturesView: View {
                     .disabled(viewModel.isLoading)
                 }
             }
-            .contentMargins(.top, 4)
+            .contentMargins(.top, 16)
             .refreshable {
                 Task {
                     await loadDepartures()

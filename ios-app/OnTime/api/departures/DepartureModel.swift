@@ -18,6 +18,13 @@ func removeSUPrefix(in input: String?) -> String? {
     }
 }
 
+enum OnTimeStatus {
+    case onTime
+    case delayed
+    case early
+}
+
+
 struct DeparturesResponse: Decodable {
     var departures: [Departure]
     let realtimeDataUpdatedAt: Int
@@ -34,10 +41,25 @@ struct Departure: Decodable, Identifiable {
     
     var id: String { tripId }
     
+    var status: OnTimeStatus {
+        if delay == nil || delay == 0 { return .onTime }
+        if delay! < 0 { return .early }
+        return .delayed
+    }
+    
     var formattedWhen: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         guard let date = formatter.date(from: when ?? plannedWhen) else { return when ?? plannedWhen }
+        
+        formatter.dateFormat = "HH:mm"
+        return formatter.string(from: date)
+    }
+    
+    var formattedPlannedWhen: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        guard let date = formatter.date(from: plannedWhen) else { return plannedWhen }
         
         formatter.dateFormat = "HH:mm"
         return formatter.string(from: date)
