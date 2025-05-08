@@ -4,18 +4,28 @@
 //
 //  Created by Robin Beer on 06.02.25.
 //
+
 import SwiftUI
+import SwiftData
 
 struct TripView: View {
     let tripId: String
     let stationId: String
     let lineColor: String
-    
+
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @Environment(\.modelContext) private var context
+    
     @StateObject private var viewModel = TripViewModel()
     @State private var expandedStopovers = false
     @State private var isMapExpanded = false
     
+    var selectedStopover: Stopover? {
+        get {
+            viewModel.trip?.stopovers.first(where: { $0.stop.id == stationId })
+        }
+    }
+
     var body: some View {
         VStack {
             if viewModel.isLoading && viewModel.trip == nil {
@@ -29,7 +39,7 @@ struct TripView: View {
                     // Stopovers
                     VStack {
                         if !expandedStopovers {
-                            if let selectedStopover = trip.stopovers.first(where: { $0.stop.id == stationId }) {
+                            if let selectedStopover = selectedStopover {
                                 StopoverItem(stopover: selectedStopover, isSelectedStation: false)
                             }
                         } else {
@@ -68,12 +78,7 @@ struct TripView: View {
         .background(Color(.systemGroupedBackground))
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    print("test")
-                }) {
-                    Image(systemName: "star")
-                        .font(.title2)
-                }
+                TripToolbarFavoriteButton(modelContext: context, destinationId: viewModel.trip?.direction, stationId: stationId, lineId: viewModel.trip?.line.name, stationName: selectedStopover?.stop.name)
             }
         }
         .refreshable {
