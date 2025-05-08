@@ -12,15 +12,17 @@ struct SignUpView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var code = ""
-    @State private var isVerifying = false
+    @State private var isInVerificationStep = false
     @State private var isLoading = false
     @State private var errorMessage: String?
+    
+    @Environment(Clerk.self) private var clerk
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack {
             Form {
-                if isVerifying {
+                if isInVerificationStep {
                     verificationSection
                 } else {
                     signupSection
@@ -34,7 +36,7 @@ struct SignUpView: View {
                     }
                 }
             }
-            .navigationTitle(isVerifying ? "Verify Email" : "Sign Up")
+            .navigationTitle(isInVerificationStep ? "Verify Email" : "Log In")
             .disabled(isLoading)
             .overlay {
                 if isLoading {
@@ -44,30 +46,45 @@ struct SignUpView: View {
             .onSubmit {
                 handleSubmit()
             }
-            Button(action: {
-                handleSubmit()
-            }) {
-                HStack {
-                    Text("Continue").padding(.trailing, 6)
-                    Image(systemName: "arrow.right")
+            if(isInVerificationStep) {
+                Button(action: {
+                    isInVerificationStep = false
+                    password = ""
+                }) {
+                    Text("Cancel")
+                        .padding(.horizontal)
                 }
-                .padding(.horizontal)
+            } else {
+                Spacer()
+                Spacer()
+                SignInWithAppleView()
+                    .frame(width: 200, height: 48)
             }
-            .disabled(email.isEmpty || password.isEmpty)
-            
-            Spacer()
         }
     }
     
     private var signupSection: some View {
         Section {
             TextField("Email", text: $email)
-                .textContentType(.emailAddress)
-                .autocapitalization(.none)
+                .textContentType(.username)
                 .keyboardType(.emailAddress)
-                
+                .autocapitalization(.none)
             SecureField("Password", text: $password)
-                .textContentType(.newPassword)
+                .textContentType(.password)
+            Button(action: {
+                Task {
+                    isLoading = true
+                    await signUp(email: email, password: password)
+                    isLoading = false
+                }
+            }) {
+                HStack {
+                    Text("Login")
+                    Spacer()
+                    Image(systemName: "arrow.right")
+                }
+            }
+            .disabled(email.isEmpty || password.count < 8)
         } footer: {
             Text("We'll send you a verification code to confirm your email address.")
                 .font(.footnote)
@@ -116,13 +133,14 @@ extension SignUpView {
     func signUp(email: String, password: String) async {
         do {
             let signUp = try await SignUp.create(
-                strategy: .standard(emailAddress: email, password: password)
+                strategy: .standard(emailAddress: email.lowercased(), password: password)
             )
             
             try await signUp.prepareVerification(strategy: .emailCode)
             errorMessage = nil
-            isVerifying = true
+            isInVerificationStep = true
         } catch {
+            dump(error)
             let clerkError = error as! ClerkAPIError
             
             if(clerkError.code == "form_identifier_exists" && ((clerkError.message?.contains("That email address is taken")) != nil)) {
@@ -143,9 +161,9 @@ extension SignUpView {
     
     func verify(code: String) async {
         do {
-            guard let signUp = Clerk.shared.client?.signUp else {
+            guard let signUp = clerk.client?.signUp else {
                 errorMessage = "Session expired. Please try again."
-                isVerifying = false
+                isInVerificationStep = false
                 return
             }
             

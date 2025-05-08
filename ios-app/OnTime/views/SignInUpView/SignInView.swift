@@ -14,6 +14,8 @@ struct SignInView: View {
     @State private var isLoading = false
     @State private var errorMessage: String?
 
+    @Environment(Clerk.self) private var clerk
+    
     var body: some View {
         VStack {
             Form {
