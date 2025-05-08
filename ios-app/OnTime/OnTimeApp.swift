@@ -23,8 +23,7 @@ struct OnTimeApp: App {
                 } else if clerk.user == nil {
                     SignInOrSignUpView()
                 } else {
-                    HomeView()
-                        .modelContainer(for: FavoriteTrip.self)
+                    TabWrapperView()
                 }
             }
             .environment(clerk)
@@ -32,6 +31,8 @@ struct OnTimeApp: App {
                 clerk.configure(publishableKey: "pk_test_YXNzdXJlZC13cmVuLTcxLmNsZXJrLmFjY291bnRzLmRldiQ")
                 try? await clerk.load()
             }
+            .modelContainer(for: FavoriteTrip.self)
         }
+        
     }
 }

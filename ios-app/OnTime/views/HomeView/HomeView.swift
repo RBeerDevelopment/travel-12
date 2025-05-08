@@ -10,11 +10,10 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var locationManager = LocationManager()
     @StateObject private var stationViewModel: StationViewModel
-
-    @Environment(\.modelContext) private var modelContext
+    
+    @Environment(\.modelContext) private var context
 
     @State private var isSearchActive = false
-
     @State private var showProfileSheet = false
     
     init() {
@@ -32,7 +31,7 @@ struct HomeView: View {
                     FavoriteDeparturesView()
                 }
             }
-            .navigationTitle("Travel 12")
+            .navigationTitle("OnTime")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
