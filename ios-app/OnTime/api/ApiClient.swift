@@ -17,7 +17,6 @@ actor ApiClient {
     func fetchDepartures(stationId: String, startTime: Date, duration: Int) async throws -> DeparturesResponse? {
         var endpoint = "https://v6.vbb.transport.rest/stops/\(stationId)/departures?when=\(startTime.secondsSince1970)&duration=\(duration)&remarks=false&express=false"
         
-        print("ENDPOINT", endpoint)
         if let cached = cache[endpoint],
            Date().timeIntervalSince(cached.timestamp) < 30, // Cache for 30 seconds
            let data = cached.data as? DeparturesResponse {
@@ -45,9 +44,6 @@ actor ApiClient {
     }
     
     func fetchMultipleDepartures(requestData: [FavoriteDepartureRequestData]) async throws -> [String: [Departure]] {
-        
-            
-            
             func fetchWithRetry(request: FavoriteDepartureRequestData, maxRetries: Int = 3) async throws -> (String, [Departure]) {
                 var lastError: Error?
                 

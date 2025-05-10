@@ -12,93 +12,67 @@ struct DeparturesView: View {
     @StateObject private var viewModel = DeparturesViewModel()
     @State private var selectedModes = Set<String>()
     @State private var selectedLines = Set<String>()
-    @State private var showFilters = false
     
     let stationId: String
     let stationName: String
+    
+    var filteredDepartures: [Departure] {
+        return viewModel.filteredDepartures(
+            modes: selectedModes,
+            lines: selectedLines
+        )
+    }
 
     var body: some View {
         VStack {
-            // Filter toggle button
-            HStack {
-                Spacer()
-                Button(action: {
-                    withAnimation(.easeIn(duration: 0.25)) {
-                        showFilters.toggle()
+            DeparturesViewFilterSection(
+                selectedModes: $selectedModes,
+                selectedLines: $selectedLines,
+                departures: viewModel.departures
+            )
+            
+            if viewModel.isLoading && viewModel.departures.isEmpty {
+                LoadingIndicator()
+                    .frame(height: .infinity)
+            } else {
+                List {
+                    if viewModel.error == nil {
+                        Button("Show Ealier") {
+                            fetchEarlier()
+                        }
+                        .disabled(viewModel.isLoading)
                     }
-                }) {
-                    HStack {
-                        Image(systemName: "line.3.horizontal.decrease.circle")
-                        Text("Filters")
-                    }
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(10)
-                }
-                .padding(.trailing)
-            }.padding(.trailing, 4)
-            if showFilters {
-                HStack {
-                    DepartureFilters(
-                        selectedModes: $selectedModes,
-                        selectedLines: $selectedLines,
-                        availableModes: extractTransportModes(departures: viewModel.departures),
-                        availableLines: extractLines(departures: viewModel.departures, selectedModes: selectedModes)
-                    )
-                    
-                }
-                .transition(.scale)
-                .padding(.horizontal, 4)
-            }
-            List {
-                if viewModel.isLoading && viewModel.departures.isEmpty {
-                    LoadingIndicator()
-                } else {
-                    Button("Show Ealier") {
-                        Task {
-                            await viewModel.fetchEarlierDepartures(stationId: stationId)
+                    if viewModel.error != nil {
+                        Text("There was an error loading the data. Please try again later.")
+                    } else if (filteredDepartures.isEmpty) {
+                        Text("No departures for your selected filters.")
+                    } else if viewModel.departures.isEmpty {
+                        Text("No departures for this station.")
+                    } else {
+                        ForEach(filteredDepartures) { departure in
+                            DepartureItem(departure: departure, stationId: stationId, stationName: stationName)
                         }
                     }
-                    .disabled(viewModel.isLoading)
-                    ForEach(viewModel.filteredDepartures(
-                        modes: selectedModes,
-                        lines: selectedLines
-                    )) { departure in
-                        DepartureItem(departure: departure, stationId: stationId, stationName: stationName)
-                    }
-                    Button("Show Later") {
-                        Task {
-                            await viewModel.fetchLaterDepartures(stationId: stationId)
+                    if viewModel.error == nil {
+                        Button("Show Later") {
+                            fetchLater()
                         }
+                        .disabled(viewModel.isLoading)
                     }
-                    .disabled(viewModel.isLoading)
                 }
-            }
-            .contentMargins(.top, 16)
-            .refreshable {
-                Task {
-                    await loadDepartures()
+                .contentMargins(.top, 16)
+                .refreshable {
+                    loadDepartures()
                 }
-            }
-            .overlay {
-                if let error = viewModel.error {
-                    ErrorView(error: error) {
-                        Task {
-                            await loadDepartures()
+                .overlay {
+                    if let error = viewModel.error {
+                        ErrorView(error: error) {
+                            loadDepartures()
                         }
                     }
                 }
-            }
-            .task {
-                await viewModel.fetchDepartures(stationId: stationId)
-                
-                // Initialize filters with all available options selected
-                if selectedModes.isEmpty {
-                    selectedModes = Set(extractTransportModes(departures: viewModel.departures))
-                }
-                if selectedLines.isEmpty {
-                    selectedLines = Set(extractLines(departures: viewModel.departures))
+                .task {
+                    await initView()
                 }
             }
         }
@@ -107,7 +81,33 @@ struct DeparturesView: View {
         
     }
     
-     func loadDepartures() async {
-        await viewModel.fetchDepartures(stationId: stationId)
+    func fetchEarlier() {
+        Task {
+            await viewModel.fetchEarlierDepartures(stationId)
+        }
+    }
+    
+    func fetchLater() {
+        Task {
+            await viewModel.fetchLaterDepartures(stationId)
+        }
+    }
+    
+    func loadDepartures() {
+        Task {
+            await viewModel.fetchDepartures(stationId: stationId)
+        }
+    }
+    
+    func initView() async {
+        loadDepartures()
+        
+        // Initialize filters with all available options selected
+        if selectedModes.isEmpty {
+            selectedModes = Set(extractTransportModes(departures: viewModel.departures))
+        }
+        if selectedLines.isEmpty {
+            selectedLines = Set(extractLines(departures: viewModel.departures))
+        }
     }
 }

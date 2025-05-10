@@ -12,6 +12,7 @@
 		3261159D2DC402C600F32297 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3261159C2DC402C600F32297 /* NavView.swift */; };
 		326115A12DC4055C00F32297 /* AddressSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115A02DC4055600F32297 /* AddressSearchViewModel.swift */; };
 		326115A32DC4094400F32297 /* NavSearchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115A22DC4094400F32297 /* NavSearchSheet.swift */; };
+		326115A82DCD682B00F32297 /* DeparturesViewFilterSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115A72DCD682B00F32297 /* DeparturesViewFilterSection.swift */; };
 		326B0E522CD92C5800794F43 /* Libsql in Frameworks */ = {isa = PBXBuildFile; productRef = 326B0E512CD92C5800794F43 /* Libsql */; };
 		326B0E542CD92C7500794F43 /* DBHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326B0E532CD92C7000794F43 /* DBHandler.swift */; };
 		326CF26D2D386D8B001CBCA8 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326CF26C2D386D87001CBCA8 /* SignInView.swift */; };
@@ -90,6 +91,7 @@
 		3261159C2DC402C600F32297 /* NavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
 		326115A02DC4055600F32297 /* AddressSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchViewModel.swift; sourceTree = "<group>"; };
 		326115A22DC4094400F32297 /* NavSearchSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavSearchSheet.swift; sourceTree = "<group>"; };
+		326115A72DCD682B00F32297 /* DeparturesViewFilterSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesViewFilterSection.swift; sourceTree = "<group>"; };
 		326B0E532CD92C7000794F43 /* DBHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHandler.swift; sourceTree = "<group>"; };
 		326CF26C2D386D87001CBCA8 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		326CF26E2D386D8E001CBCA8 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				32BADEAA2C3A7A1B00E53BA6 /* DepartureRow.swift */,
 				32A393242D5757E300A0093F /* DepartureItem.swift */,
 				32DBDCFC2C2E906F00212F6B /* DeparturesView.swift */,
+				326115A72DCD682B00F32297 /* DeparturesViewFilterSection.swift */,
 			);
 			path = DeparturesView;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				32B36D022D55569C00102BE8 /* TripHeaderView.swift in Sources */,
 				327DE4C42CE14D2400CF0D04 /* LoadingIndicator.swift in Sources */,
 				32DBDD032C30546C00212F6B /* DepartureModel.swift in Sources */,
+				326115A82DCD682B00F32297 /* DeparturesViewFilterSection.swift in Sources */,
 				32B36D182D573FC100102BE8 /* View+FavoriteAction.swift in Sources */,
 				32A96E6F2D3D70E800F3C081 /* LineIndicator.swift in Sources */,
 				327DE4CC2CE166A500CF0D04 /* KeychainHelper.swift in Sources */,

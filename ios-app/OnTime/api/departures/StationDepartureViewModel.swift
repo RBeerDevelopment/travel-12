@@ -43,7 +43,7 @@ class DeparturesViewModel: ObservableObject {
         isLoading = false
     }
     
-    func fetchEarlierDepartures(stationId: String) async {
+    func fetchEarlierDepartures(_ stationId: String) async {
         let startTime: Date = earliestDepartureTimestamp ?? Date()
         
         let newStartTime = Calendar.current.date(byAdding: .minute, value: -ADDITIONAL_FETCH_INTERVAL, to: startTime)!
@@ -52,7 +52,7 @@ class DeparturesViewModel: ObservableObject {
         await fetchDepartures(stationId: stationId, startTime: newStartTime, duration: newDuration)
     }
     
-    func fetchLaterDepartures(stationId: String) async {
+    func fetchLaterDepartures(_ stationId: String) async {
         let newDuration = currentDuration + ADDITIONAL_FETCH_INTERVAL
         let startTime = earliestDepartureTimestamp ?? Date()
         
