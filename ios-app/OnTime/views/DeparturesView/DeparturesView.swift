@@ -24,7 +24,7 @@ struct DeparturesView: View {
     }
 
     var body: some View {
-        VStack {
+        VStack() {
             DeparturesViewFilterSection(
                 selectedModes: $selectedModes,
                 selectedLines: $selectedLines,
@@ -76,7 +76,7 @@ struct DeparturesView: View {
                 }
             }
         }
-        .frame(maxHeight: .infinity)
+        .frame(maxHeight: .infinity, alignment: .top)
         .navigationTitle(stationName)
         
     }
