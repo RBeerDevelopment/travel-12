@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct StationSearchView: View {
     
@@ -13,13 +14,18 @@ struct StationSearchView: View {
     let isQueryEmpty: Bool
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
+            if(stations.isEmpty && !isQueryEmpty) {
+                Text("No stations found")
+            }
             if(stations.count == 0) {
-                Text(isQueryEmpty ? "Enter a search query" :"No stations found")
+                RecentStationSearchListView()
             } else {
-                ForEach(stations) { station in
-                    SearchItemView(station: station)
-                    Divider()
+                ForEach(stations.indices, id: \.self) { idx in
+                    SearchItemView(station: stations[idx])
+                    if(idx != stations.count - 1) {
+                        Divider()
+                    }
                 }
             }
         }

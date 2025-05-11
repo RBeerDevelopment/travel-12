@@ -27,12 +27,11 @@ struct OnTimeApp: App {
                 }
             }
             .environment(clerk)
+            .modelContainer(for: [FavoriteTrip.self, RecentSearchStation.self])
             .task {
                 clerk.configure(publishableKey: "pk_test_YXNzdXJlZC13cmVuLTcxLmNsZXJrLmFjY291bnRzLmRldiQ")
                 try? await clerk.load()
             }
-            .modelContainer(for: FavoriteTrip.self)
         }
-        
     }
 }
