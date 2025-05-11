@@ -21,6 +21,10 @@ class StationSearchItem: Codable, Identifiable, Hashable, ObservableObject {
         self.location = location
     }
     
+    convenience init(snapshot: StationSnapshot) {
+        self.init(id: snapshot.id, name: snapshot.name, products: snapshot.products, location: snapshot.location)
+    }
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
