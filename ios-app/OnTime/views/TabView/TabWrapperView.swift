@@ -8,18 +8,40 @@
 import SwiftUI
 
 struct TabWrapperView: View {
+    
+    @Environment(\.modelContext) var modelContext
+    @StateObject private var locationManager: LocationManager
+    @StateObject private var stationViewModel: StationViewModel
+    
+    init() {
+        let locationManager = LocationManager()
+        _locationManager = StateObject(wrappedValue: locationManager)
+        _stationViewModel = StateObject(wrappedValue: StationViewModel(locationManager: locationManager))
+    }
+    
     var body: some View {
         TabView {
-            HomeView()
+            StationSearchView()
                 .tabItem {
-                    Label("Departures", systemImage: "clock")
+                    Label("Search", systemImage: "magnifyingglass")
                 }
-
+            FavoritesView()
+                .tabItem {
+                    Label("Favorites", systemImage: "star")
+                }
             NavView()
                 .tabItem {
                     Label("Navigation", systemImage: "arrow.trianglehead.turn.up.right.circle")
                 }
         }
+        .onAppear {
+            locationManager.startUpdatingLocation()
+        }
+        .onDisappear {
+            locationManager.stopUpdatingLocation()
+        }
+        .environmentObject(locationManager)
+        .environmentObject(stationViewModel)
     }
 }
 

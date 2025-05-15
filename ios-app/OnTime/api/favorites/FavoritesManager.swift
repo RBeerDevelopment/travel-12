@@ -25,10 +25,7 @@ class FavoritesManager {
                 favorite.lineId == lineId && favorite.stationId == stationId && favorite.destinationId == destinationId
             }
         )
-        print(try? modelContext.fetch(descriptor))
         let favoriteDescriptorCount = (try? modelContext.fetchCount(descriptor)) ?? 0
-        print(descriptor)
-        print(favoriteDescriptorCount)
         return favoriteDescriptorCount > 0
     }
     

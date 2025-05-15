@@ -14,7 +14,7 @@
 		326115A32DC4094400F32297 /* NavSearchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115A22DC4094400F32297 /* NavSearchSheet.swift */; };
 		326115A82DCD682B00F32297 /* DeparturesViewFilterSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115A72DCD682B00F32297 /* DeparturesViewFilterSection.swift */; };
 		326115B12DCF93EA00F32297 /* RecentSearchStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115B02DCF93E200F32297 /* RecentSearchStation.swift */; };
-		326115B32DCF95D200F32297 /* RecentStationSearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115B22DCF95D200F32297 /* RecentStationSearchListView.swift */; };
+		326115C12DD0DDB400F32297 /* NearbyStationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115C02DD0DDB400F32297 /* NearbyStationListView.swift */; };
 		326B0E522CD92C5800794F43 /* Libsql in Frameworks */ = {isa = PBXBuildFile; productRef = 326B0E512CD92C5800794F43 /* Libsql */; };
 		326B0E542CD92C7500794F43 /* DBHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326B0E532CD92C7000794F43 /* DBHandler.swift */; };
 		326CF26D2D386D8B001CBCA8 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326CF26C2D386D87001CBCA8 /* SignInView.swift */; };
@@ -58,7 +58,7 @@
 		32C9604F2CF37A27006BAC4E /* CombineApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C9604E2CF37A1B006BAC4E /* CombineApiHelper.swift */; };
 		32D99B232DBBF8D0002894D4 /* Clerk in Frameworks */ = {isa = PBXBuildFile; productRef = 32D99B222DBBF8D0002894D4 /* Clerk */; };
 		32DBDCD92C2DE74900212F6B /* OnTimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCD82C2DE74900212F6B /* OnTimeApp.swift */; };
-		32DBDCDB2C2DE74900212F6B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCDA2C2DE74900212F6B /* HomeView.swift */; };
+		32DBDCDB2C2DE74900212F6B /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCDA2C2DE74900212F6B /* FavoritesView.swift */; };
 		32DBDCDF2C2DE74A00212F6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32DBDCDE2C2DE74A00212F6B /* Assets.xcassets */; };
 		32DBDCE32C2DE74A00212F6B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32DBDCE22C2DE74A00212F6B /* Preview Assets.xcassets */; };
 		32DBDCEB2C2DE81C00212F6B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCEA2C2DE81900212F6B /* Constants.swift */; };
@@ -95,7 +95,7 @@
 		326115A22DC4094400F32297 /* NavSearchSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavSearchSheet.swift; sourceTree = "<group>"; };
 		326115A72DCD682B00F32297 /* DeparturesViewFilterSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesViewFilterSection.swift; sourceTree = "<group>"; };
 		326115B02DCF93E200F32297 /* RecentSearchStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchStation.swift; sourceTree = "<group>"; };
-		326115B22DCF95D200F32297 /* RecentStationSearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentStationSearchListView.swift; sourceTree = "<group>"; };
+		326115C02DD0DDB400F32297 /* NearbyStationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyStationListView.swift; sourceTree = "<group>"; };
 		326B0E532CD92C7000794F43 /* DBHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHandler.swift; sourceTree = "<group>"; };
 		326CF26C2D386D87001CBCA8 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		326CF26E2D386D8E001CBCA8 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 		32C9604E2CF37A1B006BAC4E /* CombineApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineApiHelper.swift; sourceTree = "<group>"; };
 		32DBDCD52C2DE74900212F6B /* OnTime - Transit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OnTime - Transit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32DBDCD82C2DE74900212F6B /* OnTimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTimeApp.swift; sourceTree = "<group>"; };
-		32DBDCDA2C2DE74900212F6B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		32DBDCDA2C2DE74900212F6B /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		32DBDCDE2C2DE74A00212F6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32DBDCE02C2DE74A00212F6B /* OnTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OnTime.entitlements; sourceTree = "<group>"; };
 		32DBDCE22C2DE74A00212F6B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -287,7 +287,7 @@
 				32B36D0F2D573CAD00102BE8 /* common */,
 				32B36CFE2D55566D00102BE8 /* TripView */,
 				326CF26B2D386D7D001CBCA8 /* SignInUpView */,
-				32C960472CF37044006BAC4E /* HomeView */,
+				32C960472CF37044006BAC4E /* FavoritesView */,
 				32C960452CF37004006BAC4E /* ProfileView */,
 				32DBDCFA2C2E905100212F6B /* SearchView */,
 				32DBDCFB2C2E906100212F6B /* DeparturesView */,
@@ -295,15 +295,15 @@
 			path = views;
 			sourceTree = "<group>";
 		};
-		32C960472CF37044006BAC4E /* HomeView */ = {
+		32C960472CF37044006BAC4E /* FavoritesView */ = {
 			isa = PBXGroup;
 			children = (
-				32DBDCDA2C2DE74900212F6B /* HomeView.swift */,
+				32DBDCDA2C2DE74900212F6B /* FavoritesView.swift */,
 				32A393262D5E4F2600A0093F /* FavoriteDeparturesSection.swift */,
 				32A393282D5E4F7800A0093F /* FavoriteDepartureCard.swift */,
 				32EB5D762D6A87A40054C6B9 /* FavoriteDepartureErrorCard.swift */,
 			);
-			path = HomeView;
+			path = FavoritesView;
 			sourceTree = "<group>";
 		};
 		32C9604B2CF37951006BAC4E /* db */ = {
@@ -404,7 +404,7 @@
 			children = (
 				32DBDCF82C2E89FB00212F6B /* StationSearchView.swift */,
 				32DBDCF42C2E7A8A00212F6B /* SearchItemView.swift */,
-				326115B22DCF95D200F32297 /* RecentStationSearchListView.swift */,
+				326115C02DD0DDB400F32297 /* NearbyStationListView.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -580,7 +580,7 @@
 				32B36D042D5556B900102BE8 /* TripTimeView.swift in Sources */,
 				32DBDD012C2E96AD00212F6B /* LocationManager.swift in Sources */,
 				329831742DB3BD3F00436E15 /* Date+Extensions.swift in Sources */,
-				32DBDCDB2C2DE74900212F6B /* HomeView.swift in Sources */,
+				32DBDCDB2C2DE74900212F6B /* FavoritesView.swift in Sources */,
 				32A96E712D3D710600F3C081 /* ErrorView.swift in Sources */,
 				3285867C2DB3D6F700A86FD7 /* DepartureArrayFns.swift in Sources */,
 				3261159D2DC402C600F32297 /* NavView.swift in Sources */,
@@ -617,11 +617,11 @@
 				32FB5D522D8FF805005AA867 /* DepartureFilters.swift in Sources */,
 				32B36D142D573DC000102BE8 /* FavoriteTrip.swift in Sources */,
 				326115B12DCF93EA00F32297 /* RecentSearchStation.swift in Sources */,
+				326115C12DD0DDB400F32297 /* NearbyStationListView.swift in Sources */,
 				32DBDCF72C2E7B9500212F6B /* ProductIcon.swift in Sources */,
 				32B36D062D5556D100102BE8 /* StopoverListView.swift in Sources */,
 				32B372EF2CE34AB500CE684E /* AngleHelper.swift in Sources */,
 				32A393272D5E4F2600A0093F /* FavoriteDeparturesSection.swift in Sources */,
-				326115B32DCF95D200F32297 /* RecentStationSearchListView.swift in Sources */,
 				326115A32DC4094400F32297 /* NavSearchSheet.swift in Sources */,
 				326CF26F2D386D91001CBCA8 /* SignUpView.swift in Sources */,
 				32C9604A2CF37579006BAC4E /* GlobalTimer.swift in Sources */,

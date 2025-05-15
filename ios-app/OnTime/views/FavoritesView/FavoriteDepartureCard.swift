@@ -11,9 +11,7 @@ struct FavoriteDepartureCard: View {
     let departures: [Departure]
     let stationName: String
     let stationId: String
-    
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             if let firstDeparture = departures.first {

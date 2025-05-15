@@ -11,7 +11,6 @@ import MapKit
 struct NavView: View {
     
     @State private var position = MapCameraPosition.automatic
-    @State private var isSheetPresented: Bool = false
     
     var body: some View {
         ZStack(alignment: .bottom) {

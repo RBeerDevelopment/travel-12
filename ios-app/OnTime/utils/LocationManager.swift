@@ -13,11 +13,14 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var userLocation: CLLocation?
     @Published var heading: CLLocationDirection?
     @Published var authorizationStatus: CLAuthorizationStatus?
+    
+    // annoying workaround that needs to be removed
+    private var userLocationSetCount = 0
 
     override init() {
         super.init()
         self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.locationManager.requestWhenInUseAuthorization()
     }
 
@@ -33,7 +36,17 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        self.userLocation = location
+
+        let distance = if let userLocation = userLocation {
+            location.distance(from: userLocation)
+        } else {
+            Double.infinity
+        }
+        if(userLocationSetCount > 1 && distance < 5) {
+            return
+        }
+        userLocation = location
+        userLocationSetCount += 1
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {

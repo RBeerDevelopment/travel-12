@@ -51,7 +51,6 @@ struct FavoriteDeparturesView: View {
     
     private func fetchAllDepartures() {
         let requestData = favorites.map { FavoriteDepartureRequestData(stationId: $0.stationId, destination: $0.destinationId, id: $0.id) }
-        
         viewModel.fetchFavoriteDepartures(requestData: requestData)
     }
 }

@@ -48,7 +48,7 @@ struct NavSearchSheet: View {
                 List {
                     ForEach(addressSearchViewModel.completions) { completion in
                         Button(action: {
-                            print(completion)
+                            return
                         }) {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(completion.title)
