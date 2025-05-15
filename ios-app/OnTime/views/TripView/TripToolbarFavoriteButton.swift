@@ -32,14 +32,7 @@ struct TripToolbarFavoriteButton: View {
             let fetchDescriptor = FetchDescriptor<FavoriteTrip>()
             
             let fetchedTrips = try! modelContext.fetch(fetchDescriptor)
-            print("LENGTH", fetchedTrips.count)
-            print("DATA", lineId, stationId, destinationId)
-            print("CONTAINS", fetchedTrips.contains(where: { $0.lineId == lineId && $0.stationId == stationId && $0.destinationId == destinationId
-            }))
             
-            fetchedTrips.forEach {
-                print($0.lineId, $0.stationId, $0.destinationId)
-            }
             self.isFavorite = fetchedTrips.contains(where: { $0.lineId == lineId && $0.stationId == stationId && $0.destinationId == destinationId
             })
         } else {

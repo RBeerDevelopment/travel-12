@@ -31,6 +31,25 @@ let STATION_QUERY_WITH_SEARCH_PLACEHOLDER = """
     ORDER BY s.weight DESC LIMIT 10;
 """
 
+let NEARBY_STATION_QUERY = """
+    SELECT 
+        s.id, 
+        s.name, 
+        s.lat, 
+        s.lng,
+        GROUP_CONCAT(DISTINCT l.product_id) AS products
+    FROM stations s 
+    INNER JOIN station_to_lines stl ON s.id = stl.station_id
+    INNER JOIN lines l ON stl.line_id = l.id
+    GROUP BY s.name
+    ORDER BY (
+            (:user_lat - lat) * (:user_lat - lat)
+        ) + (
+            (:user_lng - lng) * (:user_lng - lng)
+        ) ASC
+    LIMIT 5;
+"""
+
 class DatabaseConnectionManager {
     // Static instance of the singleton
     static let shared = DatabaseConnectionManager()
@@ -96,6 +115,26 @@ func queryStationInDB(query: String) -> [StationSearchItem] {
     } catch {
         print("Error fetching stations: \(error)")
 
+    }
+    
+    return stations
+}
+
+
+func queryNearbyStationsInDB(lat: Double, lng: Double) -> [StationSearchItem] {
+    var stations: [StationSearchItem] = []
+    
+    do {
+        let connection = try DatabaseConnectionManager.shared.getConnection()
+        
+        let queryParams = [ ":user_lat": lat, ":user_lng": lng ]
+        
+        let rows = try connection.query(NEARBY_STATION_QUERY, queryParams)
+        for row in rows {
+            stations.append(StationSearchItem(id: try row.getString(0), name: try row.getString(1), products: try row.getString(4).components(separatedBy: ","), location: Location(id: try row.getString(0), latitude: try row.getDouble(2), longitude: try row.getDouble(3))))
+        }
+    } catch {
+        print("Error fetching stations: \(error)")
     }
     
     return stations
