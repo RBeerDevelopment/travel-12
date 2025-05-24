@@ -24,7 +24,7 @@ struct DeparturesView: View {
     }
 
     var body: some View {
-        VStack() {
+        VStack {
             DeparturesViewFilterSection(
                 selectedModes: $selectedModes,
                 selectedLines: $selectedLines,

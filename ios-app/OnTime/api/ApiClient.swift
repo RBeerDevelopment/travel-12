@@ -15,8 +15,9 @@ actor ApiClient {
     private var cache: [String: (data: Any, timestamp: Date)] = [:]
     
     func fetchDepartures(stationId: String, startTime: Date, duration: Int) async throws -> DeparturesResponse? {
-        var endpoint = "https://v6.vbb.transport.rest/stops/\(stationId)/departures?when=\(startTime.secondsSince1970)&duration=\(duration)&remarks=false&express=false"
+        var endpoint = "https://v6.vbb.transport.rest/stops/\(stationId)/departures?when=\(startTime.secondsSince1970)&duration=\(duration)&remarks=true&express=false"
         
+        print("ENDPOINT", endpoint)
         if let cached = cache[endpoint],
            Date().timeIntervalSince(cached.timestamp) < 30, // Cache for 30 seconds
            let data = cached.data as? DeparturesResponse {
@@ -27,7 +28,9 @@ actor ApiClient {
         
         var decoded: DeparturesResponse? = nil
         do {
-            decoded = try JSONDecoder().decode(DeparturesResponse.self, from: data)
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            decoded = try decoder.decode(DeparturesResponse.self, from: data)
         } catch {
             print(error)
         }
@@ -82,7 +85,10 @@ actor ApiClient {
                             throw URLError(.badServerResponse)
                         }
                         
-                        let decoded = try JSONDecoder().decode(DeparturesResponse.self, from: data)
+                        let decoder = JSONDecoder()
+                        decoder.dateDecodingStrategy = .iso8601
+                        
+                        let decoded = try decoder.decode(DeparturesResponse.self, from: data)
                         let filteredDepartures = decoded.departures.filter { $0.direction == request.destination }.sorted { $0.whenDate < $1.whenDate }
                         return (request.id, filteredDepartures)
                         
@@ -121,8 +127,8 @@ actor ApiClient {
         }
     
     func fetchTrip(tripId: String) async throws -> TripResponse? {
-        let endpoint = "https://v6.vbb.transport.rest/trips/\(tripId)?remarks=false&pretty=false&polyline=true"
-        // TODO add polyline
+        let endpoint = "https://v6.vbb.transport.rest/trips/\(tripId)?remarks=true&pretty=false&polyline=true"
+        print(endpoint)
 
         if let cached = cache[endpoint],
            Date().timeIntervalSince(cached.timestamp) < 30, // Cache for 30 seconds
@@ -133,8 +139,8 @@ actor ApiClient {
         
         let (data, _) = try await session.data(from: URL(string: endpoint)!)
         let decoder = JSONDecoder()
-        
         decoder.dateDecodingStrategy = .iso8601
+        
         var decoded: TripResponse? = nil
         do {
             decoded = try decoder.decode(TripResponse.self, from: data)

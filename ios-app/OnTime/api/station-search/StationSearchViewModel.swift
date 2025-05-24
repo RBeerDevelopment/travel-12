@@ -9,17 +9,16 @@ class StationViewModel: ObservableObject {
     
     @Published var stations: [StationSearchItem] = []
     @Published var nearbyStation: [StationSearchItem] = []
-    @Published var recentlySearchedStations: [StationSearchItem]
+    @Published var recentlySearchedStations: [StationSearchItem] = []
     
     private var cancellables = Set<AnyCancellable>()
     private let locationManager: LocationManager
     private var modelContext: ModelContext
 
-    init(locationManager: LocationManager) {
+    init(locationManager: LocationManager, context: ModelContext) {
         self.locationManager = locationManager
         
-        let container = try! ModelContainer(for: RecentSearchStation.self)
-        modelContext = ModelContext(container)
+        modelContext = context
         
         let fetchDescriptor = FetchDescriptor<RecentSearchStation>()
         do {

@@ -17,6 +17,7 @@ struct NavView: View {
             Map(position: $position)
             NavSearchSheet()
         }
+        .addToastSafeAreaObserver()
     }
 }
 
