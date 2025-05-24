@@ -24,7 +24,6 @@ enum OnTimeStatus {
     case early
 }
 
-
 struct DeparturesResponse: Decodable {
     var departures: [Departure]
     let realtimeDataUpdatedAt: Int
@@ -38,7 +37,9 @@ struct Departure: Decodable, Identifiable {
     let platform: String?
     let direction: String
     let line: TransportLine
-    
+    let cancelled: Bool?
+    let remarks: [AnyRemark]?
+     
     var id: String { tripId }
     
     var status: OnTimeStatus {

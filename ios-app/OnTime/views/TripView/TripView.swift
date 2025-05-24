@@ -33,6 +33,7 @@ struct TripView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             } else if let trip = viewModel.trip {
                 VStack(spacing: 16) {
+                    TripRemarksSection(remarks: trip.remarks)
                     // Header with origin and destination
                     TripHeaderView(trip: trip)
 
@@ -59,10 +60,7 @@ struct TripView: View {
                             }
                         }
                     }
-                    .padding()
-                    .background(Color(colorScheme == .light ? .systemBackground : .secondarySystemBackground))
-                    .cornerRadius(10)
-                    .shadow(radius: 1)
+                    .modifier(TripCardModifier())
                     
                     if !expandedStopovers {
                         if let polylineFeatures = trip.polyline?.features {
