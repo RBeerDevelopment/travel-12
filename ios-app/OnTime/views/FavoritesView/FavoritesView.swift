@@ -30,6 +30,7 @@ struct FavoritesView: View {
         .sheet(isPresented: $showProfileSheet) {
             ProfileView()
         }
+        .addToastSafeAreaObserver()
         
     }
         

@@ -9,8 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct FavoriteDeparturesView: View {
+    
     @Query private var favorites: [FavoriteTrip]
     @StateObject private var viewModel = FavoriteTripViewModel()
+    @Environment(\.presentToast) var presentToast
     
     var body: some View {
         List {
@@ -27,10 +29,14 @@ struct FavoriteDeparturesView: View {
                             stationName: favorite.stationName,
                             stationId: favorite.stationId
                         )
-                        .favoriteActionSheet(lineId: favorite.lineId, stationId: favorite.stationId, destinationId: favorite.destinationId, stationName: favorite.stationName, isFavorite: true)
+                        .favoriteActionSheet(lineId: favorite.lineId, stationId: favorite.stationId, destinationId: favorite.destinationId, stationName: favorite.stationName, isFavorite: true, showToast: { success in
+                                showFavoriteToast(presentToast: presentToast, isRemove: true, isSuccess: success)
+                        })
                     } else {
                         FavoriteDepartureErrorCard(favorite: favorite, isRequestError: departures[favorite.id] == nil)
-                            .favoriteActionSheet(lineId: favorite.lineId, stationId: favorite.stationId, destinationId: favorite.destinationId, stationName: favorite.stationName, isFavorite: true)
+                            .favoriteActionSheet(lineId: favorite.lineId, stationId: favorite.stationId, destinationId: favorite.destinationId, stationName: favorite.stationName, isFavorite: true, showToast: { success in
+                                showFavoriteToast(presentToast: presentToast, isRemove: true, isSuccess: success)
+                        })
                     }
                     
                 }
