@@ -36,9 +36,6 @@ struct TripHeaderView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding()
-        .background(Color(colorScheme == .light ? .systemBackground : .secondarySystemBackground))
-        .cornerRadius(10)
-        .shadow(radius: 1)
+        .modifier(TripCardModifier())
     }
 }

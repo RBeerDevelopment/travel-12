@@ -21,6 +21,7 @@ struct TripTimeView: View {
                 .font(.subheadline)
             
             HStack {
+                Spacer()
                 if let planned = planned {
                     Text(formatTime(planned))
                         .font(.headline)
@@ -39,7 +40,7 @@ struct TripTimeView: View {
                         .font(.subheadline)
                         .foregroundColor(.red)
                 }
-                Spacer()
+                
             }.frame(maxWidth: .infinity)
             
             if let platform = platform {

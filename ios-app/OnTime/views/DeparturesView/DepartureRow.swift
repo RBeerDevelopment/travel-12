@@ -12,6 +12,8 @@ struct DepartureRow: View {
     let stationId: String
     
     var body: some View {
+        
+        let isCancelled = departure.cancelled ?? false
         NavigationLink(destination: TripView(tripId: departure.tripId, stationId: stationId, lineColor: departure.line.color?.bg ?? "#000")) {
             HStack {
                 LineIndicator(line: departure.line)
@@ -20,14 +22,16 @@ struct DepartureRow: View {
                 VStack(alignment: .leading) {
                     Text(departure.direction)
                         .font(.headline)
+                        .strikethrough(isCancelled)
                 }
                 
                 Spacer()
-                
                 VStack {
                     Text(departure.formattedWhen)
                         .font(.headline)
                         .foregroundStyle(departure.status == .delayed ? .red : .primary)
+                        .strikethrough(isCancelled)
+                        
                     if(departure.status != .onTime) {
                         Text(departure.formattedPlannedWhen)
                             .font(.caption)
@@ -42,5 +46,5 @@ struct DepartureRow: View {
 }
 
 #Preview {
-    DepartureRow(departure: Departure(tripId: "u5", when: "2025-05-05T12:34:00Z", plannedWhen: "2025-05-05T12:32:00Z", delay: -2, platform: "1", direction: "Hauptbahnhof", line: TransportLine(name: "U5", product: "subway", color: nil)), stationId: "qo0ghw0g")
+    DepartureRow(departure: Departure(tripId: "u5", when: "2025-05-05T12:34:00Z", plannedWhen: "2025-05-05T12:32:00Z", delay: -2, platform: "1", direction: "Hauptbahnhof", line: TransportLine(name: "U5", product: "subway", color: nil), cancelled: false, remarks: []), stationId: "qo0ghw0g")
 }

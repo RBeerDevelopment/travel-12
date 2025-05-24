@@ -6,17 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TabWrapperView: View {
-    
-    @Environment(\.modelContext) var modelContext
+
     @StateObject private var locationManager: LocationManager
     @StateObject private var stationViewModel: StationViewModel
     
-    init() {
+    init(modelContext: ModelContext) {
         let locationManager = LocationManager()
         _locationManager = StateObject(wrappedValue: locationManager)
-        _stationViewModel = StateObject(wrappedValue: StationViewModel(locationManager: locationManager))
+        _stationViewModel = StateObject(wrappedValue: StationViewModel(locationManager: locationManager, context: modelContext))
     }
     
     var body: some View {
@@ -45,6 +45,3 @@ struct TabWrapperView: View {
     }
 }
 
-#Preview {
-    TabWrapperView()
-}

@@ -1,13 +1,13 @@
 {
-  "originHash" : "a7384144b1433cd62ade7397f6bc4909d21970e387ec1a38b8c7c9bb43b3315d",
+  "originHash" : "dd3cfde8cf2ac30c462046fa7a4feae8809e6d36d6d935364c367b1d3deaa2c4",
   "pins" : [
     {
       "identity" : "clerk-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/clerk/clerk-ios",
       "state" : {
-        "revision" : "03733c57176523748d22c9ee44872f74845da64e",
-        "version" : "0.55.0"
+        "revision" : "0a5f0052b00d60d8144c261748929757a6b94952",
+        "version" : "0.57.0"
       }
     },
     {
@@ -44,6 +44,24 @@
       "state" : {
         "revision" : "b694f155907b189bc82e93586695a26f558c742f",
         "version" : "1.2.0"
+      }
+    },
+    {
+      "identity" : "swiftui-toasts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sunghyun-k/swiftui-toasts",
+      "state" : {
+        "revision" : "bc1224753c894b3d50fcced57632a2372d924852",
+        "version" : "1.0.2"
+      }
+    },
+    {
+      "identity" : "swiftui-window-overlay",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sunghyun-k/swiftui-window-overlay.git",
+      "state" : {
+        "revision" : "46739300713772a62a3bf31d77f8f23ba9cf61f7",
+        "version" : "1.0.2"
       }
     }
   ],

@@ -113,9 +113,7 @@ func formatDistance(_ distance: Double?) -> String? {
         }
         return formattedDistance
     }
-        
     return nil
-    
 }
 
 #Preview {

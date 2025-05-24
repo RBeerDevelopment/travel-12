@@ -25,27 +25,31 @@ struct StationSearchView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView(showsIndicators: false) {
-                if(searchedStations.isEmpty && !stationViewModel.searchQuery.isEmpty) {
-                    Text("No stations found")
-                }
-                if(!isSearchActive) {
-                    RecentAndNearbyStationsListView(recentAndNearbyStations: recentAndNearbyStations)
-                } else {
-                    ForEach(searchedStations.indices, id: \.self) { idx in
-                        SearchItemView(station: searchedStations[idx])
-                        if(idx != searchedStations.count - 1) {
-                            Divider()
+            VStack {
+                ScrollView(showsIndicators: false) {
+                    if(searchedStations.isEmpty && !stationViewModel.searchQuery.isEmpty) {
+                        Text("No stations found")
+                    }
+                    if(!isSearchActive) {
+                        RecentAndNearbyStationsListView(recentAndNearbyStations: recentAndNearbyStations)
+                    } else {
+                        ForEach(searchedStations.indices, id: \.self) { idx in
+                            SearchItemView(station: searchedStations[idx])
+                            if(idx != searchedStations.count - 1) {
+                                Divider()
+                            }
                         }
                     }
                 }
             }
             .navigationTitle("Search")
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(.vertical)
+            .padding(.horizontal, 20)
             .background(Color(.systemGroupedBackground))
-            .padding()
         }
         .searchable(text: $stationViewModel.searchQuery,
             isPresented: $isSearchActive, prompt: "Station Search")
-        
+        .addToastSafeAreaObserver()
     }
 }

@@ -15,12 +15,14 @@ extension View {
         stationId: String,
         destinationId: String,
         stationName: String,
-        isFavorite: Bool
+        isFavorite: Bool,
+        showToast: @escaping ((Bool) -> ())
     ) -> some View {
         self.swipeActions(edge: .trailing, allowsFullSwipe: true) {
             Button {
                 Task {
-                    FavoritesManager.shared.toggleFavorite(lineId: lineId, stationId: stationId, destinationId: destinationId, stationName: stationName)
+                    let isSuccess = FavoritesManager.shared.toggleFavorite(lineId: lineId, stationId: stationId, destinationId: destinationId, stationName: stationName)
+                    showToast(isSuccess)
                 }
             } label: {
                 Label(

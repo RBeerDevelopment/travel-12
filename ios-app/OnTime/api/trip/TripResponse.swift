@@ -27,6 +27,7 @@ struct Trip: Codable {
     let cancelled: Bool?
     let id: String
     let polyline: Polyline?
+    let remarks: [AnyRemark]?
 }
 
 struct Destination: Codable {
@@ -61,4 +62,5 @@ struct Stopover: Codable {
     let arrivalPrognosisType, departurePrognosisType: String?
     let plannedArrivalPlatform, plannedDeparturePlatform: String?
     let cancelled: Bool?
+    let remarks: [AnyRemark]?
 }
