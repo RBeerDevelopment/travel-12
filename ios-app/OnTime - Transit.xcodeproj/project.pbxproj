@@ -841,7 +841,7 @@
 				CODE_SIGN_ENTITLEMENTS = OnTime/OnTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"OnTime/Preview Content\"";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -887,7 +887,7 @@
 				CODE_SIGN_ENTITLEMENTS = OnTime/OnTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"OnTime/Preview Content\"";
 				ENABLE_HARDENED_RUNTIME = YES;
