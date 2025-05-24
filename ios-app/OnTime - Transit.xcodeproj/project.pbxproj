@@ -849,6 +849,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OnTime/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "OnTime - Transit";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use your location to get nearby stations.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -895,6 +896,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OnTime/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "OnTime - Transit";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use your location to get nearby stations.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
