@@ -7,7 +7,7 @@
 
 import MapKit
 
-struct SearchCompletions: Identifiable {
+struct SearchCompletion: Identifiable {
     let id = UUID()
     let title: String
     let subTitle: String
@@ -20,7 +20,8 @@ struct SearchCompletions: Identifiable {
 class AddressSearchViewModel: NSObject, MKLocalSearchCompleterDelegate {
     private let completer: MKLocalSearchCompleter
 
-    var completions = [SearchCompletions]()
+    var completions = [SearchCompletion]()
+    private var hasBeenCleared = false
 
     init(completer: MKLocalSearchCompleter) {
         self.completer = completer
@@ -29,8 +30,18 @@ class AddressSearchViewModel: NSObject, MKLocalSearchCompleterDelegate {
     }
 
     func update(queryFragment: String) {
+        if(hasBeenCleared) {
+            hasBeenCleared = false
+            return
+        }
         completer.resultTypes = [.address, .pointOfInterest]
         completer.queryFragment = queryFragment
+    }
+    
+    func clear() {
+        completer.queryFragment = ""
+        completions = []
+        hasBeenCleared = true
     }
 
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {

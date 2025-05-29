@@ -304,15 +304,15 @@
 		32C960462CF37013006BAC4E /* views */ = {
 			isa = PBXGroup;
 			children = (
-				3261159B2DC402BC00F32297 /* NavView */,
-				326115982DC4022100F32297 /* TabView */,
 				32B36D0F2D573CAD00102BE8 /* common */,
-				32B36CFE2D55566D00102BE8 /* TripView */,
-				326CF26B2D386D7D001CBCA8 /* SignInUpView */,
+				32DBDCFB2C2E906100212F6B /* DeparturesView */,
 				32C960472CF37044006BAC4E /* FavoritesView */,
+				3261159B2DC402BC00F32297 /* NavView */,
 				32C960452CF37004006BAC4E /* ProfileView */,
 				32DBDCFA2C2E905100212F6B /* SearchView */,
-				32DBDCFB2C2E906100212F6B /* DeparturesView */,
+				326CF26B2D386D7D001CBCA8 /* SignInUpView */,
+				326115982DC4022100F32297 /* TabView */,
+				32B36CFE2D55566D00102BE8 /* TripView */,
 			);
 			path = views;
 			sourceTree = "<group>";
