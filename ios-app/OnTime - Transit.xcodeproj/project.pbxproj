@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		324692852DE9818100B75987 /* NavigationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324692842DE9817900B75987 /* NavigationResponse.swift */; };
+		324692872DE9879B00B75987 /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324692862DE9879600B75987 /* NavigationViewModel.swift */; };
+		3246928B2DE98F9200B75987 /* RequestTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3246928A2DE98F8D00B75987 /* RequestTaskManager.swift */; };
 		326115932DC24F2400F32297 /* TripToolbarFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115922DC24F1D00F32297 /* TripToolbarFavoriteButton.swift */; };
 		3261159A2DC4023100F32297 /* TabWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115992DC4023100F32297 /* TabWrapperView.swift */; };
 		3261159D2DC402C600F32297 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3261159C2DC402C600F32297 /* NavView.swift */; };
@@ -93,6 +96,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		324692842DE9817900B75987 /* NavigationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationResponse.swift; sourceTree = "<group>"; };
+		324692862DE9879600B75987 /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
+		3246928A2DE98F8D00B75987 /* RequestTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTaskManager.swift; sourceTree = "<group>"; };
 		325ECC5C2CDD36DC00A8E392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		326115922DC24F1D00F32297 /* TripToolbarFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripToolbarFavoriteButton.swift; sourceTree = "<group>"; };
 		326115992DC4023100F32297 /* TabWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabWrapperView.swift; sourceTree = "<group>"; };
@@ -194,6 +200,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		324692812DE8651100B75987 /* navigation */ = {
+			isa = PBXGroup;
+			children = (
+				324692862DE9879600B75987 /* NavigationViewModel.swift */,
+				324692842DE9817900B75987 /* NavigationResponse.swift */,
+			);
+			path = navigation;
+			sourceTree = "<group>";
+		};
 		326115982DC4022100F32297 /* TabView */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +266,7 @@
 		32B36CF62D5552BB00102BE8 /* shared */ = {
 			isa = PBXGroup;
 			children = (
+				3246928A2DE98F8D00B75987 /* RequestTaskManager.swift */,
 				32B36D0B2D566F3500102BE8 /* Polyline.swift */,
 				32B36CF72D5552CA00102BE8 /* Location.swift */,
 			);
@@ -402,6 +418,7 @@
 			children = (
 				32A96E6C2D3D6F1D00F3C081 /* ApiClient.swift */,
 				32B36D122D573DB600102BE8 /* favorites */,
+				324692812DE8651100B75987 /* navigation */,
 				32B36CF62D5552BB00102BE8 /* shared */,
 				32B36CF32D5550F500102BE8 /* trip */,
 				32DBDCFE2C2E94DB00212F6B /* departures */,
@@ -609,8 +626,10 @@
 				32DBDD012C2E96AD00212F6B /* LocationManager.swift in Sources */,
 				329831742DB3BD3F00436E15 /* Date+Extensions.swift in Sources */,
 				32DBDCDB2C2DE74900212F6B /* FavoritesView.swift in Sources */,
+				3246928B2DE98F9200B75987 /* RequestTaskManager.swift in Sources */,
 				32A96E712D3D710600F3C081 /* ErrorView.swift in Sources */,
 				3285867C2DB3D6F700A86FD7 /* DepartureArrayFns.swift in Sources */,
+				324692852DE9818100B75987 /* NavigationResponse.swift in Sources */,
 				3261159D2DC402C600F32297 /* NavView.swift in Sources */,
 				32A3932D2D62577B00A0093F /* NanoIdGenerator.swift in Sources */,
 				326CF26D2D386D8B001CBCA8 /* SignInView.swift in Sources */,
@@ -622,6 +641,7 @@
 				32C9604F2CF37A27006BAC4E /* CombineApiHelper.swift in Sources */,
 				32A3932B2D5E54D400A0093F /* FavoriteTripViewModel.swift in Sources */,
 				32AFB4022D3AA35300E337F4 /* SignInWithAppleView.swift in Sources */,
+				324692872DE9879B00B75987 /* NavigationViewModel.swift in Sources */,
 				326115932DC24F2400F32297 /* TripToolbarFavoriteButton.swift in Sources */,
 				32DBDCEE2C2DE92300212F6B /* StationSearchItem.swift in Sources */,
 				32B36D022D55569C00102BE8 /* TripHeaderView.swift in Sources */,

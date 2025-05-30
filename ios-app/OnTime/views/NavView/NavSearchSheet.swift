@@ -20,6 +20,8 @@ struct NavSearchSheet: View {
     
     @State var addressSearchViewModel = AddressSearchViewModel(completer: .init())
     
+    @StateObject private var viewModel = NavigationViewModel()
+    
     @State var isButtonRotated: Bool = false
     
     var body: some View {
@@ -64,8 +66,10 @@ struct NavSearchSheet: View {
                 Spacer()
                 Button("Find Route") {
                     addressSearchViewModel.clear()
-                    print("Start", start)
-                    print("Destination", destination)
+                    
+                    if let start = start, let destination = destination {
+                        viewModel.fetchNavigationData(requestData: NavigationRequestData(start: start, destination: destination))
+                    }
                 }.frame(minHeight: 20)
                 Spacer()
             }
