@@ -5,34 +5,12 @@
 //  Created by Robin Beer on 13.02.25.
 //
 
-
 import Combine
-import SwiftUI
 
 struct FavoriteDepartureRequestData {
     var stationId: String
     var destination: String
     var id: String
-}
-
-
-actor DepartureTaskManager {
-    private var currentTask: Task<Void, Never>?
-    
-    func startNewFetch(_ operation: @escaping () async throws -> Void) {
-        // Cancel any existing task
-        currentTask?.cancel()
-        
-        // Start new task
-        currentTask = Task {
-            try? await operation()
-        }
-    }
-    
-    func cancelCurrentTask() {
-        currentTask?.cancel()
-        currentTask = nil
-    }
 }
 
 @MainActor
@@ -41,7 +19,7 @@ class FavoriteTripViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var error: Error?
     
-    private let taskManager = DepartureTaskManager()
+    private let taskManager = RequestTaskManager()
     
     func fetchFavoriteDepartures(requestData: [FavoriteDepartureRequestData]) {
         Task {

@@ -24,12 +24,12 @@ enum OnTimeStatus {
     case early
 }
 
-struct DeparturesResponse: Decodable {
+struct DeparturesResponse: Codable {
     var departures: [Departure]
     let realtimeDataUpdatedAt: Int
 }
 
-struct Departure: Decodable, Identifiable {
+struct Departure: Codable, Identifiable {
     let tripId: String
     let when: String?
     let plannedWhen: String
@@ -74,13 +74,13 @@ struct Departure: Decodable, Identifiable {
     }
 }
 
-struct TransportLine: Decodable {
+struct TransportLine: Codable {
     let name: String
     let product: String
     let color: LineColor?
 }
 
-struct LineColor: Decodable {
+struct LineColor: Codable {
     let fg: String
     let bg: String
 }
