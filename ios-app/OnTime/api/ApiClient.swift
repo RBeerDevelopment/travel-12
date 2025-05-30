@@ -17,33 +17,14 @@ actor ApiClient {
     func fetchDepartures(stationId: String, startTime: Date, duration: Int) async throws -> DeparturesResponse? {
         var endpoint = "https://v6.vbb.transport.rest/stops/\(stationId)/departures?when=\(startTime.secondsSince1970)&duration=\(duration)&remarks=true&express=false"
         
-        print("ENDPOINT", endpoint)
-        if let cached = cache[endpoint],
-           Date().timeIntervalSince(cached.timestamp) < 30, // Cache for 30 seconds
-           let data = cached.data as? DeparturesResponse {
-            return data
+        var data: DeparturesResponse = try await handleRequest(endpoint: URL(string: endpoint)!)
+
+        let sortedDepartures = data.departures.sorted {
+            $0.whenDate < $1.whenDate
         }
-        
-        let (data, _) = try await session.data(from: URL(string: endpoint)!)
-        
-        var decoded: DeparturesResponse? = nil
-        do {
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            decoded = try decoder.decode(DeparturesResponse.self, from: data)
-        } catch {
-            print(error)
-        }
-        
-        if (decoded?.departures != nil) {
-            let sortedDepartures = decoded?.departures.sorted {
-                $0.whenDate < $1.whenDate
-            }
-            decoded?.departures = sortedDepartures ?? []
-        }
-        
-        cache[endpoint] = (decoded, Date())
-        return decoded
+        data.departures = sortedDepartures
+
+        return data
     }
     
     func fetchMultipleDepartures(requestData: [FavoriteDepartureRequestData]) async throws -> [String: [Departure]] {
@@ -128,28 +109,11 @@ actor ApiClient {
     
     func fetchTrip(tripId: String) async throws -> TripResponse? {
         let endpoint = "https://v6.vbb.transport.rest/trips/\(tripId)?remarks=true&pretty=false&polyline=true"
-        print(endpoint)
+        
+        
+        let data: TripResponse = try await handleRequest(endpoint: URL(string: endpoint)!)
 
-        if let cached = cache[endpoint],
-           Date().timeIntervalSince(cached.timestamp) < 30, // Cache for 30 seconds
-           let data = cached.data as? TripResponse {
-            return data
-        }
-        
-        
-        let (data, _) = try await session.data(from: URL(string: endpoint)!)
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        
-        var decoded: TripResponse? = nil
-        do {
-            decoded = try decoder.decode(TripResponse.self, from: data)
-        } catch {
-            print(error)
-        }
-        
-        cache[endpoint] = (decoded, Date())
-        return decoded
+        return data
     }
     
     func uploadFavoriteTrip(trip: FavoriteTrip) async throws -> Bool {
@@ -188,25 +152,62 @@ actor ApiClient {
     
     func deleteFavoriteTrip(_ tripId: String) async throws -> Bool {
         let endpoint = URL(string: "https://t12-api.vercel.app/api/favorite-trips/\(tripId)")!
-        if let userId = await clerk.user?.id {
-            var request = URLRequest(url: endpoint)
-            request.httpMethod = "DELETE"
+        var request = URLRequest(url: endpoint)
+        request.httpMethod = "DELETE"
 
-            do {
-                let (_, response) = try await session.data(for: request)
-                guard let httpResponse = response as? HTTPURLResponse,
-                    (200...299).contains(httpResponse.statusCode) else {
-                    throw URLError(.badServerResponse)
-                }
-                return true
-            } catch {
-                print("error uploading favorite trip")
-                return false
+        do {
+            let (_, response) = try await session.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse,
+                (200...299).contains(httpResponse.statusCode) else {
+                throw URLError(.badServerResponse)
             }
-            
-            
+            return true
+        } catch {
+            print("error uploading favorite trip")
+            return false
         }
-        return false
+    }
+    
+    func fetchNavigationData(request: NavigationRequestData) async throws -> NavigationResponse {
+        
+        let encodedStartAddress = request.start.title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        let encodedDestinationAddress = request.destination.title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        let endpoint = "https://v6.vbb.transport.rest/journeys?from.address=\(encodedStartAddress)&from.latitude=\(request.start.lat)&from.longitude=\(request.start.lng)&to.address=\(encodedDestinationAddress)&to.latitude=\(request.destination.lat)&to.longitude=\(request.destination.lng)&polylines=true"
+
+        let data: NavigationResponse = try await handleRequest(endpoint: URL(string: endpoint)!)
+        
+        return data
+    }
+    
+    func handleRequest<T: Codable>(endpoint: URL) async throws -> T {
+        
+        print("Fetching from endpoint: ", endpoint)
+        if let cached = cache[endpoint.absoluteString],
+           Date().timeIntervalSince(cached.timestamp) < 30, // Cache for 30 seconds
+           let data = cached.data as? T {
+            return data
+        }
+        
+        
+        let (data, _) = try await session.data(from: endpoint)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        
+        var decoded: T? = nil
+        do {
+            decoded = try decoder.decode(T.self, from: data)
+        } catch {
+            print(error)
+        }
+        
+        guard let response = decoded else {
+            throw URLError(.badServerResponse)
+        }
+        
+        cache[endpoint.absoluteString] = (response, Date())
+        return response
+        
     }
 }
-
