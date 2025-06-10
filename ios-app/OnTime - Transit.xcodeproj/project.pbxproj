@@ -10,6 +10,7 @@
 		324692852DE9818100B75987 /* NavigationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324692842DE9817900B75987 /* NavigationResponse.swift */; };
 		324692872DE9879B00B75987 /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324692862DE9879600B75987 /* NavigationViewModel.swift */; };
 		3246928B2DE98F9200B75987 /* RequestTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3246928A2DE98F8D00B75987 /* RequestTaskManager.swift */; };
+		324692A22DEADC1E00B75987 /* NavResultSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324692A12DEADC1E00B75987 /* NavResultSheet.swift */; };
 		326115932DC24F2400F32297 /* TripToolbarFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115922DC24F1D00F32297 /* TripToolbarFavoriteButton.swift */; };
 		3261159A2DC4023100F32297 /* TabWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115992DC4023100F32297 /* TabWrapperView.swift */; };
 		3261159D2DC402C600F32297 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3261159C2DC402C600F32297 /* NavView.swift */; };
@@ -99,6 +100,7 @@
 		324692842DE9817900B75987 /* NavigationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationResponse.swift; sourceTree = "<group>"; };
 		324692862DE9879600B75987 /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 		3246928A2DE98F8D00B75987 /* RequestTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTaskManager.swift; sourceTree = "<group>"; };
+		324692A12DEADC1E00B75987 /* NavResultSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavResultSheet.swift; sourceTree = "<group>"; };
 		325ECC5C2CDD36DC00A8E392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		326115922DC24F1D00F32297 /* TripToolbarFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripToolbarFavoriteButton.swift; sourceTree = "<group>"; };
 		326115992DC4023100F32297 /* TabWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabWrapperView.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				326115A02DC4055600F32297 /* AddressSearchViewModel.swift */,
 				3261159C2DC402C600F32297 /* NavView.swift */,
 				326115A22DC4094400F32297 /* NavSearchSheet.swift */,
+				324692A12DEADC1E00B75987 /* NavResultSheet.swift */,
 			);
 			path = NavView;
 			sourceTree = "<group>";
@@ -611,6 +614,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32B36CF52D5550FD00102BE8 /* TripResponse.swift in Sources */,
+				324692A22DEADC1E00B75987 /* NavResultSheet.swift in Sources */,
 				32DBDD052C3055E600212F6B /* StationDepartureViewModel.swift in Sources */,
 				32B36CF82D5552CE00102BE8 /* Location.swift in Sources */,
 				326115A12DC4055C00F32297 /* AddressSearchViewModel.swift in Sources */,

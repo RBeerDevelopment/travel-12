@@ -5,7 +5,6 @@
 //  Created by Robin Beer on 08.02.25.
 //
 
-import SwiftUICore
 import SwiftUI
 
 extension View {

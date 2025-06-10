@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-
 struct NavSearchSheet: View {
+    
+    @EnvironmentObject var navigationViewModel: NavigationViewModel
     
     @State var startInput: String = ""
     @State var start: SearchCompletion? = nil
@@ -19,8 +20,6 @@ struct NavSearchSheet: View {
     @FocusState var isDestinationInputFocused: Bool
     
     @State var addressSearchViewModel = AddressSearchViewModel(completer: .init())
-    
-    @StateObject private var viewModel = NavigationViewModel()
     
     @State var isButtonRotated: Bool = false
     
@@ -68,7 +67,7 @@ struct NavSearchSheet: View {
                     addressSearchViewModel.clear()
                     
                     if let start = start, let destination = destination {
-                        viewModel.fetchNavigationData(requestData: NavigationRequestData(start: start, destination: destination))
+                        navigationViewModel.fetchNavigationData(requestData: NavigationRequestData(start: start, destination: destination))
                     }
                 }.frame(minHeight: 20)
                 Spacer()
