@@ -97,10 +97,11 @@ final class FavoritesManager {
     }
     
     private func uploadToServer(_ favorite: FavoriteTrip) async throws {
-        try await apiClient.uploadFavoriteTrip(trip: favorite)
+        _ = try await apiClient.uploadFavoriteTrip(trip: favorite)
     }
     
     private func deleteFromServer(_ id: String) async throws {
-        try await apiClient.deleteFavoriteTrip(id)
+        _ = try await apiClient.deleteFavoriteTrip(id)
     }
 }
+

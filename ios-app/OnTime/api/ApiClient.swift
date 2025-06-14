@@ -15,7 +15,7 @@ actor ApiClient {
     private var cache: [String: (data: Any, timestamp: Date)] = [:]
     
     func fetchDepartures(stationId: String, startTime: Date, duration: Int) async throws -> DeparturesResponse? {
-        var endpoint = "https://v6.vbb.transport.rest/stops/\(stationId)/departures?when=\(startTime.secondsSince1970)&duration=\(duration)&remarks=true&express=false"
+        let endpoint = "https://v6.vbb.transport.rest/stops/\(stationId)/departures?when=\(startTime.secondsSince1970)&duration=\(duration)&remarks=true&express=false"
         
         var data: DeparturesResponse = try await handleRequest(endpoint: URL(string: endpoint)!)
 
