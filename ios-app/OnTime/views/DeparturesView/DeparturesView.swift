@@ -32,8 +32,9 @@ struct DeparturesView: View {
             )
             
             if viewModel.isLoading && viewModel.departures.isEmpty {
+                Spacer()
                 LoadingIndicator()
-                    .frame(height: .infinity)
+                Spacer()
             } else {
                 List {
                     if viewModel.error == nil {
