@@ -33,7 +33,7 @@ struct SignInWithAppleView: View {
             }
 
             // Authenticate with Clerk
-            let authResult = try await SignIn.authenticateWithIdToken(provider: .apple, idToken: idToken)
+              _ = try await SignIn.authenticateWithIdToken(provider: .apple, idToken: idToken)
           }
         }
       }
