@@ -33,6 +33,7 @@ struct StationSearchView: View {
                     handleStationClick(station, context: modelContext)
                 } label: {
                     SearchItemView(station: station)
+                        .buttonStyle(PlainButtonStyle())
                 }
             }
             .navigationTitle("Search")

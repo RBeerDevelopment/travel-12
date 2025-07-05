@@ -6,23 +6,57 @@
 //
 import Foundation
 
+struct StationSearchItemLine: Codable, Identifiable, Hashable {
+    let id: String
+    let name: String
+    let color: String
+    let product: String
+    
+    init(name: String, color: String, product: String) {
+        self.id = name
+        self.name = name
+        self.color = color
+        self.product = product
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(String.self, forKey: .name)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.color = try container.decode(String.self, forKey: .color)
+        self.product = try container.decode(String.self, forKey: .product)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(color, forKey: .color)
+        try container.encode(product, forKey: .product)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case name, color, product
+    }
+    
+}
+
 class StationSearchItem: Codable, Identifiable, Hashable, ObservableObject {
     let id: String
     let name: String
-    let products: [String]
+    let lines: [StationSearchItemLine]
     let location: Location
     @Published var distanceToUser: Double?
     @Published var angle: Double?
     
-    init(id: String, name: String, products: [String], location: Location) {
+    init(id: String, name: String, lines: [StationSearchItemLine], location: Location) {
         self.id = id
         self.name = name
-        self.products = products
+        self.lines = lines
         self.location = location
     }
     
     convenience init(snapshot: StationSnapshot) {
-        self.init(id: snapshot.id, name: snapshot.name, products: snapshot.products, location: snapshot.location)
+        self.init(id: snapshot.id, name: snapshot.name, lines: snapshot.lines, location: snapshot.location)
     }
     
     func hash(into hasher: inout Hasher) {
@@ -34,14 +68,14 @@ class StationSearchItem: Codable, Identifiable, Hashable, ObservableObject {
     }
     
     enum CodingKeys: String, CodingKey {
-        case id, name, products, location
+        case id, name, lines, location
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
-        products = try container.decode([String].self, forKey: .products)
+        lines = try container.decode([StationSearchItemLine].self, forKey: .lines)
         location = try container.decode(Location.self, forKey: .location)
         // `distanceToUser` and `angle` are not decoded because they're set dynamically
     }
@@ -50,24 +84,14 @@ class StationSearchItem: Codable, Identifiable, Hashable, ObservableObject {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
-        try container.encode(products, forKey: .products)
+        try container.encode(lines, forKey: .lines)
         try container.encode(location, forKey: .location)
         // `distanceToUser` and `angle` are not encoded because they're set dynamically
     }
 }
 
-enum StationProductType: String, CaseIterable, Identifiable {
-    case suburban
-    case subway
-    case tram
-    case bus
-    case regional
-    
-    var id: String { rawValue }
-}
-
-
 let demoStations = [
-    StationSearchItem(id: "1023838", name: "U Scharnweberstraße", products: ["tram"], location: Location(id: "123", latitude: 52.475465, longitude: 13.365575)),
-    StationSearchItem(id: "222", name: "Frankfurter Allee", products: ["subway"], location: Location(id: "123", latitude: 52.475465, longitude: 13.365575))
+    StationSearchItem(id: "1023838", name: "U Scharnweberstraße", lines: [StationSearchItemLine(name: "U5", color: "#ff0011", product: "subway")], location: Location(id: "123", latitude: 52.475465, longitude: 13.365575)),
+    StationSearchItem(id: "222", name: "Frankfurter Allee", lines: [], location: Location(id: "123", latitude: 52.475465, longitude: 13.365575))
 ]
+

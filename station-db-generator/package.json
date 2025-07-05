@@ -14,10 +14,10 @@
     "drizzle-orm": "^0.36.4",
     "normalize-vbb-station-name-for-search": "^1.0.1",
     "vbb-line-colors": "^1.0.5",
-    "vbb-lines-at": "^5.14.0",
+    "vbb-lines-at": "https://github.com/derhuerst/vbb-lines-at",
     "vbb-stations": "^8.22.0"
   },
   "scripts": {
-    "update-db": "rm -f ./test.db && bun drizzle-kit push --force && bun run index.ts"
+    "update-db": "rm -f ./stations.sqlite && bun drizzle-kit push --force && bun run index.ts"
   }
 }

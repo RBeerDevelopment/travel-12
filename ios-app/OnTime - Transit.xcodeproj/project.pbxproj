@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32019C6D2E11C987009405A0 /* SearchItemLineGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */; };
 		326115932DC24F2400F32297 /* TripToolbarFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115922DC24F1D00F32297 /* TripToolbarFavoriteButton.swift */; };
 		3261159A2DC4023100F32297 /* TabWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115992DC4023100F32297 /* TabWrapperView.swift */; };
 		3261159D2DC402C600F32297 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3261159C2DC402C600F32297 /* NavView.swift */; };
@@ -71,7 +72,7 @@
 		32DBDCEE2C2DE92300212F6B /* StationSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCED2C2DE91700212F6B /* StationSearchItem.swift */; };
 		32DBDCF02C2DEA1800212F6B /* StationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCEF2C2DEA0E00212F6B /* StationSearchViewModel.swift */; };
 		32DBDCF52C2E7A8A00212F6B /* SearchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF42C2E7A8A00212F6B /* SearchItemView.swift */; };
-		32DBDCF72C2E7B9500212F6B /* ProductIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF62C2E7B9500212F6B /* ProductIcon.swift */; };
+		32DBDCF72C2E7B9500212F6B /* LineIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF62C2E7B9500212F6B /* LineIcon.swift */; };
 		32DBDCF92C2E8A0100212F6B /* StationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF82C2E89FB00212F6B /* StationSearchView.swift */; };
 		32DBDCFD2C2E906F00212F6B /* DeparturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCFC2C2E906F00212F6B /* DeparturesView.swift */; };
 		32DBDD012C2E96AD00212F6B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD002C2E96AA00212F6B /* LocationManager.swift */; };
@@ -93,6 +94,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemLineGrid.swift; sourceTree = "<group>"; };
 		325ECC5C2CDD36DC00A8E392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		326115922DC24F1D00F32297 /* TripToolbarFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripToolbarFavoriteButton.swift; sourceTree = "<group>"; };
 		326115992DC4023100F32297 /* TabWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabWrapperView.swift; sourceTree = "<group>"; };
@@ -158,7 +160,7 @@
 		32DBDCED2C2DE91700212F6B /* StationSearchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchItem.swift; sourceTree = "<group>"; };
 		32DBDCEF2C2DEA0E00212F6B /* StationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchViewModel.swift; sourceTree = "<group>"; };
 		32DBDCF42C2E7A8A00212F6B /* SearchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemView.swift; sourceTree = "<group>"; };
-		32DBDCF62C2E7B9500212F6B /* ProductIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIcon.swift; sourceTree = "<group>"; };
+		32DBDCF62C2E7B9500212F6B /* LineIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineIcon.swift; sourceTree = "<group>"; };
 		32DBDCF82C2E89FB00212F6B /* StationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchView.swift; sourceTree = "<group>"; };
 		32DBDCFC2C2E906F00212F6B /* DeparturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesView.swift; sourceTree = "<group>"; };
 		32DBDD002C2E96AA00212F6B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 				32DBDCF82C2E89FB00212F6B /* StationSearchView.swift */,
 				32DBDCF42C2E7A8A00212F6B /* SearchItemView.swift */,
 				326115C02DD0DDB400F32297 /* NearbyStationListView.swift */,
+				32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -469,7 +472,7 @@
 				327DE4CD2CE16DE200CF0D04 /* Hash.swift */,
 				327DE4CB2CE166A100CF0D04 /* KeychainHelper.swift */,
 				32DBDD002C2E96AA00212F6B /* LocationManager.swift */,
-				32DBDCF62C2E7B9500212F6B /* ProductIcon.swift */,
+				32DBDCF62C2E7B9500212F6B /* LineIcon.swift */,
 				3285867B2DB3D6F700A86FD7 /* DepartureArrayFns.swift */,
 			);
 			path = utils;
@@ -639,6 +642,7 @@
 				32A393252D5757E300A0093F /* DepartureItem.swift in Sources */,
 				32B36D162D573F3F00102BE8 /* FavoritesManager.swift in Sources */,
 				32A96E6D2D3D6F2200F3C081 /* ApiClient.swift in Sources */,
+				32019C6D2E11C987009405A0 /* SearchItemLineGrid.swift in Sources */,
 				327DE4C02CE1416D00CF0D04 /* ProfileView.swift in Sources */,
 				32BADEAB2C3A7A1B00E53BA6 /* DepartureRow.swift in Sources */,
 				32DBDCD92C2DE74900212F6B /* OnTimeApp.swift in Sources */,
@@ -649,7 +653,7 @@
 				32B36D142D573DC000102BE8 /* FavoriteTrip.swift in Sources */,
 				326115B12DCF93EA00F32297 /* RecentSearchStation.swift in Sources */,
 				326115C12DD0DDB400F32297 /* NearbyStationListView.swift in Sources */,
-				32DBDCF72C2E7B9500212F6B /* ProductIcon.swift in Sources */,
+				32DBDCF72C2E7B9500212F6B /* LineIcon.swift in Sources */,
 				32B36D062D5556D100102BE8 /* StopoverListView.swift in Sources */,
 				32B372EF2CE34AB500CE684E /* AngleHelper.swift in Sources */,
 				32A393272D5E4F2600A0093F /* FavoriteDeparturesSection.swift in Sources */,

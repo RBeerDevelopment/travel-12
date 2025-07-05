@@ -36,6 +36,7 @@ const stationsToInsert = allStations.map((station) => ({
   weight: station.weight,
 }));
 
+console.dir(stationsToInsert.at(0));
 console.log(stationsToInsert.length, "stations to insert");
 
 // Insert stations in batches
@@ -52,7 +53,6 @@ for (
   );
   const batch = stationsToInsert.slice(index, endIndex);
   await db.insert(stations).values(batch);
-  // console.log(`Inserted ${index} - ${endIndex} stations`);
 }
 
 // Insert lines and line-station relations
@@ -83,7 +83,7 @@ const stationLineEntries = Object.entries(linesAt)
   .map(([stationId, lines]) => {
     return (lines as Line[]).map((line) => {
       return {
-        stationId,
+        stationId: stationId,
         lineId: line.id,
       };
     });
@@ -100,21 +100,22 @@ for (
     stationLineEntries.length - 1
   );
   const batch = stationLineEntries.slice(index, endIndex);
-  await db
-    .insert(stationToLines)
-    .values(batch)
-    .catch((err) => {
-      console.error(err);
-      console.log(batch);
-    });
-  console.log(`Inserted ${index} - ${endIndex} station-line relations`);
+  console.log(batch);
+  await db.insert(stationToLines).values(batch);
+  // .catch((err) => {
+  //   console.error("ERROR:", err);
+  // });
+  // console.log(`Inserted ${index} - ${endIndex} station-line relations`);
 }
+await db.run(
+  sql`CREATE VIRTUAL TABLE stations_fts USING fts5(normalized_name, tokenize="trigram");`
+);
 
-await db.run(sql`
-  CREATE VIRTUAL TABLE stations_fts USING fts5(normalized_name, tokenize="trigram");
-  INSERT INTO stations_fts(normalized_name) SELECT normalized_name FROM stations;
-  CREATE INDEX idx_stl_station_id ON station_to_lines (station_id);
-  CREATE INDEX idx_stl_line_id ON station_to_lines (line_id);
-`);
-
+await db.run(
+  sql`INSERT INTO stations_fts(normalized_name) SELECT normalized_name FROM stations;`
+);
+await db.run(
+  sql`CREATE INDEX idx_stl_station_id ON station_to_lines (station_id);`
+);
+await db.run(sql`CREATE INDEX idx_stl_line_id ON station_to_lines (line_id);`);
 console.log("Done");

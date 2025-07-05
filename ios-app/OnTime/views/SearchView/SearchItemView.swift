@@ -12,7 +12,6 @@ import SwiftData
 struct SearchItemView: View {
     
     @ObservedObject var station: StationSearchItem
-    
     let formattedDistance: String?
     
     init(station: StationSearchItem) {
@@ -25,13 +24,7 @@ struct SearchItemView: View {
                 VStack(alignment: .leading) {
                     Text(station.name).font(.headline)
                         .foregroundStyle(.primary)
-                    
-                    HStack {
-                        ForEach(station.products, id: \.self) { productType in
-                            ProductIcon(productType: StationProductType(rawValue: productType) ?? .bus)
-                            
-                        }
-                    }
+                    SearchItemLineGrid(lines: station.lines)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 if let formattedDistance = formattedDistance {

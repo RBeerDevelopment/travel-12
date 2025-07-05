@@ -31,7 +31,7 @@ export const lines = sqliteTable("lines", {
 
 export const db = drizzle({
   connection: {
-    url: "file:test.db",
+    url: "file:stations.sqlite",
   },
-  logger: true,
+  // logger: true,
 });
