@@ -139,7 +139,7 @@ func queryStationInDB(query: String) -> [StationSearchItem] {
             let linesJsonString = try row.getString(4)
             let linesData = linesJsonString.data(using: .utf8) ?? Data()
             let lines = try! JSONDecoder().decode([StationSearchItemLine].self, from: linesData)
-            lines.forEach { line in print(line.name) }
+
             stations.append(StationSearchItem(id: try row.getString(0), name: try row.getString(1), lines: lines, location: Location(id: try row.getString(0), latitude: try row.getDouble(2), longitude: try row.getDouble(3))))
         }
     } catch {

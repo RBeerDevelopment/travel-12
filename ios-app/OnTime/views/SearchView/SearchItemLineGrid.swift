@@ -21,15 +21,15 @@ func createColRange(_ rowIndex: Int) -> Range<Int> {
 }
 
 struct SearchItemLineGrid: View {
-    let groupedAndSortedLines: [[StationSearchItemLine]]
+    let groupedAndSortedLines: [String: [StationSearchItemLine]]
     
     init(lines: [StationSearchItemLine]) {
         let groupedLines = Dictionary(grouping: lines, by: { $0.product })
         
-        var groupedAndSortedLines: [[StationSearchItemLine]] = []
+        var groupedAndSortedLines: [String: [StationSearchItemLine]] = [:]
         
         groupedLines.values.forEach { linesForProduct in
-            groupedAndSortedLines.append(linesForProduct.sorted { $0.name < $1.name })
+            groupedAndSortedLines[linesForProduct.first!.product] = Array(linesForProduct.sorted { $0.name < $1.name })
         }
         
         self.groupedAndSortedLines = groupedAndSortedLines
@@ -37,10 +37,10 @@ struct SearchItemLineGrid: View {
     
     var body: some View {
         Grid(horizontalSpacing: 4, verticalSpacing: 4) {
-            ForEach(0..<groupedAndSortedLines.count) { rowIndex in
+            ForEach(groupedAndSortedLines.sorted(by: { $0.key < $1.key }), id: \.0) { product, linesForProduct in
                 GridRow {
-                    ForEach(0..<groupedAndSortedLines[rowIndex].count) { columnIndex in
-                        LineIcon(line: groupedAndSortedLines[rowIndex][columnIndex])
+                    ForEach(linesForProduct) { line in
+                        LineIcon(line: line)
                     }
                 }
             }
