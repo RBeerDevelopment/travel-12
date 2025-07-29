@@ -6,11 +6,9 @@
 //
 
 import Foundation
-import Clerk
 
 actor ApiClient {
     static let shared = ApiClient()
-    private let clerk = Clerk.shared
     private let session = URLSession.shared
     private var cache: [String: (data: Any, timestamp: Date)] = [:]
     
@@ -151,62 +149,6 @@ actor ApiClient {
         cache[endpoint] = (decoded, Date())
         return decoded
     }
-    
-    func uploadFavoriteTrip(trip: FavoriteTrip) async throws -> Bool {
-        let endpoint = URL(string: "https://t12-api.vercel.app/api/favorite-trips")!
-        if let userId = await clerk.user?.id {
-            let body = [
-                "id": trip.id,
-                "userId": userId,
-                "lineId": trip.lineId,
-                "stationId": trip.stationId,
-                "stationName": trip.stationName,
-                "destinationId": trip.destinationId
-            ]
-            
-            var request = URLRequest(url: endpoint)
-            request.httpMethod = "POST"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-            do {
-                request.httpBody = try JSONEncoder().encode(body)
-                let (_, response) = try await session.data(for: request)
-                guard let httpResponse = response as? HTTPURLResponse,
-                    (200...299).contains(httpResponse.statusCode) else {
-                    throw URLError(.badServerResponse)
-                }
-                return true
-            } catch {
-                print("error uploading favorite trip")
-                return false
-            }
-            
-            
-        }
-        return false
-    }
-    
-    func deleteFavoriteTrip(_ tripId: String) async throws -> Bool {
-        let endpoint = URL(string: "https://t12-api.vercel.app/api/favorite-trips/\(tripId)")!
-        if let userId = await clerk.user?.id {
-            var request = URLRequest(url: endpoint)
-            request.httpMethod = "DELETE"
-
-            do {
-                let (_, response) = try await session.data(for: request)
-                guard let httpResponse = response as? HTTPURLResponse,
-                    (200...299).contains(httpResponse.statusCode) else {
-                    throw URLError(.badServerResponse)
-                }
-                return true
-            } catch {
-                print("error uploading favorite trip")
-                return false
-            }
-            
-            
-        }
-        return false
-    }
 }
 

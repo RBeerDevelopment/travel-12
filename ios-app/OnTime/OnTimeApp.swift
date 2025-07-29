@@ -7,14 +7,10 @@
 
 import SwiftUI
 import SwiftData
-import Clerk
 import Toasts
 
 @main
 struct OnTimeApp: App {
-    
-    @State private var clerk = Clerk.shared
-    
     @State private var modelContainer: ModelContainer
     
     init() {
@@ -25,11 +21,6 @@ struct OnTimeApp: App {
     var body: some Scene {
         WindowGroup {
             AppView()
-                .environment(clerk)
-                .task {
-                    clerk.configure(publishableKey: "pk_test_YXNzdXJlZC13cmVuLTcxLmNsZXJrLmFjY291bnRzLmRldiQ")
-                    try? await clerk.load()
-                }
                 .installToast(position: .bottom)
         }
         
@@ -40,17 +31,8 @@ struct OnTimeApp: App {
 
 struct AppView: View {
     @Environment(\.modelContext) private var modelContext
-    @Environment(Clerk.self) private var clerk
     
     var body: some View {
-        ZStack {
-            if clerk.isLoaded == false {
-                LargeLoadingIndicator()
-            } else if clerk.user == nil {
-                SignInOrSignUpView()
-            } else {
-                TabWrapperView(modelContext: modelContext)
-            }
-        }
+        TabWrapperView(modelContext: modelContext)
     }
 }
