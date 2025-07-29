@@ -17,7 +17,7 @@ struct LineIcon: View {
 
     var body: some View {
         Text("\(line.name)")
-            .frame(minWidth: 24)
+            .frame(minWidth: 28)
             .font(.caption)
             .padding(.horizontal, 4)
             .padding(.vertical, 2)

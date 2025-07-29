@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		003B06DF2E394C9F0031862E /* groupAndSortLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003B06DE2E394C970031862E /* groupAndSortLines.swift */; };
 		32019C6D2E11C987009405A0 /* SearchItemLineGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */; };
 		326115932DC24F2400F32297 /* TripToolbarFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115922DC24F1D00F32297 /* TripToolbarFavoriteButton.swift */; };
 		3261159A2DC4023100F32297 /* TabWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115992DC4023100F32297 /* TabWrapperView.swift */; };
@@ -88,6 +89,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		003B06DE2E394C970031862E /* groupAndSortLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupAndSortLines.swift; sourceTree = "<group>"; };
 		32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemLineGrid.swift; sourceTree = "<group>"; };
 		325ECC5C2CDD36DC00A8E392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		326115922DC24F1D00F32297 /* TripToolbarFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripToolbarFavoriteButton.swift; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 		32DBDCFF2C2E96A500212F6B /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				003B06DE2E394C970031862E /* groupAndSortLines.swift */,
 				326115D12DDCB38100F32297 /* ShowFavoriteToast.swift */,
 				329831732DB3BD3A00436E15 /* Date+Extensions.swift */,
 				32B372EE2CE34AB000CE684E /* AngleHelper.swift */,
@@ -583,6 +586,7 @@
 				3261159D2DC402C600F32297 /* NavView.swift in Sources */,
 				32A3932D2D62577B00A0093F /* NanoIdGenerator.swift in Sources */,
 				326115D92DDCE9C100F32297 /* DemoRemarks.swift in Sources */,
+				003B06DF2E394C9F0031862E /* groupAndSortLines.swift in Sources */,
 				3261159A2DC4023100F32297 /* TabWrapperView.swift in Sources */,
 				32BADE9F2C3134BB00E53BA6 /* Extension.swift in Sources */,
 				32B36D0E2D566F9D00102BE8 /* TripMap.swift in Sources */,

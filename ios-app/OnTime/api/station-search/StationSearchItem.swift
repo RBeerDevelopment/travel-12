@@ -91,7 +91,25 @@ class StationSearchItem: Codable, Identifiable, Hashable, ObservableObject {
 }
 
 let demoStations = [
-    StationSearchItem(id: "1023838", name: "U Scharnweberstraße", lines: [StationSearchItemLine(name: "U5", color: "#ff0011", product: "subway")], location: Location(id: "123", latitude: 52.475465, longitude: 13.365575)),
+    StationSearchItem(id: "1023838", name: "U Scharnweberstraße", lines: [
+        StationSearchItemLine(name: "U1", color: "#ff0011", product: "subway"),
+        StationSearchItemLine(name: "U2", color: "#ff0011", product: "subway"),
+        StationSearchItemLine(name: "U3", color: "#ff0011", product: "subway"),
+        StationSearchItemLine(name: "U5", color: "#ff0011", product: "subway"),
+        StationSearchItemLine(name: "U7", color: "#ff0011", product: "subway"),
+        StationSearchItemLine(name: "U9", color: "#ff0011", product: "subway"),
+        StationSearchItemLine(name: "RB14", color: "#ff0011", product: "regional"),
+        StationSearchItemLine(name: "RB23", color: "#ff0011", product: "regional"),
+        StationSearchItemLine(name: "RB24", color: "#ff0011", product: "regional"),
+        StationSearchItemLine(name: "RE1", color: "#ff0011", product: "regional"),
+        StationSearchItemLine(name: "RE2", color: "#ff0011", product: "regional"),
+        StationSearchItemLine(name: "RE3", color: "#ff0011", product: "regional"),
+        StationSearchItemLine(name: "RE4", color: "#ff0011", product: "regional"),
+        StationSearchItemLine(name: "RE5", color: "#ff0011", product: "regional"),
+        StationSearchItemLine(name: "RE7", color: "#ff0011", product: "regional"),
+        StationSearchItemLine(name: "RE8", color: "#ff0011", product: "regional"),
+        StationSearchItemLine(name: "RE9", color: "#ff0011", product: "regional"),
+        ], location: Location(id: "123", latitude: 52.475465, longitude: 13.365575)),
     StationSearchItem(id: "222", name: "Frankfurter Allee", lines: [], location: Location(id: "123", latitude: 52.475465, longitude: 13.365575))
 ]
 

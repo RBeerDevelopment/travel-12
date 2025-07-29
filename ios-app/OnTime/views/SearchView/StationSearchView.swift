@@ -37,12 +37,12 @@ struct StationSearchView: View {
                 }
             }
             .navigationTitle("Search")
-            .addToastSafeAreaObserver()
             .navigationDestination(isPresented: $isShowingDepartures) {
                 if let station = selectedStation {
                     DeparturesView(stationId: station.id.components(separatedBy: ":")[2], stationName: station.name)
                 }
             }
+            .addToastSafeAreaObserver()
         }
     }
 }
