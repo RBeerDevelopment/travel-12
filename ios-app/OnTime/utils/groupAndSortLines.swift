@@ -7,27 +7,26 @@
 
 import Foundation
 
-let MAX_CHARACTER_PER_LINE = 48
+let MAX_CHARACTER_PER_LINE = 42
 
-func splitIntoChunks<T>(array: [T], chunkCount x: Int) -> [[T]] {
-    guard x > 0 else { return [] }
+func splitIntoChunks<T>(array: [T], chunkCount: Int) -> [[T]] {
+    guard chunkCount > 0 else { return [] }
 
     let totalCount = array.count
-    let baseChunkSize = totalCount / x
-    let remainder = totalCount % x
+    let baseChunkSize = totalCount / chunkCount
 
     // If the total count is less than x, each element goes into its own chunk until done
-    if totalCount <= x {
+    if totalCount <= chunkCount {
         return array.map { [$0] }
     }
 
     var result: [[T]] = []
     var startIndex = 0
 
-    for i in 0..<x {
+    for i in 0..<chunkCount {
         // Give an extra item to first (x - 1) chunks, if there's a remainder
         let endIndex: Int
-        if i < x - 1 {
+        if i < chunkCount - 1 {
             endIndex = startIndex + baseChunkSize
         } else {
             endIndex = array.count // Last chunk takes the rest
