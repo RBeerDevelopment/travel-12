@@ -1,0 +1,23 @@
+{
+  "name": "station-inserter",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "drizzle-kit": "^0.28.1",
+    "drizzle-orm": "^0.36.4",
+    "normalize-vbb-station-name-for-search": "^1.0.1",
+    "vbb-line-colors": "^1.0.5",
+    "vbb-lines-at": "https://github.com/derhuerst/vbb-lines-at",
+    "vbb-stations": "^8.22.0"
+  },
+  "scripts": {
+    "update-db": "rm -f ./stations.sqlite && bun drizzle-kit push --force && bun run index.ts"
+  }
+}

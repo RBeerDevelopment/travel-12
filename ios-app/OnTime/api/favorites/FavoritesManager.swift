@@ -62,10 +62,6 @@ final class FavoritesManager {
             let favorite = FavoriteTrip(lineId: lineId, stationId: stationId, destinationId: destinationId, stationName: stationName)
             modelContext.insert(favorite)
             try modelContext.save()
-            
-            Task {
-                try await uploadToServer(favorite)
-            }
             return true
         } catch {
             dump(error)
@@ -85,22 +81,10 @@ final class FavoritesManager {
             
             modelContext.delete(favorite)
             try modelContext.save()
-            
-            Task {
-                try await deleteFromServer(favorite.id)
-            }
             return true
         } catch {
             dump(error)
             return false
         }
-    }
-    
-    private func uploadToServer(_ favorite: FavoriteTrip) async throws {
-        try await apiClient.uploadFavoriteTrip(trip: favorite)
-    }
-    
-    private func deleteFromServer(_ id: String) async throws {
-        try await apiClient.deleteFavoriteTrip(id)
     }
 }

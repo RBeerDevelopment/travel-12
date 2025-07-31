@@ -11,7 +11,7 @@ import SwiftData
 struct StationSnapshot: Codable {
     let id: String
     let name: String
-    let products: [String]
+    let lines: [StationSearchItemLine]
     let location: Location
 }
 
@@ -28,7 +28,7 @@ class RecentSearchStation: Identifiable {
             self.stationSnapshot = StationSnapshot(
                 id: item.id,
                 name: item.name,
-                products: item.products,
+                lines: item.lines,
                 location: item.location
             )
             self.lastSearched = lastSearched

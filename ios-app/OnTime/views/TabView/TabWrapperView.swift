@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct TabWrapperView: View {
-
+    
     @StateObject private var locationManager: LocationManager
     @StateObject private var stationViewModel: StationViewModel
     
@@ -21,19 +21,17 @@ struct TabWrapperView: View {
     
     var body: some View {
         TabView {
-            StationSearchView()
-                .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
-                }
-            FavoritesView()
-                .tabItem {
-                    Label("Favorites", systemImage: "star")
-                }
-            NavView()
-                .tabItem {
-                    Label("Navigation", systemImage: "arrow.trianglehead.turn.up.right.circle")
-                }
+            Tab("Favorites", systemImage: "star") {
+                FavoritesView()
+            }
+            Tab("Navigation", systemImage: "arrow.trianglehead.turn.up.right.circle") {
+                NavView()
+            }
+            Tab(role: .search) {
+                StationSearchView()
+            }
         }
+        .searchable(text: $stationViewModel.searchQuery)
         .onAppear {
             locationManager.startUpdatingLocation()
         }

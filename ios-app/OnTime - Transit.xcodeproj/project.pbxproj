@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		003B06DF2E394C9F0031862E /* groupAndSortLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003B06DE2E394C970031862E /* groupAndSortLines.swift */; };
+		003B06E32E3AB2850031862E /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 003B06E22E3AB2850031862E /* AppIcon.icon */; };
+		32019C6D2E11C987009405A0 /* SearchItemLineGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */; };
 		326115932DC24F2400F32297 /* TripToolbarFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115922DC24F1D00F32297 /* TripToolbarFavoriteButton.swift */; };
 		3261159A2DC4023100F32297 /* TabWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115992DC4023100F32297 /* TabWrapperView.swift */; };
 		3261159D2DC402C600F32297 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3261159C2DC402C600F32297 /* NavView.swift */; };
@@ -23,10 +26,6 @@
 		326115DB2DDDECB600F32297 /* TripCardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115DA2DDDECB600F32297 /* TripCardModifier.swift */; };
 		326B0E522CD92C5800794F43 /* Libsql in Frameworks */ = {isa = PBXBuildFile; productRef = 326B0E512CD92C5800794F43 /* Libsql */; };
 		326B0E542CD92C7500794F43 /* DBHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326B0E532CD92C7000794F43 /* DBHandler.swift */; };
-		326CF26D2D386D8B001CBCA8 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326CF26C2D386D87001CBCA8 /* SignInView.swift */; };
-		326CF26F2D386D91001CBCA8 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326CF26E2D386D8E001CBCA8 /* SignUpView.swift */; };
-		326CF2712D386DB8001CBCA8 /* SignInOrSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326CF2702D386DB3001CBCA8 /* SignInOrSignUpView.swift */; };
-		327DE4C02CE1416D00CF0D04 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327DE4BF2CE1416A00CF0D04 /* ProfileView.swift */; };
 		327DE4C42CE14D2400CF0D04 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327DE4C32CE14D1E00CF0D04 /* LoadingIndicator.swift */; };
 		327DE4CC2CE166A500CF0D04 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327DE4CB2CE166A100CF0D04 /* KeychainHelper.swift */; };
 		327DE4CE2CE16DE400CF0D04 /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327DE4CD2CE16DE200CF0D04 /* Hash.swift */; };
@@ -41,7 +40,6 @@
 		32A96E6D2D3D6F2200F3C081 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A96E6C2D3D6F1D00F3C081 /* ApiClient.swift */; };
 		32A96E6F2D3D70E800F3C081 /* LineIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A96E6E2D3D70E300F3C081 /* LineIndicator.swift */; };
 		32A96E712D3D710600F3C081 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A96E702D3D710000F3C081 /* ErrorView.swift */; };
-		32AFB4022D3AA35300E337F4 /* SignInWithAppleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFB4012D3AA35300E337F4 /* SignInWithAppleView.swift */; };
 		32B36CF52D5550FD00102BE8 /* TripResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B36CF42D5550FB00102BE8 /* TripResponse.swift */; };
 		32B36CF82D5552CE00102BE8 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B36CF72D5552CA00102BE8 /* Location.swift */; };
 		32B36CFC2D5554BA00102BE8 /* TripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B36CFB2D5554B600102BE8 /* TripViewModel.swift */; };
@@ -62,7 +60,6 @@
 		32C9603D2CF10240006BAC4E /* CleanSpecialCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C9603C2CF10233006BAC4E /* CleanSpecialCharacters.swift */; };
 		32C9604A2CF37579006BAC4E /* GlobalTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C960492CF37576006BAC4E /* GlobalTimer.swift */; };
 		32C9604F2CF37A27006BAC4E /* CombineApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C9604E2CF37A1B006BAC4E /* CombineApiHelper.swift */; };
-		32D99B232DBBF8D0002894D4 /* Clerk in Frameworks */ = {isa = PBXBuildFile; productRef = 32D99B222DBBF8D0002894D4 /* Clerk */; };
 		32DBDCD92C2DE74900212F6B /* OnTimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCD82C2DE74900212F6B /* OnTimeApp.swift */; };
 		32DBDCDB2C2DE74900212F6B /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCDA2C2DE74900212F6B /* FavoritesView.swift */; };
 		32DBDCDF2C2DE74A00212F6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32DBDCDE2C2DE74A00212F6B /* Assets.xcassets */; };
@@ -71,7 +68,7 @@
 		32DBDCEE2C2DE92300212F6B /* StationSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCED2C2DE91700212F6B /* StationSearchItem.swift */; };
 		32DBDCF02C2DEA1800212F6B /* StationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCEF2C2DEA0E00212F6B /* StationSearchViewModel.swift */; };
 		32DBDCF52C2E7A8A00212F6B /* SearchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF42C2E7A8A00212F6B /* SearchItemView.swift */; };
-		32DBDCF72C2E7B9500212F6B /* ProductIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF62C2E7B9500212F6B /* ProductIcon.swift */; };
+		32DBDCF72C2E7B9500212F6B /* LineIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF62C2E7B9500212F6B /* LineIcon.swift */; };
 		32DBDCF92C2E8A0100212F6B /* StationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF82C2E89FB00212F6B /* StationSearchView.swift */; };
 		32DBDCFD2C2E906F00212F6B /* DeparturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCFC2C2E906F00212F6B /* DeparturesView.swift */; };
 		32DBDD012C2E96AD00212F6B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD002C2E96AA00212F6B /* LocationManager.swift */; };
@@ -93,6 +90,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		003B06DE2E394C970031862E /* groupAndSortLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupAndSortLines.swift; sourceTree = "<group>"; };
+		003B06E22E3AB2850031862E /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemLineGrid.swift; sourceTree = "<group>"; };
 		325ECC5C2CDD36DC00A8E392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		326115922DC24F1D00F32297 /* TripToolbarFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripToolbarFavoriteButton.swift; sourceTree = "<group>"; };
 		326115992DC4023100F32297 /* TabWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabWrapperView.swift; sourceTree = "<group>"; };
@@ -108,10 +108,6 @@
 		326115D82DDCE9BD00F32297 /* DemoRemarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoRemarks.swift; sourceTree = "<group>"; };
 		326115DA2DDDECB600F32297 /* TripCardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardModifier.swift; sourceTree = "<group>"; };
 		326B0E532CD92C7000794F43 /* DBHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHandler.swift; sourceTree = "<group>"; };
-		326CF26C2D386D87001CBCA8 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		326CF26E2D386D8E001CBCA8 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		326CF2702D386DB3001CBCA8 /* SignInOrSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInOrSignUpView.swift; sourceTree = "<group>"; };
-		327DE4BF2CE1416A00CF0D04 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		327DE4C32CE14D1E00CF0D04 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		327DE4CB2CE166A100CF0D04 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		327DE4CD2CE16DE200CF0D04 /* Hash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
@@ -127,7 +123,6 @@
 		32A96E6C2D3D6F1D00F3C081 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		32A96E6E2D3D70E300F3C081 /* LineIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineIndicator.swift; sourceTree = "<group>"; };
 		32A96E702D3D710000F3C081 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		32AFB4012D3AA35300E337F4 /* SignInWithAppleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleView.swift; sourceTree = "<group>"; };
 		32B36CF42D5550FB00102BE8 /* TripResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripResponse.swift; sourceTree = "<group>"; };
 		32B36CF72D5552CA00102BE8 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		32B36CFB2D5554B600102BE8 /* TripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModel.swift; sourceTree = "<group>"; };
@@ -158,7 +153,7 @@
 		32DBDCED2C2DE91700212F6B /* StationSearchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchItem.swift; sourceTree = "<group>"; };
 		32DBDCEF2C2DEA0E00212F6B /* StationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchViewModel.swift; sourceTree = "<group>"; };
 		32DBDCF42C2E7A8A00212F6B /* SearchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemView.swift; sourceTree = "<group>"; };
-		32DBDCF62C2E7B9500212F6B /* ProductIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIcon.swift; sourceTree = "<group>"; };
+		32DBDCF62C2E7B9500212F6B /* LineIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineIcon.swift; sourceTree = "<group>"; };
 		32DBDCF82C2E89FB00212F6B /* StationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchView.swift; sourceTree = "<group>"; };
 		32DBDCFC2C2E906F00212F6B /* DeparturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesView.swift; sourceTree = "<group>"; };
 		32DBDD002C2E96AA00212F6B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -185,7 +180,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32D99B232DBBF8D0002894D4 /* Clerk in Frameworks */,
 				326115D02DDCAE9200F32297 /* Toasts in Frameworks */,
 				326B0E522CD92C5800794F43 /* Libsql in Frameworks */,
 			);
@@ -226,17 +220,6 @@
 				326115D82DDCE9BD00F32297 /* DemoRemarks.swift */,
 			);
 			path = "dummy-data";
-			sourceTree = "<group>";
-		};
-		326CF26B2D386D7D001CBCA8 /* SignInUpView */ = {
-			isa = PBXGroup;
-			children = (
-				326CF2702D386DB3001CBCA8 /* SignInOrSignUpView.swift */,
-				326CF26E2D386D8E001CBCA8 /* SignUpView.swift */,
-				326CF26C2D386D87001CBCA8 /* SignInView.swift */,
-				32AFB4012D3AA35300E337F4 /* SignInWithAppleView.swift */,
-			);
-			path = SignInUpView;
 			sourceTree = "<group>";
 		};
 		32B36CF32D5550F500102BE8 /* trip */ = {
@@ -293,14 +276,6 @@
 			path = favorites;
 			sourceTree = "<group>";
 		};
-		32C960452CF37004006BAC4E /* ProfileView */ = {
-			isa = PBXGroup;
-			children = (
-				327DE4BF2CE1416A00CF0D04 /* ProfileView.swift */,
-			);
-			path = ProfileView;
-			sourceTree = "<group>";
-		};
 		32C960462CF37013006BAC4E /* views */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,9 +283,7 @@
 				326115982DC4022100F32297 /* TabView */,
 				32B36D0F2D573CAD00102BE8 /* common */,
 				32B36CFE2D55566D00102BE8 /* TripView */,
-				326CF26B2D386D7D001CBCA8 /* SignInUpView */,
 				32C960472CF37044006BAC4E /* FavoritesView */,
-				32C960452CF37004006BAC4E /* ProfileView */,
 				32DBDCFA2C2E905100212F6B /* SearchView */,
 				32DBDCFB2C2E906100212F6B /* DeparturesView */,
 			);
@@ -379,6 +352,7 @@
 				325ECC5C2CDD36DC00A8E392 /* Info.plist */,
 				32DBDCD82C2DE74900212F6B /* OnTimeApp.swift */,
 				32DBDCDE2C2DE74A00212F6B /* Assets.xcassets */,
+				003B06E22E3AB2850031862E /* AppIcon.icon */,
 				326115AF2DCF93BF00F32297 /* data */,
 				32DBDCE92C2DE81400212F6B /* api */,
 				32C9604B2CF37951006BAC4E /* db */,
@@ -427,6 +401,7 @@
 				32DBDCF82C2E89FB00212F6B /* StationSearchView.swift */,
 				32DBDCF42C2E7A8A00212F6B /* SearchItemView.swift */,
 				326115C02DD0DDB400F32297 /* NearbyStationListView.swift */,
+				32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -460,6 +435,7 @@
 		32DBDCFF2C2E96A500212F6B /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				003B06DE2E394C970031862E /* groupAndSortLines.swift */,
 				326115D12DDCB38100F32297 /* ShowFavoriteToast.swift */,
 				329831732DB3BD3A00436E15 /* Date+Extensions.swift */,
 				32B372EE2CE34AB000CE684E /* AngleHelper.swift */,
@@ -469,7 +445,7 @@
 				327DE4CD2CE16DE200CF0D04 /* Hash.swift */,
 				327DE4CB2CE166A100CF0D04 /* KeychainHelper.swift */,
 				32DBDD002C2E96AA00212F6B /* LocationManager.swift */,
-				32DBDCF62C2E7B9500212F6B /* ProductIcon.swift */,
+				32DBDCF62C2E7B9500212F6B /* LineIcon.swift */,
 				3285867B2DB3D6F700A86FD7 /* DepartureArrayFns.swift */,
 			);
 			path = utils;
@@ -526,7 +502,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1630;
-				LastUpgradeCheck = 1630;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					32870C9A2DBED461006C0664 = {
 						CreatedOnToolsVersion = 16.3;
@@ -548,7 +524,6 @@
 			mainGroup = 32DBDCCC2C2DE74900212F6B;
 			packageReferences = (
 				326B0E502CD92C5800794F43 /* XCRemoteSwiftPackageReference "libsql-swift" */,
-				32D99B212DBBF8D0002894D4 /* XCRemoteSwiftPackageReference "clerk-ios" */,
 				326115CE2DDCAE9200F32297 /* XCRemoteSwiftPackageReference "swiftui-toasts" */,
 			);
 			productRefGroup = 32DBDCD62C2DE74900212F6B /* Products */;
@@ -574,6 +549,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32DBDCE32C2DE74A00212F6B /* Preview Assets.xcassets in Resources */,
+				003B06E32E3AB2850031862E /* AppIcon.icon in Resources */,
 				32DBDCDF2C2DE74A00212F6B /* Assets.xcassets in Resources */,
 				328258752CE0FBE6000D6D48 /* stations.sqlite in Resources */,
 			);
@@ -613,15 +589,13 @@
 				3285867C2DB3D6F700A86FD7 /* DepartureArrayFns.swift in Sources */,
 				3261159D2DC402C600F32297 /* NavView.swift in Sources */,
 				32A3932D2D62577B00A0093F /* NanoIdGenerator.swift in Sources */,
-				326CF26D2D386D8B001CBCA8 /* SignInView.swift in Sources */,
-				326CF2712D386DB8001CBCA8 /* SignInOrSignUpView.swift in Sources */,
 				326115D92DDCE9C100F32297 /* DemoRemarks.swift in Sources */,
+				003B06DF2E394C9F0031862E /* groupAndSortLines.swift in Sources */,
 				3261159A2DC4023100F32297 /* TabWrapperView.swift in Sources */,
 				32BADE9F2C3134BB00E53BA6 /* Extension.swift in Sources */,
 				32B36D0E2D566F9D00102BE8 /* TripMap.swift in Sources */,
 				32C9604F2CF37A27006BAC4E /* CombineApiHelper.swift in Sources */,
 				32A3932B2D5E54D400A0093F /* FavoriteTripViewModel.swift in Sources */,
-				32AFB4022D3AA35300E337F4 /* SignInWithAppleView.swift in Sources */,
 				326115932DC24F2400F32297 /* TripToolbarFavoriteButton.swift in Sources */,
 				32DBDCEE2C2DE92300212F6B /* StationSearchItem.swift in Sources */,
 				32B36D022D55569C00102BE8 /* TripHeaderView.swift in Sources */,
@@ -639,7 +613,7 @@
 				32A393252D5757E300A0093F /* DepartureItem.swift in Sources */,
 				32B36D162D573F3F00102BE8 /* FavoritesManager.swift in Sources */,
 				32A96E6D2D3D6F2200F3C081 /* ApiClient.swift in Sources */,
-				327DE4C02CE1416D00CF0D04 /* ProfileView.swift in Sources */,
+				32019C6D2E11C987009405A0 /* SearchItemLineGrid.swift in Sources */,
 				32BADEAB2C3A7A1B00E53BA6 /* DepartureRow.swift in Sources */,
 				32DBDCD92C2DE74900212F6B /* OnTimeApp.swift in Sources */,
 				32DBDCF92C2E8A0100212F6B /* StationSearchView.swift in Sources */,
@@ -649,12 +623,11 @@
 				32B36D142D573DC000102BE8 /* FavoriteTrip.swift in Sources */,
 				326115B12DCF93EA00F32297 /* RecentSearchStation.swift in Sources */,
 				326115C12DD0DDB400F32297 /* NearbyStationListView.swift in Sources */,
-				32DBDCF72C2E7B9500212F6B /* ProductIcon.swift in Sources */,
+				32DBDCF72C2E7B9500212F6B /* LineIcon.swift in Sources */,
 				32B36D062D5556D100102BE8 /* StopoverListView.swift in Sources */,
 				32B372EF2CE34AB500CE684E /* AngleHelper.swift in Sources */,
 				32A393272D5E4F2600A0093F /* FavoriteDeparturesSection.swift in Sources */,
 				326115A32DC4094400F32297 /* NavSearchSheet.swift in Sources */,
-				326CF26F2D386D91001CBCA8 /* SignUpView.swift in Sources */,
 				32C9604A2CF37579006BAC4E /* GlobalTimer.swift in Sources */,
 				32B36D0C2D566F3600102BE8 /* Polyline.swift in Sources */,
 				32B36CFC2D5554BA00102BE8 /* TripViewModel.swift in Sources */,
@@ -772,6 +745,7 @@
 				MTL_FAST_MATH = YES;
 				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -829,6 +803,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				NEW_SETTING = "";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
@@ -844,8 +819,12 @@
 				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"OnTime/Preview Content\"";
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OnTime/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "OnTime - Transit";
@@ -890,8 +869,12 @@
 				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"OnTime/Preview Content\"";
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OnTime/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "OnTime - Transit";
@@ -974,14 +957,6 @@
 				minimumVersion = 0.3.0;
 			};
 		};
-		32D99B212DBBF8D0002894D4 /* XCRemoteSwiftPackageReference "clerk-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/clerk/clerk-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.55.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -994,11 +969,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 326B0E502CD92C5800794F43 /* XCRemoteSwiftPackageReference "libsql-swift" */;
 			productName = Libsql;
-		};
-		32D99B222DBBF8D0002894D4 /* Clerk */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 32D99B212DBBF8D0002894D4 /* XCRemoteSwiftPackageReference "clerk-ios" */;
-			productName = Clerk;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

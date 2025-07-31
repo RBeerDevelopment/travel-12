@@ -11,11 +11,7 @@ import SwiftData
 
 struct SearchItemView: View {
     
-    @Environment(\.modelContext) var modelContext
-    
     @ObservedObject var station: StationSearchItem
-    @State private var hasNavigated = false
-    
     let formattedDistance: String?
     
     init(station: StationSearchItem) {
@@ -24,27 +20,11 @@ struct SearchItemView: View {
     }
     
     var body: some View {
-        // weird workaround for having an additional action when navigating
-        NavigationLink(
-            destination: DeparturesView(stationId: station.id.components(separatedBy: ":")[2], stationName: station.name),
-            isActive: $hasNavigated,
-            label: { EmptyView() }
-        )
-        Button {
-            handleStationClick(station, context: modelContext)
-            hasNavigated = true
-        } label: {
             HStack {
                 VStack(alignment: .leading) {
                     Text(station.name).font(.headline)
                         .foregroundStyle(.primary)
-                    
-                    HStack {
-                        ForEach(station.products, id: \.self) { productType in
-                            ProductIcon(productType: StationProductType(rawValue: productType) ?? .bus)
-                            
-                        }
-                    }
+                    SearchItemLineGrid(lines: station.lines)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 if let formattedDistance = formattedDistance {
@@ -65,10 +45,6 @@ struct SearchItemView: View {
                     .foregroundColor(.primary)
                     .padding(.leading)
             }
-        }
-        .padding(.vertical, 8)
-        .buttonStyle(PlainButtonStyle())
-        .buttonBorderShape(.roundedRectangle)
     }
 }
 

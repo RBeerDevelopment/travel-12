@@ -13,7 +13,7 @@ let STATION_QUERY_MATCH_PART = """
 """
 
 let STATION_QUERY_NO_MATCH_PART = """
-    WHERE s.name LIKE ?
+    WHERE s.normalized_name LIKE ?
 """
 
 let STATION_QUERY_WITH_SEARCH_PLACEHOLDER = """
@@ -22,10 +22,22 @@ let STATION_QUERY_WITH_SEARCH_PLACEHOLDER = """
         s.name, 
         s.lat, 
         s.lng,
-        GROUP_CONCAT(DISTINCT l.product_id) AS products
+        (SELECT json_group_array(
+            json_object(
+                'name', line.name,
+                'color', line.color,
+                'product', line.product_id
+            )
+        )
+        FROM 
+            (
+            SELECT DISTINCT l.name, l.color, l.product_id
+                FROM station_to_lines stl2
+                INNER JOIN lines l ON stl2.line_id = l.id
+                WHERE stl2.station_id = s.id
+            ) AS line
+        )
     FROM stations s
-    INNER JOIN station_to_lines stl ON s.id = stl.station_id
-    INNER JOIN lines l ON stl.line_id = l.id
     %@
     GROUP BY s.name
     ORDER BY s.weight DESC LIMIT 10;
@@ -37,10 +49,22 @@ let NEARBY_STATION_QUERY = """
         s.name, 
         s.lat, 
         s.lng,
-        GROUP_CONCAT(DISTINCT l.product_id) AS products
-    FROM stations s 
-    INNER JOIN station_to_lines stl ON s.id = stl.station_id
-    INNER JOIN lines l ON stl.line_id = l.id
+        (SELECT json_group_array(
+            json_object(
+                'name', line.name,
+                'color', line.color,
+                'product', line.product_id
+            )
+        )
+        FROM 
+            (
+            SELECT DISTINCT l.name, l.color
+                FROM station_to_lines stl2
+                INNER JOIN lines l ON stl2.line_id = l.id
+                WHERE stl2.station_id = s.id
+            ) AS line
+        )
+    FROM stations s
     GROUP BY s.name
     ORDER BY (
             (:user_lat - lat) * (:user_lat - lat)
@@ -100,7 +124,7 @@ func queryStationInDB(query: String) -> [StationSearchItem] {
         let matchPart = cleanedQuery.count > 2 ?
             STATION_QUERY_MATCH_PART :
             STATION_QUERY_NO_MATCH_PART.replacingOccurrences(of: "?", with: "'%\(cleanedQuery)%'")
-        let statment = String(format: STATION_QUERY_WITH_SEARCH_PLACEHOLDER, matchPart)
+        let statement = String(format: STATION_QUERY_WITH_SEARCH_PLACEHOLDER, matchPart)
         
         let queryParam = cleanedQuery.count > 2 ?
             [cleanedQuery] :
@@ -108,9 +132,15 @@ func queryStationInDB(query: String) -> [StationSearchItem] {
         
         let connection = try DatabaseConnectionManager.shared.getConnection()
         
-        let rows = try connection.query(statment, queryParam)
+        print(statement, queryParam)
+        let rows = try connection.query(statement, queryParam)
+        
         for row in rows {
-            stations.append(StationSearchItem(id: try row.getString(0), name: try row.getString(1), products: try row.getString(4).components(separatedBy: ","), location: Location(id: try row.getString(0), latitude: try row.getDouble(2), longitude: try row.getDouble(3))))
+            let linesJsonString = try row.getString(4)
+            let linesData = linesJsonString.data(using: .utf8) ?? Data()
+            let lines = try! JSONDecoder().decode([StationSearchItemLine].self, from: linesData)
+
+            stations.append(StationSearchItem(id: try row.getString(0), name: try row.getString(1), lines: lines, location: Location(id: try row.getString(0), latitude: try row.getDouble(2), longitude: try row.getDouble(3))))
         }
     } catch {
         print("Error fetching stations: \(error)")
@@ -131,7 +161,10 @@ func queryNearbyStationsInDB(lat: Double, lng: Double) -> [StationSearchItem] {
         
         let rows = try connection.query(NEARBY_STATION_QUERY, queryParams)
         for row in rows {
-            stations.append(StationSearchItem(id: try row.getString(0), name: try row.getString(1), products: try row.getString(4).components(separatedBy: ","), location: Location(id: try row.getString(0), latitude: try row.getDouble(2), longitude: try row.getDouble(3))))
+            let linesJsonString = try row.getString(4)
+            let linesData = linesJsonString.data(using: .utf8) ?? Data()
+            let lines = (try? JSONDecoder().decode([StationSearchItemLine].self, from: linesData)) ?? []
+            stations.append(StationSearchItem(id: try row.getString(0), name: try row.getString(1), lines: lines, location: Location(id: try row.getString(0), latitude: try row.getDouble(2), longitude: try row.getDouble(3))))
         }
     } catch {
         print("Error fetching stations: \(error)")
@@ -139,3 +172,4 @@ func queryNearbyStationsInDB(lat: Double, lng: Double) -> [StationSearchItem] {
     
     return stations
 }
+
