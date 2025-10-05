@@ -58,7 +58,7 @@ let NEARBY_STATION_QUERY = """
         )
         FROM 
             (
-            SELECT DISTINCT l.name, l.color
+            SELECT DISTINCT l.name, l.color, l.product_id
                 FROM station_to_lines stl2
                 INNER JOIN lines l ON stl2.line_id = l.id
                 WHERE stl2.station_id = s.id

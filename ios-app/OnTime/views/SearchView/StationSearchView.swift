@@ -23,7 +23,6 @@ struct StationSearchView: View {
 //    }
     
     var body: some View {
-        
         let stationsToShow = stationViewModel.stations.isEmpty ? stationViewModel.nearbyStation : stationViewModel.stations
         NavigationStack {
             List(stationsToShow) { station in
