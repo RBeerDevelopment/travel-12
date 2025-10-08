@@ -49,20 +49,22 @@ let NEARBY_STATION_QUERY = """
         s.name, 
         s.lat, 
         s.lng,
-        (SELECT json_group_array(
-            json_object(
-                'name', line.name,
-                'color', line.color,
-                'product', line.product_id
-            )
-        )
-        FROM 
-            (
-            SELECT DISTINCT l.name, l.color, l.product_id
-                FROM station_to_lines stl2
-                INNER JOIN lines l ON stl2.line_id = l.id
-                WHERE stl2.station_id = s.id
-            ) AS line
+        (
+            SELECT 
+                json_group_array(
+                    json_object(
+                        'name', line.name,
+                        'color', line.color,
+                        'product', line.product_id
+                    )
+                )
+            FROM 
+                (
+                SELECT DISTINCT l.name, l.color, l.product_id
+                    FROM station_to_lines stl2
+                    INNER JOIN lines l ON stl2.line_id = l.id
+                    WHERE stl2.station_id = s.id
+                ) AS line
         )
     FROM stations s
     GROUP BY s.name
