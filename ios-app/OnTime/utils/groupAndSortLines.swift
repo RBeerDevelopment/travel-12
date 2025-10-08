@@ -9,6 +9,8 @@ import Foundation
 
 let MAX_CHARACTER_PER_LINE = 42
 
+var CACHE: [Int: [[StationSearchItemLine]]] = [:]
+
 func splitIntoChunks<T>(array: [T], chunkCount: Int) -> [[T]] {
     guard chunkCount > 0 else { return [] }
 
@@ -42,6 +44,12 @@ func splitIntoChunks<T>(array: [T], chunkCount: Int) -> [[T]] {
 
 
 func groupAndSortLines(_ lines: [StationSearchItemLine]) -> [[StationSearchItemLine]] {
+    
+    let hash = lines.hashValue
+    if(CACHE.keys.contains(hash)) {
+        return CACHE[hash]!
+    }
+
     let groupedLines = Dictionary(grouping: lines, by: { $0.product })
     
     var groupedAndSortedLines: [[StationSearchItemLine]] = []
@@ -69,6 +77,7 @@ func groupAndSortLines(_ lines: [StationSearchItemLine]) -> [[StationSearchItemL
         groupedAndSortedLines.append(contentsOf: splitResult)
     }
     
+    CACHE[hash] = groupedAndSortedLines
     
     return groupedAndSortedLines
 }
