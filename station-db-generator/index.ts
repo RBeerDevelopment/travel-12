@@ -29,8 +29,8 @@ console.log(allStations.length, "stations!!");
 
 const stationsToInsert = allStations.map((station) => ({
   id: station.id,
-  name: station.name,
-  normalizedName: normalize(station.name),
+  name: station.name.replace("U Mohrenstr.", "U Anton-W.-Amo-Str. (Mohrenstr.)"),
+  normalizedName: normalize(station.name.replace("U Mohrenstr.", "U Anton-W.-Amo-Str. (Mohrenstr.)")),
   lat: station.location.latitude,
   lng: station.location.longitude,
   weight: station.weight,
@@ -80,33 +80,38 @@ await db
   .onConflictDoNothing();
 
 const stationLineEntries = Object.entries(linesAt)
-  .map(([stationId, lines]) => {
-    return (lines as Line[]).map((line) => {
-      return {
+  .map(([stationId, lines]) =>
+    (lines as Line[]).map((line) => ({
         stationId: stationId,
         lineId: line.id,
-      };
-    });
-  })
+      })
+    )
+  )
   .flat();
+
+let errorCount = 0
 
 for (
   let index = 0;
   index < stationLineEntries.length;
-  index += INSERT_BATCH_SIZE
+  index += 1
 ) {
   const endIndex = Math.min(
-    index + INSERT_BATCH_SIZE,
+    index + 1,
     stationLineEntries.length - 1
   );
   const batch = stationLineEntries.slice(index, endIndex);
-  console.log(batch);
-  await db.insert(stationToLines).values(batch);
-  // .catch((err) => {
-  //   console.error("ERROR:", err);
-  // });
-  // console.log(`Inserted ${index} - ${endIndex} station-line relations`);
+  if(batch.length === 0) {
+    continue;
+  }
+  await db.insert(stationToLines).values(batch)
+    .onConflictDoNothing()
+    .catch((err) => {
+      errorCount += 1;
+    });
 }
+
+console.log(errorCount, "errors");
 await db.run(
   sql`CREATE VIRTUAL TABLE stations_fts USING fts5(normalized_name, tokenize="trigram");`
 );
