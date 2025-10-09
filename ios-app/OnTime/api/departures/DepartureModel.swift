@@ -29,7 +29,7 @@ struct DeparturesResponse: Decodable {
     let realtimeDataUpdatedAt: Int
 }
 
-struct Departure: Decodable, Identifiable {
+struct Departure: Decodable, Identifiable, Hashable {
     let tripId: String
     let when: String?
     let plannedWhen: String
@@ -41,6 +41,14 @@ struct Departure: Decodable, Identifiable {
     let remarks: [AnyRemark]?
      
     var id: String { tripId }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(tripId)
+    }
+    
+    static func == (lhs: Departure, rhs: Departure) -> Bool {
+        lhs.tripId == rhs.tripId
+    }
     
     var status: OnTimeStatus {
         if delay == nil || delay == 0 { return .onTime }
