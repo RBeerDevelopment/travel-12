@@ -11,6 +11,7 @@ struct FilterChip: View {
     let title: String
     let isSelected: Bool
     let action: () -> Void
+    let longPressAction: () -> Void
     
     var body: some View {
         Button(action: action) {
@@ -21,6 +22,10 @@ struct FilterChip: View {
                 .background(isSelected ? Color.accentColor : Color(UIColor.systemBackground))
                 .foregroundColor(isSelected ? .white : .primary)
                 .cornerRadius(16)
+                .gesture(
+                    LongPressGesture(minimumDuration: 0.3)
+                        .onEnded { _ in longPressAction() }
+                )
         }
     }
 }
