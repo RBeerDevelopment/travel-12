@@ -7,4 +7,4 @@
 
 import Foundation
 
-let API_BASE_URL = "https://vbb-rest.fly.dev/"
+let API_BASE_URL = "https://vbb-departures.robin.beer"
