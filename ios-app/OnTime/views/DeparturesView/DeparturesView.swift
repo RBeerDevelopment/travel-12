@@ -50,8 +50,8 @@ struct DeparturesView: View {
                     } else if viewModel.departures.isEmpty {
                         Text("No departures for this station.")
                     } else {
-                        ForEach(filteredDepartures) { departure in
-                            DepartureItem(departure: departure, stationId: stationId, stationName: stationName)
+                        ForEach(filteredDepartures.enumerated(), id: \.element) { idx, departure in
+                            DepartureItem(departure: departure, stationId: stationId, stationName: stationName, index: idx)
                         }
                     }
                     if viewModel.error == nil {

@@ -29,6 +29,9 @@ struct DepartureFilters: View {
                                 isSelected: selectedModes.contains(mode),
                                 action: {
                                     toggleSelection(for: mode, in: $selectedModes)
+                                },
+                                longPressAction: {
+                                    selectOnly(for: mode, in: $selectedModes)
                                 }
                             )
                         }
@@ -48,6 +51,9 @@ struct DepartureFilters: View {
                                 isSelected: selectedLines.contains(line),
                                 action: {
                                     toggleSelection(for: line, in: $selectedLines)
+                                },
+                                longPressAction: {
+                                    selectOnly(for: line, in: $selectedLines)
                                 }
                             )
                         }
@@ -90,6 +96,10 @@ struct DepartureFilters: View {
         } else {
             selection.wrappedValue.insert(item)
         }
+    }
+    
+    private func selectOnly(for item: String, in selection: Binding<Set<String>>) {
+        selection.wrappedValue = [item]
     }
 }
 

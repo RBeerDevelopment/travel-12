@@ -23,7 +23,6 @@ struct OnTimeApp: App {
             AppView()
                 .installToast(position: .bottom)
         }
-        
         .modelContainer(modelContainer)
         
     }

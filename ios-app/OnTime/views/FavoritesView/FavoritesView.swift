@@ -10,9 +10,11 @@ import SwiftUI
 struct FavoritesView: View {
 
     var body: some View {
-        FavoriteDeparturesView()
-            .navigationTitle("Favorites")
-            .addToastSafeAreaObserver()
+        NavigationStack {
+            FavoriteDeparturesView()
+                .navigationTitle("Favorites")
+                .addToastSafeAreaObserver()
+        }
     }
         
 }

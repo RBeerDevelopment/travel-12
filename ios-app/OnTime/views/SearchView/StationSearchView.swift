@@ -16,15 +16,14 @@ struct StationSearchView: View {
     @State private var selectedStation: StationSearchItem? = nil
     @State private var isShowingDepartures = false
 
-//    var recentAndNearbyStations: [StationSearchItem] {
-//        let combinedArray = stationViewModel.nearbyStation + stationViewModel.recentlySearchedStations
-//        let deduplicatedStations = Set(combinedArray).sorted(by: { ($0.distanceToUser ?? .infinity) < ($1.distanceToUser ?? .infinity) })
-//        return  deduplicatedStations
-//    }
+    var recentAndNearbyStations: [StationSearchItem] {
+        let combinedArray = stationViewModel.nearbyStation + stationViewModel.recentlySearchedStations
+        let deduplicatedStations = Set(combinedArray).sorted(by: { ($0.distanceToUser ?? .infinity) < ($1.distanceToUser ?? .infinity) })
+        return deduplicatedStations
+    }
     
     var body: some View {
-        
-        let stationsToShow = stationViewModel.stations.isEmpty ? stationViewModel.nearbyStation : stationViewModel.stations
+        let stationsToShow = stationViewModel.stations.isEmpty ? recentAndNearbyStations : stationViewModel.stations
         NavigationStack {
             List(stationsToShow) { station in
                 Button {
@@ -44,5 +43,6 @@ struct StationSearchView: View {
             }
             .addToastSafeAreaObserver()
         }
+        .searchable(text: $stationViewModel.searchQuery)
     }
 }

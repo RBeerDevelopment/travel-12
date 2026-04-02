@@ -41,8 +41,8 @@ class AddressSearchViewModel: NSObject, MKLocalSearchCompleterDelegate {
             return .init(
                 title: completion.title,
                 subTitle: completion.subtitle,
-                lng: mapItem?.placemark.coordinate.longitude ?? 0,
-                lat: mapItem?.placemark.coordinate.latitude ?? 0
+                lng: mapItem?.location.coordinate.longitude ?? 0,
+                lat: mapItem?.location.coordinate.latitude ?? 0
             )
         }
     }

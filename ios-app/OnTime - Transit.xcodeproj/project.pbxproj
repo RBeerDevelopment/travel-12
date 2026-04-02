@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		003B06DF2E394C9F0031862E /* groupAndSortLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003B06DE2E394C970031862E /* groupAndSortLines.swift */; };
-		003B06E32E3AB2850031862E /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 003B06E22E3AB2850031862E /* AppIcon.icon */; };
+		009793872E93B2BF00D7A0A4 /* OnTimeIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 009793862E93B2BF00D7A0A4 /* OnTimeIcon.icon */; };
+		009793892E9646BA00D7A0A4 /* stations.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 009793882E9646BA00D7A0A4 /* stations.sqlite */; };
 		32019C6D2E11C987009405A0 /* SearchItemLineGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */; };
 		326115932DC24F2400F32297 /* TripToolbarFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115922DC24F1D00F32297 /* TripToolbarFavoriteButton.swift */; };
 		3261159A2DC4023100F32297 /* TabWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115992DC4023100F32297 /* TabWrapperView.swift */; };
@@ -29,7 +30,6 @@
 		327DE4C42CE14D2400CF0D04 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327DE4C32CE14D1E00CF0D04 /* LoadingIndicator.swift */; };
 		327DE4CC2CE166A500CF0D04 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327DE4CB2CE166A100CF0D04 /* KeychainHelper.swift */; };
 		327DE4CE2CE16DE400CF0D04 /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327DE4CD2CE16DE200CF0D04 /* Hash.swift */; };
-		328258752CE0FBE6000D6D48 /* stations.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 328258742CE0FBE6000D6D48 /* stations.sqlite */; };
 		3285867C2DB3D6F700A86FD7 /* DepartureArrayFns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285867B2DB3D6F700A86FD7 /* DepartureArrayFns.swift */; };
 		329831742DB3BD3F00436E15 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329831732DB3BD3A00436E15 /* Date+Extensions.swift */; };
 		32A393252D5757E300A0093F /* DepartureItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A393242D5757E300A0093F /* DepartureItem.swift */; };
@@ -91,7 +91,8 @@
 
 /* Begin PBXFileReference section */
 		003B06DE2E394C970031862E /* groupAndSortLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupAndSortLines.swift; sourceTree = "<group>"; };
-		003B06E22E3AB2850031862E /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		009793862E93B2BF00D7A0A4 /* OnTimeIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = OnTimeIcon.icon; sourceTree = "<group>"; };
+		009793882E9646BA00D7A0A4 /* stations.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = stations.sqlite; sourceTree = "<group>"; };
 		32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemLineGrid.swift; sourceTree = "<group>"; };
 		325ECC5C2CDD36DC00A8E392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		326115922DC24F1D00F32297 /* TripToolbarFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripToolbarFavoriteButton.swift; sourceTree = "<group>"; };
@@ -111,7 +112,6 @@
 		327DE4C32CE14D1E00CF0D04 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		327DE4CB2CE166A100CF0D04 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		327DE4CD2CE16DE200CF0D04 /* Hash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
-		328258742CE0FBE6000D6D48 /* stations.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = stations.sqlite; sourceTree = "<group>"; };
 		3285867B2DB3D6F700A86FD7 /* DepartureArrayFns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureArrayFns.swift; sourceTree = "<group>"; };
 		32870C9B2DBED461006C0664 /* OnTime - Transit UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OnTime - Transit UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		329831732DB3BD3A00436E15 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
@@ -347,18 +347,18 @@
 		32DBDCD72C2DE74900212F6B /* OnTime */ = {
 			isa = PBXGroup;
 			children = (
-				328258742CE0FBE6000D6D48 /* stations.sqlite */,
 				32DBDCE02C2DE74A00212F6B /* OnTime.entitlements */,
 				325ECC5C2CDD36DC00A8E392 /* Info.plist */,
 				32DBDCD82C2DE74900212F6B /* OnTimeApp.swift */,
 				32DBDCDE2C2DE74A00212F6B /* Assets.xcassets */,
-				003B06E22E3AB2850031862E /* AppIcon.icon */,
 				326115AF2DCF93BF00F32297 /* data */,
 				32DBDCE92C2DE81400212F6B /* api */,
 				32C9604B2CF37951006BAC4E /* db */,
 				32DBDCE12C2DE74A00212F6B /* Preview Content */,
 				32DBDCFF2C2E96A500212F6B /* utils */,
 				32C960462CF37013006BAC4E /* views */,
+				009793862E93B2BF00D7A0A4 /* OnTimeIcon.icon */,
+				009793882E9646BA00D7A0A4 /* stations.sqlite */,
 			);
 			path = OnTime;
 			sourceTree = "<group>";
@@ -549,9 +549,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				32DBDCE32C2DE74A00212F6B /* Preview Assets.xcassets in Resources */,
-				003B06E32E3AB2850031862E /* AppIcon.icon in Resources */,
 				32DBDCDF2C2DE74A00212F6B /* Assets.xcassets in Resources */,
-				328258752CE0FBE6000D6D48 /* stations.sqlite in Resources */,
+				009793872E93B2BF00D7A0A4 /* OnTimeIcon.icon in Resources */,
+				009793892E9646BA00D7A0A4 /* stations.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -811,8 +811,9 @@
 		32DBDCE72C2DE74A00212F6B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = OnTimeIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = OnTime/OnTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -840,7 +841,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
@@ -854,15 +855,16 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 2.0;
+				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Debug;
 		};
 		32DBDCE82C2DE74A00212F6B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = OnTimeIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = OnTime/OnTime.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -890,7 +892,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
@@ -904,7 +906,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 2.0;
+				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Release;
 		};

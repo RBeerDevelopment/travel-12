@@ -31,7 +31,6 @@ struct TabWrapperView: View {
                 StationSearchView()
             }
         }
-        .searchable(text: $stationViewModel.searchQuery)
         .onAppear {
             locationManager.startUpdatingLocation()
         }
