@@ -7,7 +7,7 @@
 import Foundation
 import SwiftUI
 
-extension String: Error {}
+extension String: @retroactive Error {}
 
 extension Color {
     init(hex: String) {

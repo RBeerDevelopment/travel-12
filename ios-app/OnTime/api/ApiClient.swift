@@ -13,7 +13,7 @@ actor ApiClient {
     private var cache: [String: (data: Any, timestamp: Date)] = [:]
     
     func fetchDepartures(stationId: String, startTime: Date, duration: Int) async throws -> DeparturesResponse? {
-        var endpoint = "https://v6.vbb.transport.rest/stops/\(stationId)/departures?when=\(startTime.secondsSince1970)&duration=\(duration)&remarks=true&express=false"
+        let endpoint = "https://vbb-departures.robin.beer/stops/\(stationId)/departures?when=\(startTime.secondsSince1970)&duration=\(duration)&remarks=true&express=false"
         
         print("ENDPOINT", endpoint)
         if let cached = cache[endpoint],
@@ -40,7 +40,7 @@ actor ApiClient {
             decoded?.departures = sortedDepartures ?? []
         }
         
-        cache[endpoint] = (decoded, Date())
+        cache[endpoint] = (decoded ?? [:], Date())
         return decoded
     }
     
@@ -52,7 +52,7 @@ actor ApiClient {
                     try Task.checkCancellation()
                     
                     do {
-                        let endpoint = "https://v6.vbb.transport.rest/stops/\(request.stationId)/departures"
+                        let endpoint = "https://vbb-departures.robin.beer/stops/\(request.stationId)/departures"
                         
                         print(endpoint)
                         var urlComponents = URLComponents(string: endpoint)!
@@ -125,7 +125,7 @@ actor ApiClient {
         }
     
     func fetchTrip(tripId: String) async throws -> TripResponse? {
-        let endpoint = "https://v6.vbb.transport.rest/trips/\(tripId)?remarks=true&pretty=false&polyline=true"
+        let endpoint = "https://vbb-departures.robin.beer/trips/\(tripId)?remarks=true&pretty=false&polyline=true"
         print(endpoint)
 
         if let cached = cache[endpoint],
@@ -146,7 +146,7 @@ actor ApiClient {
             print(error)
         }
         
-        cache[endpoint] = (decoded, Date())
+        cache[endpoint] = (decoded ?? [:], Date())
         return decoded
     }
 

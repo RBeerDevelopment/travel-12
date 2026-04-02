@@ -30,7 +30,6 @@ struct DepartureItem: View {
         let isFavorite = favoriteTrips.first(where: { $0.lineId == lineId && $0.stationId == stationId && $0.destinationId == destinationId
         }) != nil
        
-        
         DepartureRow(departure: departure, stationId: stationId)
             .offset(x: bounceOffset)
             .favoriteActionSheet(lineId: lineId, stationId: stationId, destinationId: destinationId, stationName: stationName, isFavorite: isFavorite, showToast: { success in
