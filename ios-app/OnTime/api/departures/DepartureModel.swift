@@ -80,6 +80,22 @@ struct Departure: Decodable, Identifiable, Hashable {
         let date = formatter.date(from: when ?? plannedWhen)
         return date ?? Date(timeIntervalSince1970: 0)
     }
+    
+    func withUpdatedWhen(_ when: String) -> Departure {
+        Departure(
+            tripId: self.tripId,
+            when: when,
+            plannedWhen: self.plannedWhen,
+            delay: Int(Date.fromIsoString(dateStr: when)
+                .timeIntervalSince(Date.fromIsoString(dateStr: self.plannedWhen))),
+            platform: self.platform,
+            direction: self.direction,
+            line: self.line,
+            cancelled: self.cancelled,
+            remarks: self.remarks
+        )
+    }
+    
 }
 
 struct TransportLine: Decodable {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		003B06DF2E394C9F0031862E /* groupAndSortLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003B06DE2E394C970031862E /* groupAndSortLines.swift */; };
+		0076E4602F83884E00D36CD3 /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0076E45F2F83884600D36CD3 /* Departures.swift */; };
 		009793872E93B2BF00D7A0A4 /* OnTimeIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 009793862E93B2BF00D7A0A4 /* OnTimeIcon.icon */; };
 		009793892E9646BA00D7A0A4 /* stations.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 009793882E9646BA00D7A0A4 /* stations.sqlite */; };
 		32019C6D2E11C987009405A0 /* SearchItemLineGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */; };
@@ -91,6 +92,7 @@
 
 /* Begin PBXFileReference section */
 		003B06DE2E394C970031862E /* groupAndSortLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupAndSortLines.swift; sourceTree = "<group>"; };
+		0076E45F2F83884600D36CD3 /* Departures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departures.swift; sourceTree = "<group>"; };
 		009793862E93B2BF00D7A0A4 /* OnTimeIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = OnTimeIcon.icon; sourceTree = "<group>"; };
 		009793882E9646BA00D7A0A4 /* stations.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = stations.sqlite; sourceTree = "<group>"; };
 		32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemLineGrid.swift; sourceTree = "<group>"; };
@@ -188,6 +190,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0076E45E2F83881300D36CD3 /* demo-data */ = {
+			isa = PBXGroup;
+			children = (
+				0076E45F2F83884600D36CD3 /* Departures.swift */,
+			);
+			path = "demo-data";
+			sourceTree = "<group>";
+		};
 		326115982DC4022100F32297 /* TabView */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,6 +445,7 @@
 		32DBDCFF2C2E96A500212F6B /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				0076E45E2F83881300D36CD3 /* demo-data */,
 				003B06DE2E394C970031862E /* groupAndSortLines.swift */,
 				326115D12DDCB38100F32297 /* ShowFavoriteToast.swift */,
 				329831732DB3BD3A00436E15 /* Date+Extensions.swift */,
@@ -618,6 +629,7 @@
 				32DBDCD92C2DE74900212F6B /* OnTimeApp.swift in Sources */,
 				32DBDCF92C2E8A0100212F6B /* StationSearchView.swift in Sources */,
 				32B36D002D55567500102BE8 /* TripView.swift in Sources */,
+				0076E4602F83884E00D36CD3 /* Departures.swift in Sources */,
 				32FB5D512D8FF805005AA867 /* FilterChip.swift in Sources */,
 				32FB5D522D8FF805005AA867 /* DepartureFilters.swift in Sources */,
 				32B36D142D573DC000102BE8 /* FavoriteTrip.swift in Sources */,

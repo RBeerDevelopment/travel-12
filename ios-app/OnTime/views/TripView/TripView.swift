@@ -87,3 +87,20 @@ struct TripView: View {
         }
     }
 }
+
+#Preview("TripView Preview") {
+    // Provide some sample ids; these should correspond to reasonable placeholders for preview
+    let sampleTripId = "1|66860|6|86|5042026"
+    let sampleStationId = "900134511"
+    let sampleLineColor = "#1E90FF"
+
+    // Create an in-memory SwiftData container/model context for previews if needed by toolbar items
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: Schema([]), configurations: config)
+
+    return NavigationStack {
+        TripView(tripId: sampleTripId, stationId: sampleStationId, lineColor: sampleLineColor)
+            .modelContainer(container)
+    }
+}
+

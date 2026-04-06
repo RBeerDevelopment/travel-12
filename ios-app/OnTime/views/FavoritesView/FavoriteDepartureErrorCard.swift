@@ -21,9 +21,7 @@ struct FavoriteDepartureErrorCard: View {
                         Text(favorite.stationName)
                                 .font(.headline)
                                 .lineLimit(1)
-                        
                     }
-                    
                 }
             Text(isRequestError ? "Error loading departures" : "No departures found within the next hour")
                 .font(.caption)

@@ -26,7 +26,7 @@ struct LineIndicator: View {
     
     var body: some View {
         ZStack {
-            Circle()
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .fill(backgroundColor)
             
             Text(name)
@@ -34,4 +34,16 @@ struct LineIndicator: View {
                 .foregroundColor(textColor)
         }
     }
+}
+
+#Preview {
+    HStack(spacing: 8) {
+        LineIndicator(line: TransportLine(name: "S3", product: "suburban", color: LineColor(fg: "#fff", bg: "#0a3d85")))
+            .frame(width: 40, height: 40)
+        LineIndicator(line: TransportLine(name: "U6", product: "subway", color: LineColor(fg: "#fff", bg: "#7b3da0")))
+            .frame(width: 40, height: 40)
+        LineIndicator(name: "M10", backgroundColor: "#c9a30a")
+            .frame(width: 40, height: 40)
+    }
+    .padding()
 }
