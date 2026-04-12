@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		003B06DF2E394C9F0031862E /* groupAndSortLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003B06DE2E394C970031862E /* groupAndSortLines.swift */; };
+		003B06DF2E394C9F0031862E /* GroupAndSortLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003B06DE2E394C970031862E /* GroupAndSortLines.swift */; };
 		0076E4602F83884E00D36CD3 /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0076E45F2F83884600D36CD3 /* Departures.swift */; };
+		0076E47B2F83B40D00D36CD3 /* StationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0076E47A2F83B40D00D36CD3 /* StationSearchView.swift */; };
+		0076E47D2F83B46A00D36CD3 /* ActiveStationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0076E47C2F83B46500D36CD3 /* ActiveStationSearchView.swift */; };
+		0076E47F2F83B47700D36CD3 /* InactiveStationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0076E47E2F83B47100D36CD3 /* InactiveStationSearchView.swift */; };
+		0076E4812F83B8A500D36CD3 /* NearbyStationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0076E4802F83B8A500D36CD3 /* NearbyStationCard.swift */; };
+		0076E4832F83BC3A00D36CD3 /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0076E4822F83BC3600D36CD3 /* ProductType.swift */; };
+		0076E4852F83C54100D36CD3 /* getProductIconName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0076E4842F83C53800D36CD3 /* getProductIconName.swift */; };
 		009793872E93B2BF00D7A0A4 /* OnTimeIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 009793862E93B2BF00D7A0A4 /* OnTimeIcon.icon */; };
 		009793892E9646BA00D7A0A4 /* stations.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 009793882E9646BA00D7A0A4 /* stations.sqlite */; };
 		32019C6D2E11C987009405A0 /* SearchItemLineGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */; };
@@ -70,7 +76,6 @@
 		32DBDCF02C2DEA1800212F6B /* StationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCEF2C2DEA0E00212F6B /* StationSearchViewModel.swift */; };
 		32DBDCF52C2E7A8A00212F6B /* SearchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF42C2E7A8A00212F6B /* SearchItemView.swift */; };
 		32DBDCF72C2E7B9500212F6B /* LineIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF62C2E7B9500212F6B /* LineIcon.swift */; };
-		32DBDCF92C2E8A0100212F6B /* StationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF82C2E89FB00212F6B /* StationSearchView.swift */; };
 		32DBDCFD2C2E906F00212F6B /* DeparturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCFC2C2E906F00212F6B /* DeparturesView.swift */; };
 		32DBDD012C2E96AD00212F6B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD002C2E96AA00212F6B /* LocationManager.swift */; };
 		32DBDD032C30546C00212F6B /* DepartureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD022C30546700212F6B /* DepartureModel.swift */; };
@@ -91,8 +96,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		003B06DE2E394C970031862E /* groupAndSortLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupAndSortLines.swift; sourceTree = "<group>"; };
+		003B06DE2E394C970031862E /* GroupAndSortLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAndSortLines.swift; sourceTree = "<group>"; };
 		0076E45F2F83884600D36CD3 /* Departures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departures.swift; sourceTree = "<group>"; };
+		0076E47A2F83B40D00D36CD3 /* StationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchView.swift; sourceTree = "<group>"; };
+		0076E47C2F83B46500D36CD3 /* ActiveStationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveStationSearchView.swift; sourceTree = "<group>"; };
+		0076E47E2F83B47100D36CD3 /* InactiveStationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactiveStationSearchView.swift; sourceTree = "<group>"; };
+		0076E4802F83B8A500D36CD3 /* NearbyStationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyStationCard.swift; sourceTree = "<group>"; };
+		0076E4822F83BC3600D36CD3 /* ProductType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
+		0076E4842F83C53800D36CD3 /* getProductIconName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getProductIconName.swift; sourceTree = "<group>"; };
 		009793862E93B2BF00D7A0A4 /* OnTimeIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = OnTimeIcon.icon; sourceTree = "<group>"; };
 		009793882E9646BA00D7A0A4 /* stations.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = stations.sqlite; sourceTree = "<group>"; };
 		32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemLineGrid.swift; sourceTree = "<group>"; };
@@ -156,7 +167,6 @@
 		32DBDCEF2C2DEA0E00212F6B /* StationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchViewModel.swift; sourceTree = "<group>"; };
 		32DBDCF42C2E7A8A00212F6B /* SearchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemView.swift; sourceTree = "<group>"; };
 		32DBDCF62C2E7B9500212F6B /* LineIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineIcon.swift; sourceTree = "<group>"; };
-		32DBDCF82C2E89FB00212F6B /* StationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchView.swift; sourceTree = "<group>"; };
 		32DBDCFC2C2E906F00212F6B /* DeparturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesView.swift; sourceTree = "<group>"; };
 		32DBDD002C2E96AA00212F6B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		32DBDD022C30546700212F6B /* DepartureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureModel.swift; sourceTree = "<group>"; };
@@ -220,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				326115B02DCF93E200F32297 /* RecentSearchStation.swift */,
+				0076E4822F83BC3600D36CD3 /* ProductType.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -408,10 +419,13 @@
 		32DBDCFA2C2E905100212F6B /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
-				32DBDCF82C2E89FB00212F6B /* StationSearchView.swift */,
+				0076E47E2F83B47100D36CD3 /* InactiveStationSearchView.swift */,
+				0076E47C2F83B46500D36CD3 /* ActiveStationSearchView.swift */,
+				0076E47A2F83B40D00D36CD3 /* StationSearchView.swift */,
 				32DBDCF42C2E7A8A00212F6B /* SearchItemView.swift */,
 				326115C02DD0DDB400F32297 /* NearbyStationListView.swift */,
 				32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */,
+				0076E4802F83B8A500D36CD3 /* NearbyStationCard.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -445,8 +459,9 @@
 		32DBDCFF2C2E96A500212F6B /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				0076E4842F83C53800D36CD3 /* getProductIconName.swift */,
 				0076E45E2F83881300D36CD3 /* demo-data */,
-				003B06DE2E394C970031862E /* groupAndSortLines.swift */,
+				003B06DE2E394C970031862E /* GroupAndSortLines.swift */,
 				326115D12DDCB38100F32297 /* ShowFavoriteToast.swift */,
 				329831732DB3BD3A00436E15 /* Date+Extensions.swift */,
 				32B372EE2CE34AB000CE684E /* AngleHelper.swift */,
@@ -585,6 +600,7 @@
 				32B36CF82D5552CE00102BE8 /* Location.swift in Sources */,
 				326115A12DC4055C00F32297 /* AddressSearchViewModel.swift in Sources */,
 				32B36D0A2D565AB700102BE8 /* StopoverItem.swift in Sources */,
+				0076E4832F83BC3A00D36CD3 /* ProductType.swift in Sources */,
 				32DBDCEB2C2DE81C00212F6B /* Constants.swift in Sources */,
 				32C9603D2CF10240006BAC4E /* CleanSpecialCharacters.swift in Sources */,
 				32B36D082D5556F100102BE8 /* StopoverTimeRow.swift in Sources */,
@@ -599,9 +615,10 @@
 				32A96E712D3D710600F3C081 /* ErrorView.swift in Sources */,
 				3285867C2DB3D6F700A86FD7 /* DepartureArrayFns.swift in Sources */,
 				3261159D2DC402C600F32297 /* NavView.swift in Sources */,
+				0076E47B2F83B40D00D36CD3 /* StationSearchView.swift in Sources */,
 				32A3932D2D62577B00A0093F /* NanoIdGenerator.swift in Sources */,
 				326115D92DDCE9C100F32297 /* DemoRemarks.swift in Sources */,
-				003B06DF2E394C9F0031862E /* groupAndSortLines.swift in Sources */,
+				003B06DF2E394C9F0031862E /* GroupAndSortLines.swift in Sources */,
 				3261159A2DC4023100F32297 /* TabWrapperView.swift in Sources */,
 				32BADE9F2C3134BB00E53BA6 /* Extension.swift in Sources */,
 				32B36D0E2D566F9D00102BE8 /* TripMap.swift in Sources */,
@@ -609,17 +626,21 @@
 				32A3932B2D5E54D400A0093F /* FavoriteTripViewModel.swift in Sources */,
 				326115932DC24F2400F32297 /* TripToolbarFavoriteButton.swift in Sources */,
 				32DBDCEE2C2DE92300212F6B /* StationSearchItem.swift in Sources */,
+				0076E4852F83C54100D36CD3 /* getProductIconName.swift in Sources */,
 				32B36D022D55569C00102BE8 /* TripHeaderView.swift in Sources */,
 				327DE4C42CE14D2400CF0D04 /* LoadingIndicator.swift in Sources */,
 				326115D22DDCB38500F32297 /* ShowFavoriteToast.swift in Sources */,
 				32DBDD032C30546C00212F6B /* DepartureModel.swift in Sources */,
+				0076E47F2F83B47700D36CD3 /* InactiveStationSearchView.swift in Sources */,
 				326115A82DCD682B00F32297 /* DeparturesViewFilterSection.swift in Sources */,
+				0076E47D2F83B46A00D36CD3 /* ActiveStationSearchView.swift in Sources */,
 				32B36D182D573FC100102BE8 /* View+FavoriteAction.swift in Sources */,
 				32A96E6F2D3D70E800F3C081 /* LineIndicator.swift in Sources */,
 				326115DB2DDDECB600F32297 /* TripCardModifier.swift in Sources */,
 				327DE4CC2CE166A500CF0D04 /* KeychainHelper.swift in Sources */,
 				32DBDCF52C2E7A8A00212F6B /* SearchItemView.swift in Sources */,
 				326B0E542CD92C7500794F43 /* DBHandler.swift in Sources */,
+				0076E4812F83B8A500D36CD3 /* NearbyStationCard.swift in Sources */,
 				327DE4CE2CE16DE400CF0D04 /* Hash.swift in Sources */,
 				32A393252D5757E300A0093F /* DepartureItem.swift in Sources */,
 				32B36D162D573F3F00102BE8 /* FavoritesManager.swift in Sources */,
@@ -627,7 +648,6 @@
 				32019C6D2E11C987009405A0 /* SearchItemLineGrid.swift in Sources */,
 				32BADEAB2C3A7A1B00E53BA6 /* DepartureRow.swift in Sources */,
 				32DBDCD92C2DE74900212F6B /* OnTimeApp.swift in Sources */,
-				32DBDCF92C2E8A0100212F6B /* StationSearchView.swift in Sources */,
 				32B36D002D55567500102BE8 /* TripView.swift in Sources */,
 				0076E4602F83884E00D36CD3 /* Departures.swift in Sources */,
 				32FB5D512D8FF805005AA867 /* FilterChip.swift in Sources */,

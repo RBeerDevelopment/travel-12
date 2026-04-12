@@ -39,7 +39,7 @@ struct FavoriteDepartureCard: View {
     
             TimelineView(.everyMinute) { context in
                 ScrollView(.horizontal) {
-                    HStack(alignment: .center, spacing: 16) {
+                    HStack(alignment: .center, spacing: 12) {
                         ForEach(departures.prefix(5), id: \.id) { departure in
                             let minutes = Int(departure.whenDate.timeIntervalSince(context.date) / 60)
                             

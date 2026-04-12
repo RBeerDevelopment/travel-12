@@ -83,9 +83,9 @@ func formatDistance(_ distance: Double?) -> String? {
         let isMoreThanOneKm = distance > 1000
         let formattedDistance: String
         if isMoreThanOneKm {
-            formattedDistance = String(format: "%.1f km", distance / 1000)
+            formattedDistance = String(format: "%.1fkm", distance / 1000)
         } else {
-            formattedDistance = String(format: "%.0f m", distance)
+            formattedDistance = String(format: "%.0fm", distance)
         }
         return formattedDistance
     }

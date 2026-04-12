@@ -22,6 +22,12 @@ extension Color {
         let blueValue = Double(rgb & 0xFF) / 255.0
         self.init(red: redValue, green: greenValue, blue: blueValue)
     }
+
+    var pastel: Color {
+        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        UIColor(self).getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+        return Color(hue: Double(h), saturation: Double(s * 0.5), brightness: Double(min(b * 1.2, 1.0)), opacity: Double(a))
+    }
 }
 
 func getContrastTextColor(_ baseColor: Color) -> Color {

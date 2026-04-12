@@ -72,8 +72,6 @@ func groupAndSortLines(_ lines: [StationSearchItemLine]) -> [[StationSearchItemL
         
         let splitResult = splitIntoChunks(array: initialResult, chunkCount: numberOfChunks)
         
-        
-        
         groupedAndSortedLines.append(contentsOf: splitResult)
     }
     

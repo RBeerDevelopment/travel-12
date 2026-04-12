@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DeparturesViewFilterSection: View {
     
-    @Binding var selectedModes: Set<String>
+    @Binding var selectedModes: Set<ProductType>
     @Binding var selectedLines: Set<String>
     var departures: [Departure]
     

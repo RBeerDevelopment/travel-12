@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DeparturesView: View {
     @StateObject private var viewModel = DeparturesViewModel()
-    @State private var selectedModes = Set<String>()
+    @State private var selectedModes = Set<ProductType>()
     @State private var selectedLines = Set<String>()
     
     let stationId: String

@@ -100,7 +100,7 @@ struct Departure: Decodable, Identifiable, Hashable {
 
 struct TransportLine: Decodable {
     let name: String
-    let product: String
+    let product: ProductType
     let color: LineColor?
 }
 

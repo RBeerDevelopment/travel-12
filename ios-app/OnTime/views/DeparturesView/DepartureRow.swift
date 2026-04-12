@@ -46,5 +46,5 @@ struct DepartureRow: View {
 }
 
 #Preview {
-    DepartureRow(departure: Departure(tripId: "u5", when: "2025-05-05T12:34:00Z", plannedWhen: "2025-05-05T12:32:00Z", delay: -2, platform: "1", direction: "Hauptbahnhof", line: TransportLine(name: "U5", product: "subway", color: nil), cancelled: false, remarks: []), stationId: "qo0ghw0g")
+    DepartureRow(departure: Departure(tripId: "u5", when: "2025-05-05T12:34:00Z", plannedWhen: "2025-05-05T12:32:00Z", delay: -2, platform: "1", direction: "Hauptbahnhof", line: TransportLine(name: "U5", product: .subway, color: nil), cancelled: false, remarks: []), stationId: "qo0ghw0g")
 }

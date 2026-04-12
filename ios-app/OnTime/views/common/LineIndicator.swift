@@ -14,13 +14,13 @@ struct LineIndicator: View {
     
     init(line: TransportLine) {
         self.name = line.name
-        self.backgroundColor = Color(hex: line.color?.bg ?? "#cdcdcd")
+        self.backgroundColor = Color(hex: line.color?.bg ?? "#cdcdcd").pastel
         self.textColor = getContrastTextColor(self.backgroundColor)
     }
     
     init(name: String, backgroundColor: String) {
         self.name = name
-        self.backgroundColor = Color(hex: backgroundColor)
+        self.backgroundColor = Color(hex: backgroundColor).pastel
         self.textColor = getContrastTextColor(self.backgroundColor)
     }
     
@@ -38,9 +38,9 @@ struct LineIndicator: View {
 
 #Preview {
     HStack(spacing: 8) {
-        LineIndicator(line: TransportLine(name: "S3", product: "suburban", color: LineColor(fg: "#fff", bg: "#0a3d85")))
+        LineIndicator(line: TransportLine(name: "S3", product: .suburban, color: LineColor(fg: "#fff", bg: "#0a3d85")))
             .frame(width: 40, height: 40)
-        LineIndicator(line: TransportLine(name: "U6", product: "subway", color: LineColor(fg: "#fff", bg: "#7b3da0")))
+        LineIndicator(line: TransportLine(name: "U6", product: .subway, color: LineColor(fg: "#fff", bg: "#7b3da0")))
             .frame(width: 40, height: 40)
         LineIndicator(name: "M10", backgroundColor: "#c9a30a")
             .frame(width: 40, height: 40)

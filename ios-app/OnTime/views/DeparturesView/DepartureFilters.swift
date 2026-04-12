@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct DepartureFilters: View {
-    @Binding var selectedModes: Set<String>
+    @Binding var selectedModes: Set<ProductType>
     @Binding var selectedLines: Set<String>
     
-    let availableModes: [String]
+    let availableModes: [ProductType]
     let availableLines: [String]
     
     var body: some View {
@@ -25,7 +25,7 @@ struct DepartureFilters: View {
                     HStack(spacing: 8) {
                         ForEach(availableModes, id: \.self) { mode in
                             FilterChip(
-                                title: mode,
+                                title: mode.rawValue,
                                 isSelected: selectedModes.contains(mode),
                                 action: {
                                     toggleSelection(for: mode, in: $selectedModes)
@@ -90,7 +90,7 @@ struct DepartureFilters: View {
         .padding(.horizontal)
     }
     
-    private func toggleSelection(for item: String, in selection: Binding<Set<String>>) {
+    private func toggleSelection<T>(for item: T, in selection: Binding<Set<T>>) {
         if selection.wrappedValue.contains(item) {
             selection.wrappedValue.remove(item)
         } else {
@@ -98,7 +98,7 @@ struct DepartureFilters: View {
         }
     }
     
-    private func selectOnly(for item: String, in selection: Binding<Set<String>>) {
+    private func selectOnly<T>(for item: T, in selection: Binding<Set<T>>) {
         selection.wrappedValue = [item]
     }
 }
@@ -110,9 +110,9 @@ struct DepartureFilters: View {
 struct DepartureFilters_Previews: PreviewProvider {
     static var previews: some View {
         DepartureFilters(
-            selectedModes: .constant(["S-Bahn", "U-Bahn"]),
+            selectedModes: .constant([.subway, .suburban]),
             selectedLines: .constant(["U5", "S1"]),
-            availableModes: ["S-Bahn", "U-Bahn", "Tram", "Bus"],
+            availableModes: [.subway, .suburban, .tram, .bus],
             availableLines: ["U1", "U2", "U5", "S1", "S5", "S7", "RE6", "S42", "S41"]
         )
         .previewLayout(.sizeThatFits)
