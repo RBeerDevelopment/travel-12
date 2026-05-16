@@ -17,6 +17,7 @@
 		0076E4852F83C54100D36CD3 /* getProductIconName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0076E4842F83C53800D36CD3 /* getProductIconName.swift */; };
 		009793872E93B2BF00D7A0A4 /* OnTimeIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 009793862E93B2BF00D7A0A4 /* OnTimeIcon.icon */; };
 		009793892E9646BA00D7A0A4 /* stations.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 009793882E9646BA00D7A0A4 /* stations.sqlite */; };
+		00DE8AA22F8BFCFF000C178A /* formatDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE8AA12F8BFCFC000C178A /* formatDistance.swift */; };
 		32019C6D2E11C987009405A0 /* SearchItemLineGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */; };
 		326115932DC24F2400F32297 /* TripToolbarFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115922DC24F1D00F32297 /* TripToolbarFavoriteButton.swift */; };
 		3261159A2DC4023100F32297 /* TabWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115992DC4023100F32297 /* TabWrapperView.swift */; };
@@ -25,7 +26,6 @@
 		326115A32DC4094400F32297 /* NavSearchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115A22DC4094400F32297 /* NavSearchSheet.swift */; };
 		326115A82DCD682B00F32297 /* DeparturesViewFilterSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115A72DCD682B00F32297 /* DeparturesViewFilterSection.swift */; };
 		326115B12DCF93EA00F32297 /* RecentSearchStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115B02DCF93E200F32297 /* RecentSearchStation.swift */; };
-		326115C12DD0DDB400F32297 /* NearbyStationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115C02DD0DDB400F32297 /* NearbyStationListView.swift */; };
 		326115D02DDCAE9200F32297 /* Toasts in Frameworks */ = {isa = PBXBuildFile; productRef = 326115CF2DDCAE9200F32297 /* Toasts */; };
 		326115D22DDCB38500F32297 /* ShowFavoriteToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115D12DDCB38100F32297 /* ShowFavoriteToast.swift */; };
 		326115D42DDCC5CB00F32297 /* Remark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326115D32DDCC5C800F32297 /* Remark.swift */; };
@@ -74,7 +74,6 @@
 		32DBDCEB2C2DE81C00212F6B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCEA2C2DE81900212F6B /* Constants.swift */; };
 		32DBDCEE2C2DE92300212F6B /* StationSearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCED2C2DE91700212F6B /* StationSearchItem.swift */; };
 		32DBDCF02C2DEA1800212F6B /* StationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCEF2C2DEA0E00212F6B /* StationSearchViewModel.swift */; };
-		32DBDCF52C2E7A8A00212F6B /* SearchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF42C2E7A8A00212F6B /* SearchItemView.swift */; };
 		32DBDCF72C2E7B9500212F6B /* LineIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCF62C2E7B9500212F6B /* LineIcon.swift */; };
 		32DBDCFD2C2E906F00212F6B /* DeparturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDCFC2C2E906F00212F6B /* DeparturesView.swift */; };
 		32DBDD012C2E96AD00212F6B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDD002C2E96AA00212F6B /* LocationManager.swift */; };
@@ -106,6 +105,7 @@
 		0076E4842F83C53800D36CD3 /* getProductIconName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getProductIconName.swift; sourceTree = "<group>"; };
 		009793862E93B2BF00D7A0A4 /* OnTimeIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = OnTimeIcon.icon; sourceTree = "<group>"; };
 		009793882E9646BA00D7A0A4 /* stations.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = stations.sqlite; sourceTree = "<group>"; };
+		00DE8AA12F8BFCFC000C178A /* formatDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = formatDistance.swift; sourceTree = "<group>"; };
 		32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemLineGrid.swift; sourceTree = "<group>"; };
 		325ECC5C2CDD36DC00A8E392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		326115922DC24F1D00F32297 /* TripToolbarFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripToolbarFavoriteButton.swift; sourceTree = "<group>"; };
@@ -115,7 +115,6 @@
 		326115A22DC4094400F32297 /* NavSearchSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavSearchSheet.swift; sourceTree = "<group>"; };
 		326115A72DCD682B00F32297 /* DeparturesViewFilterSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesViewFilterSection.swift; sourceTree = "<group>"; };
 		326115B02DCF93E200F32297 /* RecentSearchStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchStation.swift; sourceTree = "<group>"; };
-		326115C02DD0DDB400F32297 /* NearbyStationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyStationListView.swift; sourceTree = "<group>"; };
 		326115D12DDCB38100F32297 /* ShowFavoriteToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowFavoriteToast.swift; sourceTree = "<group>"; };
 		326115D32DDCC5C800F32297 /* Remark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remark.swift; sourceTree = "<group>"; };
 		326115D52DDCE11900F32297 /* TripRemarksSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRemarksSection.swift; sourceTree = "<group>"; };
@@ -165,7 +164,6 @@
 		32DBDCEA2C2DE81900212F6B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		32DBDCED2C2DE91700212F6B /* StationSearchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchItem.swift; sourceTree = "<group>"; };
 		32DBDCEF2C2DEA0E00212F6B /* StationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchViewModel.swift; sourceTree = "<group>"; };
-		32DBDCF42C2E7A8A00212F6B /* SearchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemView.swift; sourceTree = "<group>"; };
 		32DBDCF62C2E7B9500212F6B /* LineIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineIcon.swift; sourceTree = "<group>"; };
 		32DBDCFC2C2E906F00212F6B /* DeparturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesView.swift; sourceTree = "<group>"; };
 		32DBDD002C2E96AA00212F6B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -422,8 +420,6 @@
 				0076E47E2F83B47100D36CD3 /* InactiveStationSearchView.swift */,
 				0076E47C2F83B46500D36CD3 /* ActiveStationSearchView.swift */,
 				0076E47A2F83B40D00D36CD3 /* StationSearchView.swift */,
-				32DBDCF42C2E7A8A00212F6B /* SearchItemView.swift */,
-				326115C02DD0DDB400F32297 /* NearbyStationListView.swift */,
 				32019C6C2E11C987009405A0 /* SearchItemLineGrid.swift */,
 				0076E4802F83B8A500D36CD3 /* NearbyStationCard.swift */,
 			);
@@ -459,6 +455,7 @@
 		32DBDCFF2C2E96A500212F6B /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				00DE8AA12F8BFCFC000C178A /* formatDistance.swift */,
 				0076E4842F83C53800D36CD3 /* getProductIconName.swift */,
 				0076E45E2F83881300D36CD3 /* demo-data */,
 				003B06DE2E394C970031862E /* GroupAndSortLines.swift */,
@@ -616,6 +613,7 @@
 				3285867C2DB3D6F700A86FD7 /* DepartureArrayFns.swift in Sources */,
 				3261159D2DC402C600F32297 /* NavView.swift in Sources */,
 				0076E47B2F83B40D00D36CD3 /* StationSearchView.swift in Sources */,
+				00DE8AA22F8BFCFF000C178A /* formatDistance.swift in Sources */,
 				32A3932D2D62577B00A0093F /* NanoIdGenerator.swift in Sources */,
 				326115D92DDCE9C100F32297 /* DemoRemarks.swift in Sources */,
 				003B06DF2E394C9F0031862E /* GroupAndSortLines.swift in Sources */,
@@ -638,7 +636,6 @@
 				32A96E6F2D3D70E800F3C081 /* LineIndicator.swift in Sources */,
 				326115DB2DDDECB600F32297 /* TripCardModifier.swift in Sources */,
 				327DE4CC2CE166A500CF0D04 /* KeychainHelper.swift in Sources */,
-				32DBDCF52C2E7A8A00212F6B /* SearchItemView.swift in Sources */,
 				326B0E542CD92C7500794F43 /* DBHandler.swift in Sources */,
 				0076E4812F83B8A500D36CD3 /* NearbyStationCard.swift in Sources */,
 				327DE4CE2CE16DE400CF0D04 /* Hash.swift in Sources */,
@@ -654,7 +651,6 @@
 				32FB5D522D8FF805005AA867 /* DepartureFilters.swift in Sources */,
 				32B36D142D573DC000102BE8 /* FavoriteTrip.swift in Sources */,
 				326115B12DCF93EA00F32297 /* RecentSearchStation.swift in Sources */,
-				326115C12DD0DDB400F32297 /* NearbyStationListView.swift in Sources */,
 				32DBDCF72C2E7B9500212F6B /* LineIcon.swift in Sources */,
 				32B36D062D5556D100102BE8 /* StopoverListView.swift in Sources */,
 				32B372EF2CE34AB500CE684E /* AngleHelper.swift in Sources */,

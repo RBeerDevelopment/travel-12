@@ -13,7 +13,7 @@ struct NearbyStationCard: View {
     
     var body: some View {
         NavigationLink {
-            DeparturesView(stationId: station.id.components(separatedBy: ":")[2], stationName: station.name)
+            DeparturesView(stationId: station.id.components(separatedBy: ":")[2], stationName: station.name, cleanedStationName: station.cleanedName)
         } label: {
             HStack {
                 VStack {
@@ -24,6 +24,7 @@ struct NearbyStationCard: View {
                         .clipShape(Circle())
                     Spacer()
                 }
+                .padding(.top, 4)
                 VStack(alignment: .leading) {
                     Text(station.cleanedName)
                         .font(.title2)
@@ -33,6 +34,7 @@ struct NearbyStationCard: View {
                     SearchItemLineGrid(lines: station.lines)
                 }
                 .padding(.leading, 8)
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
     }

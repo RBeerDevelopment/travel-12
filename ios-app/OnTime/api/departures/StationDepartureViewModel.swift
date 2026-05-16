@@ -21,6 +21,12 @@ class DeparturesViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var error: Error?
     
+    nonisolated init() {}
+    
+    init(previewDepartures: [Departure]) {
+        self.departures = previewDepartures
+    }
+    
     var earliestDepartureTimestamp: Date? {
         return departures.first?.whenDate
     }

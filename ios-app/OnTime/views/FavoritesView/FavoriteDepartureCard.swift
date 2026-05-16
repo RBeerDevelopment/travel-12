@@ -15,7 +15,7 @@ struct FavoriteDepartureCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             if let firstDeparture = departures.first {
-                NavigationLink(destination: DeparturesView(stationId: stationId, stationName: stationName)) {
+                NavigationLink(destination: DeparturesView(stationId: stationId, stationName: stationName, cleanedStationName: stationName)) {
                     HStack(spacing: 16) {
                         LineIndicator(line: firstDeparture.line)
                             .frame(width: 48, height: 48)

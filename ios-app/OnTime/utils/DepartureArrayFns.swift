@@ -15,11 +15,10 @@ func extractTransportModes(departures: [Departure]) -> [ProductType] {
     return Array(modes).sorted()
 }
 
-func extractLines(departures: [Departure], selectedModes: Set<ProductType>? = nil) -> [String] {
-    
+func extractLines(departures: [Departure], selectedModes: Set<ProductType>? = nil) -> Set<TransportLine> {
     let departuresToConsider = (selectedModes == nil || (selectedModes?.isEmpty ?? false)) ? departures : departures.filter { selectedModes!.contains($0.line.product) }
-    let lines = Set(departuresToConsider.compactMap { departure in
-        departure.line.name // or whatever property contains the line name
+
+    return Set(departuresToConsider.compactMap{ $0.line }.sorted {
+        $0.name < $1.name
     })
-    return Array(lines).sorted()
 }

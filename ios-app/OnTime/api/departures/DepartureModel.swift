@@ -98,10 +98,20 @@ struct Departure: Decodable, Identifiable, Hashable {
     
 }
 
-struct TransportLine: Decodable {
+struct TransportLine: Decodable, Hashable {
     let name: String
     let product: ProductType
     let color: LineColor?
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
+
+    
+    static func ==(lhs: TransportLine, rhs: TransportLine) -> Bool {
+        return lhs.name == rhs.name
+    }
+
 }
 
 struct LineColor: Decodable {

@@ -13,7 +13,7 @@ struct StopoverItem: View {
     var body: some View {
         VStack(spacing: 8) {
             VStack(alignment: .leading, spacing: 8) {
-                NavigationLink(destination: DeparturesView(stationId: stopover.stop.id, stationName: stopover.stop.name)) {
+                NavigationLink(destination: DeparturesView(stationId: stopover.stop.id, stationName: stopover.stop.name, cleanedStationName: stopover.stop.name)) {
                     Text(stopover.stop.name.replacingOccurrences(of: " (Berlin)", with: ""))
                         .font(.headline)
                         .frame(maxWidth: .infinity, alignment: .leading)

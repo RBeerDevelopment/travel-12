@@ -40,6 +40,7 @@ struct InactiveStationSearchView: View {
         .background(Color(.systemGroupedBackground))
     }
 }
+
 #Preview {
     let container = try! ModelContainer(for: FavoriteTrip.self, RecentSearchStation.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     let viewModel = StationViewModel(locationManager: LocationManager(), context: container.mainContext)
