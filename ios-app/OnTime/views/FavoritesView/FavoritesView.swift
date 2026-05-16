@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct FavoritesView: View {
-
     var body: some View {
         NavigationStack {
             FavoriteDeparturesView()
@@ -20,5 +20,24 @@ struct FavoritesView: View {
 }
 
 #Preview {
-    FavoritesView()
+    let container = try! ModelContainer(
+        for: FavoriteTrip.self, RecentSearchStation.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+    )
+    let context = container.mainContext
+    context.insert(FavoriteTrip(
+        lineId: "U5",
+        stationId: "900120009",
+        destinationId: "Hönow",
+        stationName: "Alexanderplatz"
+    ))
+    context.insert(FavoriteTrip(
+        lineId: "U5",
+        stationId: "900120009",
+        destinationId: "Hönow",
+        stationName: "Alexanderplatz"
+    ))
+    
+    return FavoritesView()
+        .modelContainer(container)
 }

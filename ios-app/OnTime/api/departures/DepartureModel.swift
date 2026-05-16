@@ -80,12 +80,38 @@ struct Departure: Decodable, Identifiable, Hashable {
         let date = formatter.date(from: when ?? plannedWhen)
         return date ?? Date(timeIntervalSince1970: 0)
     }
+    
+    func withUpdatedWhen(_ when: String) -> Departure {
+        Departure(
+            tripId: self.tripId,
+            when: when,
+            plannedWhen: self.plannedWhen,
+            delay: Int(Date.fromIsoString(dateStr: when)
+                .timeIntervalSince(Date.fromIsoString(dateStr: self.plannedWhen))),
+            platform: self.platform,
+            direction: self.direction,
+            line: self.line,
+            cancelled: self.cancelled,
+            remarks: self.remarks
+        )
+    }
+    
 }
 
-struct TransportLine: Decodable {
+struct TransportLine: Decodable, Hashable {
     let name: String
-    let product: String
+    let product: ProductType
     let color: LineColor?
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
+
+    
+    static func ==(lhs: TransportLine, rhs: TransportLine) -> Bool {
+        return lhs.name == rhs.name
+    }
+
 }
 
 struct LineColor: Decodable {

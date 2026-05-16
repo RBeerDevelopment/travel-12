@@ -15,6 +15,8 @@ struct StationSearchView: View {
     
     @State private var selectedStation: StationSearchItem? = nil
     @State private var isShowingDepartures = false
+    
+    @State private var isSearchPresented = false
 
     var recentAndNearbyStations: [StationSearchItem] {
         let combinedArray = stationViewModel.nearbyStation + stationViewModel.recentlySearchedStations
@@ -23,26 +25,21 @@ struct StationSearchView: View {
     }
     
     var body: some View {
-        let stationsToShow = stationViewModel.stations.isEmpty ? recentAndNearbyStations : stationViewModel.stations
         NavigationStack {
-            List(stationsToShow) { station in
-                Button {
-                    selectedStation = station
-                    isShowingDepartures = true
-                    handleStationClick(station, context: modelContext)
-                } label: {
-                    SearchItemView(station: station)
-                        .buttonStyle(PlainButtonStyle())
+            VStack {
+                if(isSearchPresented) {
+                    ActiveStationSearchView()
+                } else {
+                    InactiveStationSearchView()
                 }
             }
-            .navigationTitle("Search")
-            .navigationDestination(isPresented: $isShowingDepartures) {
-                if let station = selectedStation {
-                    DeparturesView(stationId: station.id.components(separatedBy: ":")[2], stationName: station.name)
-                }
-            }
+//            .navigationDestination(isPresented: $isShowingDepartures) {
+//                if let station = selectedStation {
+//                    DeparturesView(stationId: station.id.components(separatedBy: ":")[2], stationName: station.name, clean)
+//                }
+//            }
             .addToastSafeAreaObserver()
         }
-        .searchable(text: $stationViewModel.searchQuery)
+        .searchable(text: $stationViewModel.searchQuery, isPresented: $isSearchPresented)
     }
 }

@@ -9,22 +9,42 @@ import Combine
 import SwiftUI
 
 struct DeparturesView: View {
-    @StateObject private var viewModel = DeparturesViewModel()
-    @State private var selectedModes = Set<String>()
-    @State private var selectedLines = Set<String>()
+    @StateObject private var viewModel: DeparturesViewModel
+    @State private var selectedModes = Set<ProductType>()
+    @State private var selectedLines = Set<TransportLine>()
     
     let stationId: String
     let stationName: String
+    let cleanedStationName: String
+    
+    init(stationId: String, stationName: String, cleanedStationName: String, viewModel: DeparturesViewModel = .init()) {
+        self.stationId = stationId
+        self.stationName = stationName
+        self.cleanedStationName = cleanedStationName
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     var filteredDepartures: [Departure] {
         return viewModel.filteredDepartures(
             modes: selectedModes,
-            lines: selectedLines
+            lines: Set(selectedLines.map { $0.name })
         )
     }
 
+    
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            VStack(alignment: .leading) {
+                Text("LIVE DATA")
+                    .font(.caption)
+                    .bold()
+                    .foregroundStyle(.red)
+                Text(stationName)
+                    .font(.largeTitle)
+                    .bold()
+            }
+            .padding(.leading, 8)
+            
             DeparturesViewFilterSection(
                 selectedModes: $selectedModes,
                 selectedLines: $selectedLines,
@@ -78,7 +98,7 @@ struct DeparturesView: View {
             }
         }
         .frame(maxHeight: .infinity, alignment: .top)
-        .navigationTitle(stationName)
+        .navigationTitle("Station")
         
     }
     
@@ -112,3 +132,14 @@ struct DeparturesView: View {
         }
     }
 }
+#Preview {
+    NavigationStack {
+        DeparturesView(
+            stationId: "900000100003",
+            stationName: "Berlin Alexanderplatz",
+            cleanedStationName: "Berlin Alexanderplatz",
+            viewModel: DeparturesViewModel(previewDepartures: demoDepartures)
+        )
+    }
+}
+

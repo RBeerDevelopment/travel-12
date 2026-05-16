@@ -6,13 +6,15 @@
 //
 import Foundation
 
+
+
 struct StationSearchItemLine: Codable, Identifiable, Hashable {
     let id: String
     let name: String
     let color: String
-    let product: String
+    let product: ProductType
     
-    init(name: String, color: String, product: String) {
+    init(name: String, color: String, product: ProductType) {
         self.id = name
         self.name = name
         self.color = color
@@ -24,14 +26,14 @@ struct StationSearchItemLine: Codable, Identifiable, Hashable {
         self.id = try container.decode(String.self, forKey: .name)
         self.name = try container.decode(String.self, forKey: .name)
         self.color = try container.decode(String.self, forKey: .color)
-        self.product = try container.decode(String.self, forKey: .product)
+        self.product = try container.decode(ProductType.self, forKey: .product)
     }
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
         try container.encode(color, forKey: .color)
-        try container.encode(product, forKey: .product)
+        try container.encode(product.rawValue, forKey: .product)
     }
     
     enum CodingKeys: String, CodingKey {
@@ -40,17 +42,27 @@ struct StationSearchItemLine: Codable, Identifiable, Hashable {
     
 }
 
+func getMostImportantProductType(from lines: [StationSearchItemLine]) -> ProductType? {
+    let productTypes = lines.map { $0.product }
+    return productTypes.sorted().first
+}
+
 class StationSearchItem: Codable, Identifiable, Hashable, ObservableObject {
     let id: String
     let name: String
-    let lines: [StationSearchItemLine]
+    var lines: [StationSearchItemLine]
     let location: Location
+    let cleanedName: String
     @Published var distanceToUser: Double?
     @Published var angle: Double?
     
     init(id: String, name: String, lines: [StationSearchItemLine], location: Location) {
         self.id = id
         self.name = name
+        self.cleanedName = name
+            .replacingOccurrences(of: "^(S\\+U|U|S)\\s+", with: "", options: .regularExpression)
+            .replacingOccurrences(of: "\\s+(S\\+U|U|S)$", with: "", options: .regularExpression)
+            .trimmingCharacters(in: .whitespaces)
         self.lines = lines
         self.location = location
     }
@@ -62,6 +74,7 @@ class StationSearchItem: Codable, Identifiable, Hashable, ObservableObject {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
+
     
     static func == (lhs: StationSearchItem, rhs: StationSearchItem) -> Bool {
         return lhs.id == rhs.id
@@ -77,6 +90,10 @@ class StationSearchItem: Codable, Identifiable, Hashable, ObservableObject {
         name = try container.decode(String.self, forKey: .name)
         lines = try container.decode([StationSearchItemLine].self, forKey: .lines)
         location = try container.decode(Location.self, forKey: .location)
+        cleanedName = name
+            .replacingOccurrences(of: "^(S\\+U|U|S)\\s+", with: "", options: .regularExpression)
+            .replacingOccurrences(of: "\\s+(S\\+U|U|S)$", with: "", options: .regularExpression)
+            .trimmingCharacters(in: .whitespaces)
         // `distanceToUser` and `angle` are not decoded because they're set dynamically
     }
     
@@ -92,23 +109,23 @@ class StationSearchItem: Codable, Identifiable, Hashable, ObservableObject {
 
 let demoStations = [
     StationSearchItem(id: "1023838", name: "U Scharnweberstraße", lines: [
-        StationSearchItemLine(name: "U1", color: "#ff0011", product: "subway"),
-        StationSearchItemLine(name: "U2", color: "#ff0011", product: "subway"),
-        StationSearchItemLine(name: "U3", color: "#ff0011", product: "subway"),
-        StationSearchItemLine(name: "U5", color: "#ff0011", product: "subway"),
-        StationSearchItemLine(name: "U7", color: "#ff0011", product: "subway"),
-        StationSearchItemLine(name: "U9", color: "#ff0011", product: "subway"),
-        StationSearchItemLine(name: "RB14", color: "#ff0011", product: "regional"),
-        StationSearchItemLine(name: "RB23", color: "#ff0011", product: "regional"),
-        StationSearchItemLine(name: "RB24", color: "#ff0011", product: "regional"),
-        StationSearchItemLine(name: "RE1", color: "#ff0011", product: "regional"),
-        StationSearchItemLine(name: "RE2", color: "#ff0011", product: "regional"),
-        StationSearchItemLine(name: "RE3", color: "#ff0011", product: "regional"),
-        StationSearchItemLine(name: "RE4", color: "#ff0011", product: "regional"),
-        StationSearchItemLine(name: "RE5", color: "#ff0011", product: "regional"),
-        StationSearchItemLine(name: "RE7", color: "#ff0011", product: "regional"),
-        StationSearchItemLine(name: "RE8", color: "#ff0011", product: "regional"),
-        StationSearchItemLine(name: "RE9", color: "#ff0011", product: "regional"),
+        StationSearchItemLine(name: "U1", color: "#ff0011", product: .subway),
+        StationSearchItemLine(name: "U2", color: "#ff0011", product: .subway),
+        StationSearchItemLine(name: "U3", color: "#ff0011", product: .subway),
+        StationSearchItemLine(name: "U5", color: "#ff0011", product: .subway),
+        StationSearchItemLine(name: "U7", color: "#ff0011", product: .subway),
+        StationSearchItemLine(name: "U9", color: "#ff0011", product: .subway),
+        StationSearchItemLine(name: "RB14", color: "#ff0011", product: .regional),
+        StationSearchItemLine(name: "RB23", color: "#ff0011", product: .regional),
+        StationSearchItemLine(name: "RB24", color: "#ff0011", product: .regional),
+        StationSearchItemLine(name: "RE1", color: "#ff0011", product: .regional),
+        StationSearchItemLine(name: "RE2", color: "#ff0011", product: .regional),
+        StationSearchItemLine(name: "RE3", color: "#ff0011", product: .regional),
+        StationSearchItemLine(name: "RE4", color: "#ff0011", product: .regional),
+        StationSearchItemLine(name: "RE5", color: "#ff0011", product: .regional),
+        StationSearchItemLine(name: "RE7", color: "#ff0011", product: .regional),
+        StationSearchItemLine(name: "RE8", color: "#ff0011", product: .regional),
+        StationSearchItemLine(name: "RE9", color: "#ff0011", product: .regional),
         ], location: Location(id: "123", latitude: 52.475465, longitude: 13.365575)),
     StationSearchItem(id: "222", name: "Frankfurter Allee", lines: [], location: Location(id: "123", latitude: 52.475465, longitude: 13.365575))
 ]

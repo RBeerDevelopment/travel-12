@@ -15,53 +15,63 @@ struct FavoriteDepartureCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             if let firstDeparture = departures.first {
-                HStack(spacing: 8) {
-                    LineIndicator(line: firstDeparture.line)
-                        .frame(width: 40, height: 40)
-                    
-                    VStack(alignment: .leading) {
-                        NavigationLink(destination: DeparturesView(stationId: stationId, stationName: stationName)) {
+                NavigationLink(destination: DeparturesView(stationId: stationId, stationName: stationName, cleanedStationName: stationName)) {
+                    HStack(spacing: 16) {
+                        LineIndicator(line: firstDeparture.line)
+                            .frame(width: 48, height: 48)
+                        VStack(alignment: .leading) {
+                            
                             Text(stationName)
                                 .font(.headline)
                                 .lineLimit(1)
+                            
+                            if(firstDeparture.line.name != "S41" && firstDeparture.line.name != "S42") {
+                                Text("→ \(firstDeparture.direction)")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                                    .lineLimit(1)
+                            }
                         }
                         .accentColor(.primary)
-                        if(firstDeparture.line.name != "S41" && firstDeparture.line.name != "S42") {
-                            Text("To: \(firstDeparture.direction)")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                                .lineLimit(1)
-                        }
-                    }
-                    
-                }
-            }
-            
-            VStack(alignment: .leading, spacing: 6) {
-                ForEach(departures.prefix(4), id: \.id) { departure in
-                    HStack {
-                        Text(departure.formattedWhen)
-                            .font(.headline)
-                            .foregroundStyle(departure.status == .delayed ? .red : .primary)
-                        if(departure.status != .onTime) {
-                            Text(departure.formattedPlannedWhen)
-                                .font(.subheadline)
-                                .strikethrough()
-                        }
-                        
-                        Spacer()
-                        
-                        if let platform = departure.platform {
-                            Text("Platform \(platform)")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                        }
                     }
                 }
             }
-            .padding(.leading, 4)
+    
+            TimelineView(.everyMinute) { context in
+                ScrollView(.horizontal) {
+                    HStack(alignment: .center, spacing: 12) {
+                        ForEach(departures.prefix(5), id: \.id) { departure in
+                            let minutes = Int(departure.whenDate.timeIntervalSince(context.date) / 60)
+                            
+                            VStack {
+                                Text(minutes == 0 ? "now" : "\(minutes)m")
+                                    .font(.headline)
+                                    .bold()
+                                    .foregroundStyle(departure.status == .delayed ? .red : .primary)
+                                Text(departure.whenDate.formatted(date: .omitted, time: .shortened))
+                                    .font(.caption)
+                            }
+                            .frame(width: 60, height: 60)
+                            .padding(4)
+                            .background(Color(.systemGroupedBackground).clipShape(RoundedRectangle(cornerRadius: 16)))
+                        }
+                    }
+                }
+                .scrollIndicators(.hidden)
+            }
         }
+        .padding(6)
+    }
+}
 
-        
+#Preview {
+    NavigationStack {
+        List {
+            FavoriteDepartureCard(
+                departures: demoDepartures,
+                stationName: "Alexanderplatz",
+                stationId: "900000100003"
+            )
+        }
     }
 }

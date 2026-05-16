@@ -8,24 +8,23 @@
 import SwiftUI
 
 struct DepartureFilters: View {
-    @Binding var selectedModes: Set<String>
-    @Binding var selectedLines: Set<String>
+    @Binding var selectedModes: Set<ProductType>
+    @Binding var selectedLines: Set<TransportLine>
     
-    let availableModes: [String]
-    let availableLines: [String]
+    let availableModes: [ProductType]
+    let availableLines: [TransportLine]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             VStack(alignment: .leading, spacing: 12) {
-                Text("Mode")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                    .padding(.horizontal)
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 8) {
+                    HStack(spacing: 12) {
+                        FilterChip(title: "All Modes", isSelected: false, action: {
+                            selectedModes = Set(availableModes)
+                        }, longPressAction: {})
                         ForEach(availableModes, id: \.self) { mode in
                             FilterChip(
-                                title: mode,
+                                title: mode.rawValue,
                                 isSelected: selectedModes.contains(mode),
                                 action: {
                                     toggleSelection(for: mode, in: $selectedModes)
@@ -47,14 +46,15 @@ struct DepartureFilters: View {
                     HStack(spacing: 8) {
                         ForEach(availableLines, id: \.self) { line in
                             FilterChip(
-                                title: line,
+                                title: line.name,
                                 isSelected: selectedLines.contains(line),
                                 action: {
                                     toggleSelection(for: line, in: $selectedLines)
                                 },
                                 longPressAction: {
                                     selectOnly(for: line, in: $selectedLines)
-                                }
+                                },
+                                backgroundColor: Color(hex: line.color!.bg).pastel
                             )
                         }
                     }
@@ -70,7 +70,7 @@ struct DepartureFilters: View {
                     selectedModes = Set(availableModes)
                     selectedLines = Set(availableLines)
                 }) {
-                    Text("Select All")
+                    Text("All")
                         .font(.subheadline)
                 }
                 
@@ -90,7 +90,7 @@ struct DepartureFilters: View {
         .padding(.horizontal)
     }
     
-    private func toggleSelection(for item: String, in selection: Binding<Set<String>>) {
+    private func toggleSelection<T>(for item: T, in selection: Binding<Set<T>>) {
         if selection.wrappedValue.contains(item) {
             selection.wrappedValue.remove(item)
         } else {
@@ -98,7 +98,7 @@ struct DepartureFilters: View {
         }
     }
     
-    private func selectOnly(for item: String, in selection: Binding<Set<String>>) {
+    private func selectOnly<T>(for item: T, in selection: Binding<Set<T>>) {
         selection.wrappedValue = [item]
     }
 }
@@ -110,10 +110,10 @@ struct DepartureFilters: View {
 struct DepartureFilters_Previews: PreviewProvider {
     static var previews: some View {
         DepartureFilters(
-            selectedModes: .constant(["S-Bahn", "U-Bahn"]),
-            selectedLines: .constant(["U5", "S1"]),
-            availableModes: ["S-Bahn", "U-Bahn", "Tram", "Bus"],
-            availableLines: ["U1", "U2", "U5", "S1", "S5", "S7", "RE6", "S42", "S41"]
+            selectedModes: .constant([.subway, .suburban]),
+            selectedLines: .constant(Set(demoDepartures.map { $0.line })),
+            availableModes: [.subway, .suburban, .tram, .bus],
+            availableLines: demoDepartures.map { $0.line }
         )
         .previewLayout(.sizeThatFits)
     }

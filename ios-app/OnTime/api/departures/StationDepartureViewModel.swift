@@ -21,6 +21,12 @@ class DeparturesViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var error: Error?
     
+    nonisolated init() {}
+    
+    init(previewDepartures: [Departure]) {
+        self.departures = previewDepartures
+    }
+    
     var earliestDepartureTimestamp: Date? {
         return departures.first?.whenDate
     }
@@ -60,7 +66,7 @@ class DeparturesViewModel: ObservableObject {
     }
     
     // Add this function to filter departures
-    func filteredDepartures(modes: Set<String>, lines: Set<String>) -> [Departure] {
+    func filteredDepartures(modes: Set<ProductType>, lines: Set<String>) -> [Departure] {
         // If nothing is selected, show nothing
         if modes.isEmpty && lines.isEmpty {
             return []

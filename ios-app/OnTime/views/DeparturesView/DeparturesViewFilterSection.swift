@@ -9,46 +9,34 @@ import SwiftUI
 
 struct DeparturesViewFilterSection: View {
     
-    @Binding var selectedModes: Set<String>
-    @Binding var selectedLines: Set<String>
+    @Binding var selectedModes: Set<ProductType>
+    @Binding var selectedLines: Set<TransportLine>
     var departures: [Departure]
     
     @State private var showFilters = false
 
     var body: some View {
         HStack {
-            Spacer()
-            Button(action: {
-                withAnimation(.easeIn(duration: 0.25)) {
-                    showFilters.toggle()
-                }
-            }) {
-                HStack {
-                    Image(systemName: "line.3.horizontal.decrease.circle")
-                    Text("Filters")
-                }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 6)
-                .background(Color(UIColor.secondarySystemBackground))
-                .cornerRadius(10)
-            }
-            .padding(.trailing)
+            DepartureFilters(
+                selectedModes: $selectedModes,
+                selectedLines: $selectedLines,
+                availableModes: extractTransportModes(departures: departures),
+                availableLines: Array(extractLines(departures: departures, selectedModes: selectedModes))
+            )
+            
         }
-        .padding(.trailing, 4)
-        
-        if showFilters {
-            HStack {
-                DepartureFilters(
-                    selectedModes: $selectedModes,
-                    selectedLines: $selectedLines,
-                    availableModes: extractTransportModes(departures: departures),
-                    availableLines: extractLines(departures: departures, selectedModes: selectedModes)
-                )
-                
-            }
-            .transition(.scale)
-            .padding(.horizontal, 4)
-        }
+        .padding(.horizontal, 4)
     }
+}
+
+#Preview {
+    @Previewable @State var selectedModes = Set(demoDepartures.map { $0.line.product })
+    @Previewable @State var selectedLines = Set(demoDepartures.map { $0.line })
+
+    DeparturesViewFilterSection(
+        selectedModes: $selectedModes,
+        selectedLines: $selectedLines,
+        departures: demoDepartures
+    )
 }
 
