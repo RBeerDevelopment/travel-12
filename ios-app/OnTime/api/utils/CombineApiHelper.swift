@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Sentry
 import SwiftUI
 
 class CombineApiHelper {
@@ -35,6 +36,7 @@ class CombineApiHelper {
                 case .finished:
                     print("Request completed successfully")
                 case .failure(let error):
+                    SentrySDK.capture(error: error)
                     print("Error fetching from \(urlString): \(error.localizedDescription)")
                 }
             }, receiveValue: { request in responseHandler(request) })

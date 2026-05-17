@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Sentry
 
 actor ApiClient {
     static let shared = ApiClient()
@@ -22,14 +23,21 @@ actor ApiClient {
             return data
         }
         
-        let (data, _) = try await session.data(from: URL(string: endpoint)!)
-        
+        let data: Data
+        do {
+            (data, _) = try await session.data(from: URL(string: endpoint)!)
+        } catch {
+            SentrySDK.capture(error: error)
+            throw error
+        }
+
         var decoded: DeparturesResponse? = nil
         do {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             decoded = try decoder.decode(DeparturesResponse.self, from: data)
         } catch {
+            SentrySDK.capture(error: error)
             print(error)
         }
         
@@ -97,6 +105,7 @@ actor ApiClient {
                         if attempt < maxRetries - 1 {
                             continue
                         }
+                        SentrySDK.capture(error: error)
                         throw error
                     }
                 }
@@ -135,14 +144,22 @@ actor ApiClient {
         }
         
         
-        let (data, _) = try await session.data(from: URL(string: endpoint)!)
+        let data: Data
+        do {
+            (data, _) = try await session.data(from: URL(string: endpoint)!)
+        } catch {
+            SentrySDK.capture(error: error)
+            throw error
+        }
+
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
-        
+
         var decoded: TripResponse? = nil
         do {
             decoded = try decoder.decode(TripResponse.self, from: data)
         } catch {
+            SentrySDK.capture(error: error)
             print(error)
         }
         
