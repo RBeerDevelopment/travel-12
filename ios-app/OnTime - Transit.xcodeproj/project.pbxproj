@@ -82,6 +82,7 @@
 		32EB5D772D6A87A40054C6B9 /* FavoriteDepartureErrorCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB5D762D6A87A40054C6B9 /* FavoriteDepartureErrorCard.swift */; };
 		32FB5D512D8FF805005AA867 /* FilterChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB5D502D8FF805005AA867 /* FilterChip.swift */; };
 		32FB5D522D8FF805005AA867 /* DepartureFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB5D4F2D8FF805005AA867 /* DepartureFilters.swift */; };
+		53E579532A064BBB8238155E /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 105FE14956AF4EE0B36DB952 /* Sentry */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF00000000000000000000A1 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		CF00000000000000000000A2 /* Config.xcconfig.example */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig.example; sourceTree = "<group>"; };
 		003B06DE2E394C970031862E /* GroupAndSortLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAndSortLines.swift; sourceTree = "<group>"; };
 		0076E45F2F83884600D36CD3 /* Departures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departures.swift; sourceTree = "<group>"; };
 		0076E47A2F83B40D00D36CD3 /* StationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchView.swift; sourceTree = "<group>"; };
@@ -175,7 +178,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		32870C9C2DBED461006C0664 /* OnTime - Transit UITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "OnTime - Transit UITests"; sourceTree = "<group>"; };
+		32870C9C2DBED461006C0664 /* OnTime - Transit UITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = "OnTime - Transit UITests";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53E579532A064BBB8238155E /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +204,7 @@
 			files = (
 				326115D02DDCAE9200F32297 /* Toasts in Frameworks */,
 				326B0E522CD92C5800794F43 /* Libsql in Frameworks */,
+				53E579532A064BBB8238155E /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +381,8 @@
 			children = (
 				32DBDCE02C2DE74A00212F6B /* OnTime.entitlements */,
 				325ECC5C2CDD36DC00A8E392 /* Info.plist */,
+				CF00000000000000000000A1 /* Config.xcconfig */,
+				CF00000000000000000000A2 /* Config.xcconfig.example */,
 				32DBDCD82C2DE74900212F6B /* OnTimeApp.swift */,
 				32DBDCDE2C2DE74A00212F6B /* Assets.xcassets */,
 				326115AF2DCF93BF00F32297 /* data */,
@@ -507,6 +522,7 @@
 				32DBDCD12C2DE74900212F6B /* Sources */,
 				32DBDCD22C2DE74900212F6B /* Frameworks */,
 				32DBDCD32C2DE74900212F6B /* Resources */,
+				76C4BCFCCB6747FEB15D7561 /* Upload Debug Symbols to Sentry */,
 			);
 			buildRules = (
 			);
@@ -516,6 +532,9 @@
 			productName = OnTime;
 			productReference = 32DBDCD52C2DE74900212F6B /* OnTime - Transit.app */;
 			productType = "com.apple.product-type.application";
+			packageProductDependencies = (
+				105FE14956AF4EE0B36DB952 /* Sentry */,
+			);
 		};
 /* End PBXNativeTarget section */
 
@@ -548,6 +567,7 @@
 			packageReferences = (
 				326B0E502CD92C5800794F43 /* XCRemoteSwiftPackageReference "libsql-swift" */,
 				326115CE2DDCAE9200F32297 /* XCRemoteSwiftPackageReference "swiftui-toasts" */,
+				1012F6CFB543417A873F85EB /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 			);
 			productRefGroup = 32DBDCD62C2DE74900212F6B /* Products */;
 			projectDirPath = "";
@@ -838,6 +858,7 @@
 		};
 		32DBDCE72C2DE74A00212F6B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF00000000000000000000A1 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = OnTimeIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -884,11 +905,14 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 26.0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_USER_SCRIPT_SANDBOXING = "NO";
 			};
 			name = Debug;
 		};
 		32DBDCE82C2DE74A00212F6B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF00000000000000000000A1 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = OnTimeIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -935,6 +959,8 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 26.0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_USER_SCRIPT_SANDBOXING = "NO";
 			};
 			name = Release;
 		};
@@ -987,6 +1013,14 @@
 				minimumVersion = 0.3.0;
 			};
 		};
+		1012F6CFB543417A873F85EB /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1000,7 +1034,41 @@
 			package = 326B0E502CD92C5800794F43 /* XCRemoteSwiftPackageReference "libsql-swift" */;
 			productName = Libsql;
 		};
+		105FE14956AF4EE0B36DB952 /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1012F6CFB543417A873F85EB /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
+		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		76C4BCFCCB6747FEB15D7561 /* Upload Debug Symbols to Sentry */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script is responsible for uploading debug symbols and source context for Sentry.
+if which sentry-cli >/dev/null; then
+  export SENTRY_ORG=robin-beer-development
+  export SENTRY_PROJECT=ontime-ios
+  ERROR=$(sentry-cli debug-files upload --include-sources \"$DWARF_DSYM_FOLDER_PATH\" 2>&1 >/dev/null)
+  if [ ! $? -eq 0 ]; then
+    echo \"warning: sentry-cli - $ERROR\"
+  fi
+else
+  echo \"warning: sentry-cli not installed, download from https://github.com/getsentry/sentry-cli/releases\"
+fi
+";
+			name = "Upload Debug Symbols to Sentry";
+		};
+/* End PBXShellScriptBuildPhase section */
 	};
 	rootObject = 32DBDCCD2C2DE74900212F6B /* Project object */;
 }
