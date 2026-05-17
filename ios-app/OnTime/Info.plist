@@ -11,6 +11,8 @@
 		<key>NSAllowsArbitraryLoadsInWebContent</key>
 		<true/>
 	</dict>
+	<key>SentryDSN</key>
+	<string>$(SENTRY_DSN)</string>
 	<key>NSServices</key>
 	<array>
 		<dict/>

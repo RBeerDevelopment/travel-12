@@ -20,5 +20,11 @@ platform :ios do
   lane :screenshots do
     capture_screenshots(scheme: "OnTime - Transit UITests")
     upload_to_app_store(skip_binary_upload: true, skip_metadata: true)
+
+    sentry_debug_files_upload(
+      org_slug: 'robin-beer-development',
+      project_slug: 'ontime-ios',
+      include_sources: true
+    )
   end
 end
